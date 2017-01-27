@@ -1,8 +1,7 @@
 ﻿namespace Servernet
 {
-    public interface IFunction<in TInput>
-        where TInput : IInput
+    public interface IFunction<in TInput, out TOutput>
     {
-        void Run(TInput input);
+        TOutput Run(TInput input);
     }
 }

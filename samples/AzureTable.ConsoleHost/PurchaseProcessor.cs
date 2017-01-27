@@ -5,7 +5,7 @@ using Servernet.SelfHost.Azure.Table;
 
 namespace AzureTable.ConsoleHost
 {
-    public class PurchaseProcessor : IFunction<IsStoredIn<CustomerTable>>
+    public class PurchaseProcessor : IAction<IsStoredIn<CustomerTable>>
     {
         public void Run(IsStoredIn<CustomerTable> input)
         {

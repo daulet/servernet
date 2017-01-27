@@ -32,7 +32,7 @@ namespace Servernet.SelfHost.Azure.Table
         {
             // unlike Azure Queue messages which meant to be deleted after processing,
             // Azure Table entities don't necessarily have to be updated or deleted,
-            // and in cases in which they do it should be implemented by corresponding IFunction.
+            // and in cases in which they do it should be implemented by corresponding IAction.
         }
     }
 }
