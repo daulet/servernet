@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Servernet.SelfHost", "src\S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureQueue.ConsoleHost", "sample\AzureQueue.ConsoleHost\AzureQueue.ConsoleHost.csproj", "{9EAB6AE8-BF6A-4DD3-A1BF-3B5489234944}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Servernet.SelfHost.Azure", "src\Servernet.SelfHost.Azure\Servernet.SelfHost.Azure.csproj", "{A92ACAB3-9850-469D-B885-9D46EABBFA74}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,10 @@ Global
 		{9EAB6AE8-BF6A-4DD3-A1BF-3B5489234944}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9EAB6AE8-BF6A-4DD3-A1BF-3B5489234944}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9EAB6AE8-BF6A-4DD3-A1BF-3B5489234944}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A92ACAB3-9850-469D-B885-9D46EABBFA74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A92ACAB3-9850-469D-B885-9D46EABBFA74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A92ACAB3-9850-469D-B885-9D46EABBFA74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A92ACAB3-9850-469D-B885-9D46EABBFA74}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
