@@ -1,10 +1,11 @@
-﻿using Servernet;
+﻿using AzureQueue.ConsoleHost.Model;
+using Servernet;
 
 namespace AzureQueue.ConsoleHost
 {
-    public class PaymentProcessor : IFunction<PaymentMessage>
+    public class PaymentProcessor : IFunction<Payment>
     {
-        public void Run(PaymentMessage input)
+        public void Run(Payment input)
         {
             throw new System.NotImplementedException();
         }

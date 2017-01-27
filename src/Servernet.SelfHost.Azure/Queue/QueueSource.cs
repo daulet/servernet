@@ -26,7 +26,7 @@ namespace Servernet.SelfHost.Azure.Queue
 
         public IEnumerable<IsStoredIn<TQueueDefinition>> GetEnumerable()
         {
-            return IterateUntilNull(() =>
+            return EnumerateUntilNull(() =>
             {
                 var queueMessage = _cloudQueue.Value.GetMessage(_timeout);
                 return _factory.CreateQueueItem(queueMessage);
@@ -38,7 +38,7 @@ namespace Servernet.SelfHost.Azure.Queue
             _cloudQueue.Value.DeleteMessage(input.GetCloudQueueMessage());
         }
 
-        private static IEnumerable<T> IterateUntilNull<T>(Func<T> producer)
+        private static IEnumerable<T> EnumerateUntilNull<T>(Func<T> producer)
         {
             T input;
             while ((input = producer()) != null)

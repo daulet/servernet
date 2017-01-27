@@ -37,15 +37,26 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PaymentMessage.cs" />
+    <Compile Include="Model\PaymentFactory.cs" />
+    <Compile Include="Model\Payment.cs" />
+    <Compile Include="Model\PaymentQueue.cs" />
     <Compile Include="PaymentProcessor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\src\Servernet.SelfHost.Azure\Servernet.SelfHost.Azure.csproj">
+      <Project>{a92acab3-9850-469d-b885-9d46eabbfa74}</Project>
+      <Name>Servernet.SelfHost.Azure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\Servernet.SelfHost\Servernet.SelfHost.csproj">
+      <Project>{aa76df2a-c21b-49fd-8ad8-02e7010002dc}</Project>
+      <Name>Servernet.SelfHost</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\src\Servernet\Servernet.csproj">
       <Project>{2b318cd1-6381-4fd9-a140-2937bcb94777}</Project>
       <Name>Servernet</Name>
