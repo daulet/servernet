@@ -4,15 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A92ACAB3-9850-469D-B885-9D46EABBFA74}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{4777FF75-1629-4487-9BB9-6A64182F8256}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Servernet.SelfHost.Azure</RootNamespace>
-    <AssemblyName>Servernet.SelfHost.Azure</AssemblyName>
+    <RootNamespace>AzureTable.ConsoleHost</RootNamespace>
+    <AssemblyName>AzureTable.ConsoleHost</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -34,25 +37,28 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Queue\IQueueItemFactory.cs" />
-    <Compile Include="Queue\IsStoredIn.cs" />
+    <Compile Include="Model\Customer.cs" />
+    <Compile Include="Model\Purchase.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Queue\IQueueDefinition.cs" />
-    <Compile Include="Queue\QueueSource.cs" />
-    <Compile Include="Table\IsStoredIn.cs" />
-    <Compile Include="Table\ITableDefinition.cs" />
-    <Compile Include="Table\ITableEntityFactory.cs" />
-    <Compile Include="Table\TableSource.cs" />
+    <Compile Include="PurchaseProcessor.cs" />
+    <Compile Include="Storage\CustomerTable.cs" />
+    <Compile Include="Storage\CustomerTableEntityFactory.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Servernet.SelfHost\Servernet.SelfHost.csproj">
+    <ProjectReference Include="..\..\src\Servernet.SelfHost.Azure\Servernet.SelfHost.Azure.csproj">
+      <Project>{a92acab3-9850-469d-b885-9d46eabbfa74}</Project>
+      <Name>Servernet.SelfHost.Azure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\Servernet.SelfHost\Servernet.SelfHost.csproj">
       <Project>{aa76df2a-c21b-49fd-8ad8-02e7010002dc}</Project>
       <Name>Servernet.SelfHost</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Servernet\Servernet.csproj">
+    <ProjectReference Include="..\..\src\Servernet\Servernet.csproj">
       <Project>{2b318cd1-6381-4fd9-a140-2937bcb94777}</Project>
       <Name>Servernet</Name>
     </ProjectReference>

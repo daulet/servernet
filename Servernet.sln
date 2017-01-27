@@ -11,9 +11,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Servernet", "src\Servernet\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Servernet.SelfHost", "src\Servernet.SelfHost\Servernet.SelfHost.csproj", "{AA76DF2A-C21B-49FD-8AD8-02E7010002DC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureQueue.ConsoleHost", "sample\AzureQueue.ConsoleHost\AzureQueue.ConsoleHost.csproj", "{9EAB6AE8-BF6A-4DD3-A1BF-3B5489234944}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Servernet.SelfHost.Azure", "src\Servernet.SelfHost.Azure\Servernet.SelfHost.Azure.csproj", "{A92ACAB3-9850-469D-B885-9D46EABBFA74}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureTable.ConsoleHost", "samples\AzureTable.ConsoleHost\AzureTable.ConsoleHost.csproj", "{4777FF75-1629-4487-9BB9-6A64182F8256}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureQueue.ConsoleHost", "samples\AzureQueue.ConsoleHost\AzureQueue.ConsoleHost.csproj", "{9EAB6AE8-BF6A-4DD3-A1BF-3B5489234944}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,20 +35,25 @@ Global
 		{AA76DF2A-C21B-49FD-8AD8-02E7010002DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AA76DF2A-C21B-49FD-8AD8-02E7010002DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AA76DF2A-C21B-49FD-8AD8-02E7010002DC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9EAB6AE8-BF6A-4DD3-A1BF-3B5489234944}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9EAB6AE8-BF6A-4DD3-A1BF-3B5489234944}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9EAB6AE8-BF6A-4DD3-A1BF-3B5489234944}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9EAB6AE8-BF6A-4DD3-A1BF-3B5489234944}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A92ACAB3-9850-469D-B885-9D46EABBFA74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A92ACAB3-9850-469D-B885-9D46EABBFA74}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A92ACAB3-9850-469D-B885-9D46EABBFA74}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A92ACAB3-9850-469D-B885-9D46EABBFA74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4777FF75-1629-4487-9BB9-6A64182F8256}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4777FF75-1629-4487-9BB9-6A64182F8256}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4777FF75-1629-4487-9BB9-6A64182F8256}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4777FF75-1629-4487-9BB9-6A64182F8256}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9EAB6AE8-BF6A-4DD3-A1BF-3B5489234944}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EAB6AE8-BF6A-4DD3-A1BF-3B5489234944}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EAB6AE8-BF6A-4DD3-A1BF-3B5489234944}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EAB6AE8-BF6A-4DD3-A1BF-3B5489234944}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{C7769766-F178-4868-AF6B-CB1E86F79282} = {90EC7C49-1AA8-4FC1-80B9-5EDE797B6E38}
+		{4777FF75-1629-4487-9BB9-6A64182F8256} = {90EC7C49-1AA8-4FC1-80B9-5EDE797B6E38}
 		{9EAB6AE8-BF6A-4DD3-A1BF-3B5489234944} = {90EC7C49-1AA8-4FC1-80B9-5EDE797B6E38}
 	EndGlobalSection
 EndGlobal
