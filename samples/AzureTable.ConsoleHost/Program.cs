@@ -5,9 +5,9 @@ using Servernet.SelfHost.Azure.Table;
 
 namespace AzureTable.ConsoleHost
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             var source = new TableSource<CustomerTable>(
                 new CustomerTable(),

@@ -37,7 +37,6 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\PaymentFactory.cs" />
     <Compile Include="Model\Payment.cs" />
     <Compile Include="Model\PaymentQueue.cs" />
     <Compile Include="PaymentProcessor.cs" />

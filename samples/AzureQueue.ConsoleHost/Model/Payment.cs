@@ -3,7 +3,7 @@ using Servernet.SelfHost.Azure.Queue;
 
 namespace AzureQueue.ConsoleHost.Model
 {
-    public class Payment : IsStoredIn<PaymentQueue>
+    public class Payment : IQueueEntity
     {
         private readonly CloudQueueMessage _cloudQueueMessage;
 

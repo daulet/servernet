@@ -2,8 +2,7 @@
 
 namespace Servernet.SelfHost.Azure.Queue
 {
-    public interface IsStoredIn<TQueueDefinition> : IInput
-        where TQueueDefinition : IQueueDefinition
+    public interface IQueueEntity : IInput
     {
         CloudQueueMessage GetCloudQueueMessage();
     }

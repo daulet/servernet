@@ -5,12 +5,11 @@ using System;
 
 namespace AzureQueue.ConsoleHost
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-            var source = new QueueSource<PaymentQueue>(
-                new PaymentFactory(),
+            var source = new QueueSource<Payment>(
                 new PaymentQueue(),
                 TimeSpan.FromSeconds(10));
             var processor = new PaymentProcessor();

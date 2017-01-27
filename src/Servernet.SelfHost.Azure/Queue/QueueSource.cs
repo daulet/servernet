@@ -5,16 +5,16 @@ using System.Threading;
 
 namespace Servernet.SelfHost.Azure.Queue
 {
-    public class QueueSource<TQueueDefinition> : IInputSource<IsStoredIn<TQueueDefinition>>
-        where TQueueDefinition : IQueueDefinition
+    public class QueueSource<TEntity> : IInputSource<TEntity>
+        where TEntity : IQueueEntity
     {
         private readonly Lazy<CloudQueue> _cloudQueue;
-        private readonly IQueueItemFactory<TQueueDefinition> _factory;
+        private readonly IQueueDefinition<TEntity> _queueDefinition;
         private readonly TimeSpan _timeout;
 
-        public QueueSource(IQueueItemFactory<TQueueDefinition> factory, TQueueDefinition queueDefinition, TimeSpan timeout)
+        public QueueSource(IQueueDefinition<TEntity> queueDefinition, TimeSpan timeout)
         {
-            _factory = factory;
+            _queueDefinition = queueDefinition;
             _timeout = timeout;
             _cloudQueue = new Lazy<CloudQueue>(() =>
             {
@@ -24,16 +24,16 @@ namespace Servernet.SelfHost.Azure.Queue
             LazyThreadSafetyMode.ExecutionAndPublication);
         }
 
-        public IEnumerable<IsStoredIn<TQueueDefinition>> GetEnumerable()
+        public IEnumerable<TEntity> GetEnumerable()
         {
             return EnumerateUntilNull(() =>
             {
                 var queueMessage = _cloudQueue.Value.GetMessage(_timeout);
-                return _factory.CreateQueueItem(queueMessage);
+                return _queueDefinition.GetEntity(queueMessage);
             });
         }
 
-        public void MarkAsDone(IsStoredIn<TQueueDefinition> input)
+        public void MarkAsDone(TEntity input)
         {
             _cloudQueue.Value.DeleteMessage(input.GetCloudQueueMessage());
         }
