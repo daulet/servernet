@@ -1,7 +1,6 @@
 ﻿namespace Servernet.SelfHost.Core
 {
     internal class FunctionAsAction<TInput, TOutput> : IAction<TInput>
-        where TInput : IInput
     {
         private readonly IFunction<TInput, TOutput> _function;
         private readonly ICollector<TOutput> _collector;

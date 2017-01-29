@@ -3,7 +3,6 @@
 namespace Servernet.SelfHost
 {
     public class ArraySource<TInput> : IInputSource<TInput>
-        where TInput : IInput
     {
         private readonly TInput[] _inputs;
 

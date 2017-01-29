@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 namespace Servernet.SelfHost
 {
     public class Runner<TInput>
-        where TInput : IInput
     {
         private readonly IInputSource<TInput> _inputSource;
         private readonly IAction<TInput> _action;
@@ -36,7 +35,6 @@ namespace Servernet.SelfHost
     }
 
     public class Runner<TInput, TOutput> : Runner<TInput>
-        where TInput : IInput
     {
         public Runner(IInputSource<TInput> inputSource, IFunction<TInput, TOutput> function, ICollector<TOutput> collector)
             : base(inputSource, new FunctionAsAction<TInput, TOutput>(function, collector))

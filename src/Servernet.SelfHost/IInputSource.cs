@@ -3,7 +3,6 @@
 namespace Servernet.SelfHost
 {
     public interface IInputSource<TInput>
-        where TInput : IInput
     {
         IEnumerable<TInput> GetEnumerable();
 

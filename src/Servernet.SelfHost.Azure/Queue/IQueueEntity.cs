@@ -2,7 +2,7 @@
 
 namespace Servernet.SelfHost.Azure.Queue
 {
-    public interface IQueueEntity : IInput
+    public interface IQueueEntity
     {
         CloudQueueMessage GetCloudQueueMessage();
     }
