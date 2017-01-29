@@ -34,9 +34,12 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Run.cs" />
     <Compile Include="ICollector.cs" />
     <Compile Include="IAction.cs" />
     <Compile Include="IFunction.cs" />
+    <Compile Include="IInput.cs" />
+    <Compile Include="ITrigger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
