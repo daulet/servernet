@@ -1,0 +1,20 @@
+﻿{
+  "disabled": false,
+  "bindings": [
+    {
+      "name": "myQueueItem",
+      "type": "queueTrigger",
+      "direction": "in",
+      "queueName": "sample-queue",
+      "connection": "daulettest_STORAGE"
+    },
+    {
+      "name": "nextQueueItem",
+      "type": "queue",
+      "direction": "out",
+      "queueName": "sample-queue",
+      "connection": "daulettest_STORAGE"
+    }
+
+  ]
+}
