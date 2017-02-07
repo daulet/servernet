@@ -1,15 +1,12 @@
-﻿using System;
+﻿#r "AzureQueueTriggerExample.dll"
+#r "Servernet.dll"
+using System;
+using AzureQueueTriggerExample;
+using AzureQueueTriggerExample.Model;
+using Servernet;
 
-public static void Run(string myQueueItem, TraceWriter log, out string nextQueueItem)
+public static void Run(Purchase purchase, TraceWriter log)
 {
-    nextQueueItem = default(string);
-    int currentValue;
-    if (int.TryParse(myQueueItem, out currentValue))
-    {
-        if (currentValue <= 10)
-        {
-            currentValue++;
-            nextQueueItem = currentValue.ToString();
-        }
-    }
+    var logger = new Logger(log);
+    Function.Run(purchase, logger);
 }

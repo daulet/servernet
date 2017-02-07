@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2B318CD1-6381-4FD9-A140-2937BCB94777}</ProjectGuid>
+    <ProjectGuid>{348E68F1-0C5B-4742-8BE7-E435C3DE27AC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Servernet</RootNamespace>
-    <AssemblyName>Servernet</AssemblyName>
+    <RootNamespace>AzureQueueTriggerExample</RootNamespace>
+    <AssemblyName>AzureQueueTriggerExample</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -34,11 +34,15 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Logger.cs" />
-    <Compile Include="ICollector.cs" />
-    <Compile Include="IAction.cs" />
-    <Compile Include="IFunction.cs" />
+    <Compile Include="Function.cs" />
+    <Compile Include="Model\Purchase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Servernet\Servernet.csproj">
+      <Project>{2b318cd1-6381-4fd9-a140-2937bcb94777}</Project>
+      <Name>Servernet</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="project.json" />
