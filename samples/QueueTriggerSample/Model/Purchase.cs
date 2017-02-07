@@ -1,4 +1,4 @@
-﻿namespace AzureQueueTriggerExample.Model
+﻿namespace QueueTriggerSample.Model
 {
     public class Purchase
     {

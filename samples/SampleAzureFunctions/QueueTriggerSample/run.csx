@@ -1,8 +1,8 @@
-﻿#r "AzureQueueTriggerExample.dll"
+﻿#r "QueueTriggerSample.dll"
 #r "Servernet.dll"
 using System;
-using AzureQueueTriggerExample;
-using AzureQueueTriggerExample.Model;
+using QueueTriggerSample;
+using QueueTriggerSample.Model;
 using Servernet;
 
 public static void Run(Purchase purchase, TraceWriter log)

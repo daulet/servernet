@@ -7,8 +7,8 @@
     <ProjectGuid>{348E68F1-0C5B-4742-8BE7-E435C3DE27AC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AzureQueueTriggerExample</RootNamespace>
-    <AssemblyName>AzureQueueTriggerExample</AssemblyName>
+    <RootNamespace>QueueTriggerSample</RootNamespace>
+    <AssemblyName>QueueTriggerSample</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
