@@ -6,17 +6,13 @@ namespace QueueTriggerSample.ConsoleHost
     {
         public static void Main()
         {
-            var config = new JobHostConfiguration();
-
-            if (config.IsDevelopment)
+            var config = new JobHostConfiguration
             {
-                config.UseDevelopmentSettings();
-            }
+                TypeLocator = new SamplesTypeLocator(
+                    typeof(Function))
+            };
 
             var host = new JobHost(config);
-            config.TypeLocator = new SamplesTypeLocator(
-                    typeof(Function));
-
             host.RunAndBlock();
         }
     }
