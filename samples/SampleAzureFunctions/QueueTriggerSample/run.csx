@@ -5,8 +5,7 @@ using QueueTriggerSample;
 using QueueTriggerSample.Model;
 using Servernet;
 
-public static void Run(Purchase purchase, TraceWriter log)
+public static void Run(Purchase purchase, TraceWriter logger)
 {
-    var logger = new Logger(log);
     Function.Run(purchase, logger);
 }
