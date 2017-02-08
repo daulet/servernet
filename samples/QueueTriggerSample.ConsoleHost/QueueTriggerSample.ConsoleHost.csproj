@@ -46,6 +46,10 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\src\Servernet\Servernet.csproj">
+      <Project>{2b318cd1-6381-4fd9-a140-2937bcb94777}</Project>
+      <Name>Servernet</Name>
+    </ProjectReference>
     <ProjectReference Include="..\QueueTriggerSample\QueueTriggerSample.csproj">
       <Project>{348e68f1-0c5b-4742-8be7-e435c3de27ac}</Project>
       <Name>QueueTriggerSample</Name>

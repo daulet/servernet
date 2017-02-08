@@ -38,6 +38,9 @@
     <Compile Include="ICollector.cs" />
     <Compile Include="IAction.cs" />
     <Compile Include="IFunction.cs" />
+    <Compile Include="LoggingAttribute.cs" />
+    <Compile Include="LoggingAttributeBindingProvider.cs" />
+    <Compile Include="LoggingJobHostConfigurationExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

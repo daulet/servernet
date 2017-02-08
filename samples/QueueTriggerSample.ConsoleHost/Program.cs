@@ -11,6 +11,7 @@ namespace QueueTriggerSample.ConsoleHost
                 TypeLocator = new SamplesTypeLocator(
                     typeof(Function))
             };
+            //config.UseLogging();
 
             var host = new JobHost(config);
             host.RunAndBlock();
