@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.9
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{90EC7C49-1AA8-4FC1-80B9-5EDE797B6E38}"
 EndProject
@@ -22,10 +22,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QueueTriggerSample.ConsoleHost", "samples\QueueTriggerSample.ConsoleHost\QueueTriggerSample.ConsoleHost.csproj", "{A97341A3-3DEE-4714-9EDF-413922B638D6}"
 EndProject
 Project("{33AD0EE8-D99B-4E14-8CD9-3F56ABEF97A2}") = "SampleAzureFunctions", "samples\SampleAzureFunctions\SampleAzureFunctions.funproj", "{C7769766-F178-4868-AF6B-CB1E86F79282}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Servernet.Azure.KeyVault", "src\Servernet.Azure.KeyVault\Servernet.Azure.KeyVault.csproj", "{4641E15B-EE6E-4D9E-9EA5-0E3D8307E73C}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Servernet.Azure.WebServer", "src\Servernet.Azure.WebServer\Servernet.Azure.WebServer.csproj", "{D574A1D2-0780-4292-B6E3-A9A2F9A4879B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp", "samples\WebApp\WebApp.csproj", "{CBDD1781-F498-45E6-A8E7-37472106CEFE}"
 EndProject
@@ -73,14 +69,6 @@ Global
 		{C7769766-F178-4868-AF6B-CB1E86F79282}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C7769766-F178-4868-AF6B-CB1E86F79282}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C7769766-F178-4868-AF6B-CB1E86F79282}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4641E15B-EE6E-4D9E-9EA5-0E3D8307E73C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4641E15B-EE6E-4D9E-9EA5-0E3D8307E73C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4641E15B-EE6E-4D9E-9EA5-0E3D8307E73C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4641E15B-EE6E-4D9E-9EA5-0E3D8307E73C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D574A1D2-0780-4292-B6E3-A9A2F9A4879B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D574A1D2-0780-4292-B6E3-A9A2F9A4879B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D574A1D2-0780-4292-B6E3-A9A2F9A4879B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D574A1D2-0780-4292-B6E3-A9A2F9A4879B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CBDD1781-F498-45E6-A8E7-37472106CEFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CBDD1781-F498-45E6-A8E7-37472106CEFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CBDD1781-F498-45E6-A8E7-37472106CEFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
