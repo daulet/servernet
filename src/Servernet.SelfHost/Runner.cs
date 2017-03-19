@@ -33,12 +33,4 @@ namespace Servernet.SelfHost
             });
         }
     }
-
-    public class Runner<TInput, TOutput> : Runner<TInput>
-    {
-        public Runner(IInputSource<TInput> inputSource, IFunction<TInput, TOutput> function, ICollector<TOutput> collector)
-            : base(inputSource, new FunctionAsAction<TInput, TOutput>(function, collector))
-        {
-        }
-    }
 }
