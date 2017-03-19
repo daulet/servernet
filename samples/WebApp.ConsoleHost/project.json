@@ -1,0 +1,11 @@
+﻿{
+  "dependencies": {
+    "Microsoft.AspNet.WebApi": "5.2.3"
+  },
+  "frameworks": {
+    "net452": {}
+  },
+  "runtimes": {
+    "win": {}
+  }
+}
