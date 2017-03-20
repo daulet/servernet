@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Servernet.SelfHost", "src\S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Servernet.SelfHost.Azure", "src\Servernet.SelfHost.Azure\Servernet.SelfHost.Azure.csproj", "{A92ACAB3-9850-469D-B885-9D46EABBFA74}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureTable.ConsoleHost", "samples\AzureTable.ConsoleHost\AzureTable.ConsoleHost.csproj", "{4777FF75-1629-4487-9BB9-6A64182F8256}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QueueTriggerSample", "samples\QueueTriggerSample\QueueTriggerSample.csproj", "{348E68F1-0C5B-4742-8BE7-E435C3DE27AC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QueueTriggerSample.ConsoleHost", "samples\QueueTriggerSample.ConsoleHost\QueueTriggerSample.ConsoleHost.csproj", "{A97341A3-3DEE-4714-9EDF-413922B638D6}"
@@ -39,10 +37,6 @@ Global
 		{A92ACAB3-9850-469D-B885-9D46EABBFA74}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A92ACAB3-9850-469D-B885-9D46EABBFA74}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A92ACAB3-9850-469D-B885-9D46EABBFA74}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4777FF75-1629-4487-9BB9-6A64182F8256}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4777FF75-1629-4487-9BB9-6A64182F8256}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4777FF75-1629-4487-9BB9-6A64182F8256}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4777FF75-1629-4487-9BB9-6A64182F8256}.Release|Any CPU.Build.0 = Release|Any CPU
 		{348E68F1-0C5B-4742-8BE7-E435C3DE27AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{348E68F1-0C5B-4742-8BE7-E435C3DE27AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{348E68F1-0C5B-4742-8BE7-E435C3DE27AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -64,7 +58,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{4777FF75-1629-4487-9BB9-6A64182F8256} = {90EC7C49-1AA8-4FC1-80B9-5EDE797B6E38}
 		{348E68F1-0C5B-4742-8BE7-E435C3DE27AC} = {90EC7C49-1AA8-4FC1-80B9-5EDE797B6E38}
 		{A97341A3-3DEE-4714-9EDF-413922B638D6} = {90EC7C49-1AA8-4FC1-80B9-5EDE797B6E38}
 		{C7769766-F178-4868-AF6B-CB1E86F79282} = {90EC7C49-1AA8-4FC1-80B9-5EDE797B6E38}
