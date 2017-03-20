@@ -34,7 +34,6 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Core\FunctionAsAction.cs" />
     <Compile Include="MemorySource.cs" />
     <Compile Include="IInputSource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
