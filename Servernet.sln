@@ -7,8 +7,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{90EC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Servernet", "src\Servernet\Servernet.csproj", "{2B318CD1-6381-4FD9-A140-2937BCB94777}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Servernet.SelfHost", "src\Servernet.SelfHost\Servernet.SelfHost.csproj", "{AA76DF2A-C21B-49FD-8AD8-02E7010002DC}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Servernet.SelfHost.Azure", "src\Servernet.SelfHost.Azure\Servernet.SelfHost.Azure.csproj", "{A92ACAB3-9850-469D-B885-9D46EABBFA74}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QueueTriggerSample", "samples\QueueTriggerSample\QueueTriggerSample.csproj", "{348E68F1-0C5B-4742-8BE7-E435C3DE27AC}"
@@ -29,10 +27,6 @@ Global
 		{2B318CD1-6381-4FD9-A140-2937BCB94777}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B318CD1-6381-4FD9-A140-2937BCB94777}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2B318CD1-6381-4FD9-A140-2937BCB94777}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AA76DF2A-C21B-49FD-8AD8-02E7010002DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AA76DF2A-C21B-49FD-8AD8-02E7010002DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AA76DF2A-C21B-49FD-8AD8-02E7010002DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AA76DF2A-C21B-49FD-8AD8-02E7010002DC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A92ACAB3-9850-469D-B885-9D46EABBFA74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A92ACAB3-9850-469D-B885-9D46EABBFA74}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A92ACAB3-9850-469D-B885-9D46EABBFA74}.Release|Any CPU.ActiveCfg = Release|Any CPU
