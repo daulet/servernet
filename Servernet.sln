@@ -17,6 +17,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp", "samples\WebApp\We
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleFunction", "samples\SampleFunction\SampleFunction.csproj", "{800B6016-7E78-4A99-AA23-1044B48E0463}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TableScanFunction", "samples\TableScanFunction\TableScanFunction.csproj", "{827F542C-4CB9-4C20-A730-ACF2DE6534EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Servernet.Azure", "src\Servernet.Azure\Servernet.Azure.csproj", "{53FD08B6-DC8D-4D2A-85AE-9D27FF0806C9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +51,14 @@ Global
 		{800B6016-7E78-4A99-AA23-1044B48E0463}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{800B6016-7E78-4A99-AA23-1044B48E0463}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{800B6016-7E78-4A99-AA23-1044B48E0463}.Release|Any CPU.Build.0 = Release|Any CPU
+		{827F542C-4CB9-4C20-A730-ACF2DE6534EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{827F542C-4CB9-4C20-A730-ACF2DE6534EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{827F542C-4CB9-4C20-A730-ACF2DE6534EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{827F542C-4CB9-4C20-A730-ACF2DE6534EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53FD08B6-DC8D-4D2A-85AE-9D27FF0806C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53FD08B6-DC8D-4D2A-85AE-9D27FF0806C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53FD08B6-DC8D-4D2A-85AE-9D27FF0806C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53FD08B6-DC8D-4D2A-85AE-9D27FF0806C9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -57,5 +69,6 @@ Global
 		{C7769766-F178-4868-AF6B-CB1E86F79282} = {90EC7C49-1AA8-4FC1-80B9-5EDE797B6E38}
 		{CBDD1781-F498-45E6-A8E7-37472106CEFE} = {90EC7C49-1AA8-4FC1-80B9-5EDE797B6E38}
 		{800B6016-7E78-4A99-AA23-1044B48E0463} = {90EC7C49-1AA8-4FC1-80B9-5EDE797B6E38}
+		{827F542C-4CB9-4C20-A730-ACF2DE6534EC} = {90EC7C49-1AA8-4FC1-80B9-5EDE797B6E38}
 	EndGlobalSection
 EndGlobal
