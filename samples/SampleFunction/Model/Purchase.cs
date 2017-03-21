@@ -7,7 +7,7 @@ using Servernet;
 
 namespace SampleFunction.Model
 {
-    [Serializer]
+    [Serializer(typeof(JsonSerializer))]
     public class Purchase
     {
         public double Amount { get; set; }

@@ -37,6 +37,7 @@
     <Compile Include="HttpTrigger.cs" />
     <Compile Include="IFunction.cs" />
     <Compile Include="IFunction.Generic.cs" />
+    <Compile Include="JsonSerializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SerializerAttribute.cs" />
   </ItemGroup>
