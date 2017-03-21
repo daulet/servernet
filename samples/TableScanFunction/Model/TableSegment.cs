@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Servernet
+namespace TableScanFunction.Model
 {
-    public interface IFunction
+    public class TableSegment
     {
-        void Run();
     }
 }

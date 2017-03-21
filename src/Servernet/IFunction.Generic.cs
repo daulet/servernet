@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Servernet
 {
-    public interface IFunction
+    public interface IFunction<out TOutput>
     {
-        void Run();
+        TOutput Run();
     }
 }

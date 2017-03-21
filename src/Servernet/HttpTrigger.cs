@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Servernet
 {
-    public interface IFunction
+    [AttributeUsage(AttributeTargets.Parameter)]
+    public sealed class HttpTrigger : Attribute
     {
-        void Run();
     }
 }

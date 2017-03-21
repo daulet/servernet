@@ -1,5 +1,6 @@
 ﻿{
   "dependencies": {
+    "WindowsAzure.Storage": "8.1.1"
   },
   "frameworks": {
     "net452": {}

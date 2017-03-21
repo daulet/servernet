@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Servernet
 {
-    public interface IFunction
+    [AttributeUsage(AttributeTargets.Class)]
+    public sealed class SerializerAttribute : Attribute
     {
-        void Run();
     }
 }
