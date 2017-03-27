@@ -32,18 +32,23 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\TableEntityId.cs" />
+    <Compile Include="TransactionPaginationHttpTrigger.cs" />
+    <Compile Include="TransactionPaginationQueueTrigger.cs" />
+    <Compile Include="TransactionPaginationTimerTrigger.cs" />
+    <Compile Include="TranscationProcessorHttpTrigger.cs" />
     <Compile Include="Model\TableSegment.cs" />
     <Compile Include="Model\Transaction.cs" />
     <Compile Include="PaginationFunction.cs" />
+    <Compile Include="TableEntityProcessorFunction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TableEntityProcessorHttpTrigger.cs" />
+    <Compile Include="TransactionProcessorFunction.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Servernet.Azure\Servernet.Azure.csproj">
-      <Project>{53fd08b6-dc8d-4d2a-85ae-9d27ff0806c9}</Project>
-      <Name>Servernet.Azure</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\src\Servernet\Servernet.csproj">
       <Project>{2b318cd1-6381-4fd9-a140-2937bcb94777}</Project>
       <Name>Servernet</Name>

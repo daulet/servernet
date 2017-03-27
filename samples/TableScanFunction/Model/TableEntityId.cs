@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.WindowsAzure.Storage.Table;
-using Servernet;
 
 namespace TableScanFunction.Model
 {
-    public class TableSegment
+    public class TableEntityId
     {
-        public TableContinuationToken ContinuationToken { get; set; }
+        public string PartitionKey { get; set; }
+
+        public string RowKey { get; set; }
     }
 }

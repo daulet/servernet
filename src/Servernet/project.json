@@ -1,5 +1,6 @@
 ﻿{
   "dependencies": {
+    "Microsoft.Azure.WebJobs": "2.0.0"
   },
   "frameworks": {
     "net452": {}

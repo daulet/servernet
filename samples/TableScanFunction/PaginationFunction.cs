@@ -3,36 +3,34 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Azure.WebJobs;
 using Microsoft.WindowsAzure.Storage.Table;
 using Microsoft.WindowsAzure.Storage.Table.Queryable;
 using Servernet;
-using Servernet.Azure;
 using TableScanFunction.Model;
 
 namespace TableScanFunction
 {
-    public class PaginationFunction : IFunction
+    public class PaginationFunction
     {
-        private readonly TableSegment _paginationQueueMessage;
-        private readonly IQueue<TableSegment> _paginationQueue;
-        private readonly IQueryable<DynamicTableEntity> _transactionsTable;
+        private readonly IFunction<DynamicTableEntity, bool> _processor;
 
-        public PaginationFunction(
-            [QueueInput("pagination_queue")]TableSegment paginationQueueMessage,
-            [QueueOutput("pagination_queue")]IQueue<TableSegment> paginationQueue,
-            [TableInput("transactions_table")] IQueryable<DynamicTableEntity> transactionsTable)
+        protected PaginationFunction(
+            IFunction<DynamicTableEntity, bool> processor)
         {
-            _paginationQueueMessage = paginationQueueMessage;
-            _paginationQueue = paginationQueue;
-            _transactionsTable = transactionsTable;
+            _processor = processor;
         }
 
-        public void Run()
+        public void Run(
+            TableSegment paginationQueueMessage,
+            ICollector<TableSegment> paginationQueue,
+            IQueryable<DynamicTableEntity> transactionsTable)
         {
-            var tableSegment = _transactionsTable
+            var tableSegment = transactionsTable
+                // @TODO query should be part of input
                 .Where(x => x.PartitionKey == "123")
                 .AsTableQuery()
-                .ExecuteSegmented(_paginationQueueMessage.ContinuationToken);
+                .ExecuteSegmented(paginationQueueMessage.ContinuationToken);
 
             if (tableSegment.ContinuationToken != null)
             {
@@ -40,12 +38,18 @@ namespace TableScanFunction
                 {
                     ContinuationToken = tableSegment.ContinuationToken
                 };
-                _paginationQueue.AddMessage(nextMessage);
+                paginationQueue.Add(nextMessage);
             }
 
             foreach (var tableEntity in tableSegment.Results)
             {
-                Console.WriteLine($"Fetched {tableEntity.PartitionKey}/{tableEntity.RowKey}");
+                var success = _processor.Run(tableEntity);
+
+                if (!success)
+                {
+                    // @TODO swap out Console with logging implementation
+                    Console.WriteLine($"Failed to process {tableEntity.PartitionKey}/{tableEntity.RowKey}");
+                }
             }
         }
     }
