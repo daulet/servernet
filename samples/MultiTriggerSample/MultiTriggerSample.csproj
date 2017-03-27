@@ -36,17 +36,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\TableEntityId.cs" />
-    <Compile Include="TransactionPaginationHttpTrigger.cs" />
-    <Compile Include="TransactionPaginationQueueTrigger.cs" />
-    <Compile Include="TransactionPaginationTimerTrigger.cs" />
-    <Compile Include="TranscationProcessorHttpTrigger.cs" />
+    <Compile Include="Trigger\TransactionPaginationHttpTrigger.cs" />
+    <Compile Include="Trigger\TransactionPaginationQueueTrigger.cs" />
+    <Compile Include="Trigger\TransactionPaginationTimerTrigger.cs" />
+    <Compile Include="Trigger\TranscationProcessorHttpTrigger.cs" />
     <Compile Include="Model\TableSegment.cs" />
     <Compile Include="Model\Transaction.cs" />
-    <Compile Include="PaginationFunction.cs" />
-    <Compile Include="TableEntityProcessorFunction.cs" />
+    <Compile Include="Function\PaginationFunction.cs" />
+    <Compile Include="Function\TableEntityProcessorFunction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TableEntityProcessorHttpTrigger.cs" />
-    <Compile Include="TransactionProcessorFunction.cs" />
+    <Compile Include="Trigger\TableEntityProcessorHttpTrigger.cs" />
+    <Compile Include="Function\TransactionProcessorFunction.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\Servernet\Servernet.csproj">

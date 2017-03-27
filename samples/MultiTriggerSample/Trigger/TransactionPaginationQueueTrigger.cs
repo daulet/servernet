@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using Microsoft.Azure.WebJobs;
 using Microsoft.WindowsAzure.Storage.Table;
-using Servernet;
-using TableScanFunction.Model;
+using Servernet.Samples.MultiTriggerSample.Function;
+using Servernet.Samples.MultiTriggerSample.Model;
 
-namespace TableScanFunction
+namespace Servernet.Samples.MultiTriggerSample.Trigger
 {
     public class TransactionPaginationQueueTrigger
     {

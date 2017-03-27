@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Azure.WebJobs;
-using TableScanFunction.Model;
+﻿using Microsoft.Azure.WebJobs;
+using Servernet.Samples.MultiTriggerSample.Model;
 
-namespace TableScanFunction
+namespace Servernet.Samples.MultiTriggerSample.Trigger
 {
     public static class TransactionPaginationTimerTrigger
     {

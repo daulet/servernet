@@ -1,18 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Services.Client;
-using System.Linq;
-using System.Net;
+﻿using System.Net;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Azure.WebJobs;
-using Microsoft.WindowsAzure.Storage.Table;
 using Newtonsoft.Json;
-using Servernet;
-using TableScanFunction.Model;
+using Servernet.Samples.MultiTriggerSample.Function;
+using Servernet.Samples.MultiTriggerSample.Model;
 
-namespace TableScanFunction
+namespace Servernet.Samples.MultiTriggerSample.Trigger
 {
     public class TranscationProcessorHttpTrigger
     {

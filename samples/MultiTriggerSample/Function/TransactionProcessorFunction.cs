@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Servernet;
-using TableScanFunction.Model;
+using Servernet.Samples.MultiTriggerSample.Model;
 
-namespace TableScanFunction
+namespace Servernet.Samples.MultiTriggerSample.Function
 {
     public class TransactionProcessorFunction : IFunction<Transaction, bool>
     {

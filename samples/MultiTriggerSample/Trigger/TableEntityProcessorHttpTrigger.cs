@@ -1,18 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Azure.WebJobs;
 using Microsoft.WindowsAzure.Storage.Table;
 using Microsoft.WindowsAzure.Storage.Table.Queryable;
 using Newtonsoft.Json;
-using Servernet;
-using TableScanFunction.Model;
+using Servernet.Samples.MultiTriggerSample.Function;
+using Servernet.Samples.MultiTriggerSample.Model;
 
-namespace TableScanFunction
+namespace Servernet.Samples.MultiTriggerSample.Trigger
 {
     public class TableEntityProcessorHttpTrigger
     {

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TableScanFunction.Model
+﻿namespace Servernet.Samples.MultiTriggerSample.Model
 {
     public class TableEntityId
     {
