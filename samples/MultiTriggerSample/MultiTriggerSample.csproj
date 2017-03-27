@@ -7,8 +7,8 @@
     <ProjectGuid>{827F542C-4CB9-4C20-A730-ACF2DE6534EC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TableScanFunction</RootNamespace>
-    <AssemblyName>TableScanFunction</AssemblyName>
+    <RootNamespace>Servernet.Samples.MultiTriggerSample</RootNamespace>
+    <AssemblyName>MultiTriggerSample</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

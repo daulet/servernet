@@ -7,7 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{90EC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Servernet", "src\Servernet\Servernet.csproj", "{2B318CD1-6381-4FD9-A140-2937BCB94777}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TableScanFunction", "samples\TableScanFunction\TableScanFunction.csproj", "{827F542C-4CB9-4C20-A730-ACF2DE6534EC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiTriggerSample", "samples\MultiTriggerSample\MultiTriggerSample.csproj", "{827F542C-4CB9-4C20-A730-ACF2DE6534EC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
