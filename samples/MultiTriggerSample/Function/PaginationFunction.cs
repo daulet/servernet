@@ -9,12 +9,12 @@ namespace Servernet.Samples.MultiTriggerSample.Function
 {
     public class PaginationFunction
     {
-        private readonly IFunction<DynamicTableEntity, bool> _processor;
+        private readonly IFunction<DynamicTableEntity, bool> _tableEntityProcessor;
 
         public PaginationFunction(
-            IFunction<DynamicTableEntity, bool> processor)
+            IFunction<DynamicTableEntity, bool> tableEntityProcessor)
         {
-            _processor = processor;
+            _tableEntityProcessor = tableEntityProcessor;
         }
 
         public void Run(
@@ -39,7 +39,7 @@ namespace Servernet.Samples.MultiTriggerSample.Function
 
             foreach (var tableEntity in tableSegment.Results)
             {
-                var success = _processor.Run(tableEntity);
+                var success = _tableEntityProcessor.Run(tableEntity);
 
                 if (!success)
                 {

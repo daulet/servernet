@@ -3,9 +3,9 @@ using Servernet.Samples.MultiTriggerSample.Model;
 
 namespace Servernet.Samples.MultiTriggerSample.Trigger
 {
-    public static class TransactionPaginationTimerTrigger
+    public class TransactionPaginationTimerTrigger
     {
-        public static void Run(
+        public void Run(
             [TimerTrigger("0 0 2 * * *")] TimerInfo timer,
             [Queue("transaction_pagination_queue")] ICollector<TableSegment> paginationQueue)
         {

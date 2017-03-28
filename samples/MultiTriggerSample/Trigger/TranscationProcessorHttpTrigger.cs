@@ -11,7 +11,8 @@ namespace Servernet.Samples.MultiTriggerSample.Trigger
     {
         private readonly IFunction<Transaction, bool> _transactionFunction;
 
-        public TranscationProcessorHttpTrigger(TransactionProcessorFunction transactionFunction)
+        public TranscationProcessorHttpTrigger(
+            [Inject] TransactionProcessorFunction transactionFunction)
         {
             _transactionFunction = transactionFunction;
         }

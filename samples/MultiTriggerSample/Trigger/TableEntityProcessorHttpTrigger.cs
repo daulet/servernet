@@ -13,11 +13,12 @@ namespace Servernet.Samples.MultiTriggerSample.Trigger
 {
     public class TableEntityProcessorHttpTrigger
     {
-        private readonly IFunction<DynamicTableEntity, bool> _transactionFunction;
+        private readonly IFunction<DynamicTableEntity, bool> _tableEntityProcessor;
 
-        public TableEntityProcessorHttpTrigger(TableEntityProcessorFunction transactionFunction)
+        public TableEntityProcessorHttpTrigger(
+            [Inject(typeof(TableEntityProcessorFunction))] IFunction<DynamicTableEntity, bool> tableEntityProcessor)
         {
-            _transactionFunction = transactionFunction;
+            _tableEntityProcessor = tableEntityProcessor;
         }
 
         // @TODO IQueryable, needs to provide async equivalent
@@ -43,7 +44,7 @@ namespace Servernet.Samples.MultiTriggerSample.Trigger
             }
             else
             {
-                var success = _transactionFunction.Run(tableEntity);
+                var success = _tableEntityProcessor.Run(tableEntity);
 
                 return new HttpResponseMessage(HttpStatusCode.OK)
                 {

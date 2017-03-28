@@ -10,7 +10,8 @@ namespace Servernet.Samples.MultiTriggerSample.Trigger
     {
         private readonly PaginationFunction _paginationFunction;
 
-        public TransactionPaginationQueueTrigger(PaginationFunction paginationFunction)
+        public TransactionPaginationQueueTrigger(
+            [Inject(typeof(TableEntityProcessorFunction))] PaginationFunction paginationFunction)
         {
             _paginationFunction = paginationFunction;
         }
