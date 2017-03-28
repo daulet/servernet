@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Reflection;
 using CommandLine;
-using Microsoft.Azure.WebJobs;
 
 namespace Servernet.CLI
 {
@@ -34,7 +30,7 @@ namespace Servernet.CLI
             Console.ReadKey();
         }
 
-        private static void LoadFunction(string assemblyPath, string typeName, string functionName)
+        private static void LoadFunction(string assemblyPath, string typeName, string functionName, string outputDirectory = null)
         {
             Assembly assembly;
             try
@@ -47,10 +43,10 @@ namespace Servernet.CLI
                 return;
             }
 
-            Type type;
+            Type functionType;
             try
             {
-                type = assembly.GetType(typeName, throwOnError: true, ignoreCase: true);
+                functionType = assembly.GetType(typeName, throwOnError: true, ignoreCase: true);
             }
             catch (TypeLoadException)
             {
@@ -61,7 +57,7 @@ namespace Servernet.CLI
             MethodInfo methodInfo;
             try
             {
-                methodInfo = type.GetMethod(functionName, BindingFlags.Instance | BindingFlags.Public);
+                methodInfo = functionType.GetMethod(functionName, BindingFlags.Instance | BindingFlags.Public);
             }
             catch (AmbiguousMatchException)
             {
@@ -81,6 +77,7 @@ namespace Servernet.CLI
             }
             
             var functionBuilder = new FunctionBuilder();
+            var scriptBuilder = new ScriptBuilder(functionType, methodInfo);
 
             foreach (var parameter in parameters)
             {
@@ -97,11 +94,28 @@ namespace Servernet.CLI
                 
                 foreach (var attribute in attributes)
                 {
+                    // @TODO can't allow two bindings, but can have multiple custom attributes
                     functionBuilder.AddBinding(parameter, attribute);
                 }
+                scriptBuilder.AddParameter(parameter);
             }
 
-            Console.Write(functionBuilder.ToString());
+            if (outputDirectory == null)
+            {
+                outputDirectory = functionType.Name;
+            }
+
+            Directory.CreateDirectory(outputDirectory);
+
+            using (var bindingFile = new StreamWriter($"{outputDirectory}/function.json"))
+            {
+                bindingFile.Write(functionBuilder.ToString());
+            }
+
+            using (var scriptFile = new StreamWriter($"{outputDirectory}/run.csx"))
+            {
+                scriptBuilder.WriteToStream(scriptFile);
+            }
         }
     }
 }
