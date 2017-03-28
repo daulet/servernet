@@ -4,6 +4,7 @@ using System.IO;
 using System.Reflection;
 using Microsoft.Azure.WebJobs;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using Servernet.CLI.Definition;
 
 namespace Servernet.CLI
@@ -38,7 +39,12 @@ namespace Servernet.CLI
 
         public override string ToString()
         {
-            return JsonConvert.SerializeObject(_function, Formatting.Indented);
+            return JsonConvert.SerializeObject(_function,
+                Formatting.Indented,
+                new JsonSerializerSettings
+                {
+                    ContractResolver = new CamelCasePropertyNamesContractResolver()
+                });
         }
     }
 }
