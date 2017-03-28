@@ -21,6 +21,7 @@ namespace Servernet.Samples.CertificateSample
             var cryptoServiceProvider = (RSACryptoServiceProvider)certificate.X509Certificate.PublicKey.Key;
             var encryptedBytes = cryptoServiceProvider.Encrypt(encodedBytes, false);
 
+            traceWriter.Info($"Using certificate issued by {certificate.X509Certificate.IssuerName.Name} to encrypt");
             traceWriter.Info($"Encrypted value for '{message}' is {Convert.ToBase64String(encryptedBytes)}");
         }
     }

@@ -14,7 +14,7 @@
       "connection": "EncryptMessageQueueTrigger_blob",
       "direction": "in",
       "name": "certificateData",
-      "path": "certificates/message_encrypting.cer",
+      "path": "certificates/message_encrypting.pfx",
       "type": "blob"
     }
   ]
