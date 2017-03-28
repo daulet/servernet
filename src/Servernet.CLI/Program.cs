@@ -13,11 +13,6 @@ namespace Servernet.CLI
 
             if (Parser.Default.ParseArguments(args, options))
             {
-                Console.WriteLine($"Assembly: {options.Assembly}");
-                Console.WriteLine($"Type: {options.Type}");
-                Console.WriteLine($"Function: {options.Function}");
-                Console.WriteLine($"{Environment.CurrentDirectory}");
-
                 var assemblyPath = Path.Combine(Environment.CurrentDirectory, options.Assembly);
                 
                 LoadFunction(assemblyPath, options.Type, options.Function);
@@ -32,10 +27,10 @@ namespace Servernet.CLI
 
         private static void LoadFunction(string assemblyPath, string typeName, string functionName, string outputDirectory = null)
         {
-            Assembly assembly;
+            Assembly functionAssembly;
             try
             {
-                assembly = Assembly.LoadFrom(assemblyPath);
+                functionAssembly = Assembly.LoadFrom(assemblyPath);
             }
             catch (FileNotFoundException)
             {
@@ -46,7 +41,7 @@ namespace Servernet.CLI
             Type functionType;
             try
             {
-                functionType = assembly.GetType(typeName, throwOnError: true, ignoreCase: true);
+                functionType = functionAssembly.GetType(typeName, throwOnError: true, ignoreCase: true);
             }
             catch (TypeLoadException)
             {
@@ -54,10 +49,10 @@ namespace Servernet.CLI
                 return;
             }
 
-            MethodInfo methodInfo;
+            MethodInfo functionMethod;
             try
             {
-                methodInfo = functionType.GetMethod(functionName, BindingFlags.Instance | BindingFlags.Public);
+                functionMethod = functionType.GetMethod(functionName, BindingFlags.Instance | BindingFlags.Public);
             }
             catch (AmbiguousMatchException)
             {
@@ -68,17 +63,16 @@ namespace Servernet.CLI
             ParameterInfo[] parameters;
             try
             {
-                parameters = methodInfo.GetParameters();
+                parameters = functionMethod.GetParameters();
             }
             catch (FileLoadException e)
             {
-                Console.WriteLine($"Failed to load one of dependency assemblies for method '{methodInfo.Name}': {e}");
+                Console.WriteLine($"Failed to load one of dependency assemblies for method '{functionMethod.Name}': {e}");
                 return;
             }
             
-            var functionBuilder = new FunctionBuilder();
-            var scriptBuilder = new ScriptBuilder(functionType, methodInfo);
-
+            var functionBuilder = new FunctionBuilder(functionAssembly, functionType, functionMethod);
+            
             foreach (var parameter in parameters)
             {
                 object[] attributes;
@@ -97,7 +91,6 @@ namespace Servernet.CLI
                     // @TODO can't allow two bindings, but can have multiple custom attributes
                     functionBuilder.AddBinding(parameter, attribute);
                 }
-                scriptBuilder.AddParameter(parameter);
             }
 
             if (outputDirectory == null)
@@ -110,11 +103,6 @@ namespace Servernet.CLI
             using (var bindingFile = new StreamWriter($"{outputDirectory}/function.json"))
             {
                 bindingFile.Write(functionBuilder.ToString());
-            }
-
-            using (var scriptFile = new StreamWriter($"{outputDirectory}/run.csx"))
-            {
-                scriptBuilder.WriteToStream(scriptFile);
             }
         }
     }
