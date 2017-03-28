@@ -34,6 +34,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HttpTrigger.cs" />
     <Compile Include="IFunction.cs" />
     <Compile Include="InjectAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

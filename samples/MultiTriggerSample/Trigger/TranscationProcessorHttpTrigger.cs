@@ -18,7 +18,7 @@ namespace Servernet.Samples.MultiTriggerSample.Trigger
         }
 
         public async Task<HttpResponseMessage> RunAsync(
-            HttpRequestMessage request)
+            [HttpTrigger] HttpRequestMessage request)
         {
             var messageContent = await request.Content.ReadAsStringAsync();
             var transaction = JsonConvert.DeserializeObject<Transaction>(messageContent);
