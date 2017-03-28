@@ -11,7 +11,7 @@ namespace Servernet.Samples.MultiTriggerSample.Function
     {
         private readonly IFunction<DynamicTableEntity, bool> _processor;
 
-        protected PaginationFunction(
+        public PaginationFunction(
             IFunction<DynamicTableEntity, bool> processor)
         {
             _processor = processor;
