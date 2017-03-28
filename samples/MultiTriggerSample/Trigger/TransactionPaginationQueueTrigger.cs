@@ -8,20 +8,15 @@ namespace Servernet.Samples.MultiTriggerSample.Trigger
 {
     public class TransactionPaginationQueueTrigger
     {
-        private readonly PaginationFunction _paginationFunction;
-
-        public TransactionPaginationQueueTrigger(
-            [Inject(typeof(TableEntityProcessorFunction))] PaginationFunction paginationFunction)
-        {
-            _paginationFunction = paginationFunction;
-        }
-
-        public void Run(
+        public static void Run(
             [QueueTrigger("transaction_pagination_queue")] TableSegment paginationQueueMessage,
             [Queue("transaction_pagination_queue")] ICollector<TableSegment> paginationQueue,
             [Table("transaction_table")] IQueryable<DynamicTableEntity> transactionsTable)
         {
-            _paginationFunction.Run(
+            var paginationFunction = new PaginationFunction(
+                new TableEntityProcessorFunction(
+                    new TransactionProcessorFunction()));
+            paginationFunction.Run(
                 paginationQueueMessage,
                 paginationQueue,
                 transactionsTable);

@@ -5,7 +5,7 @@ namespace Servernet.Samples.MultiTriggerSample.Trigger
 {
     public class TransactionPaginationTimerTrigger
     {
-        public void Run(
+        public static void Run(
             [TimerTrigger("0 0 2 * * *")] TimerInfo timer,
             [Queue("transaction_pagination_queue")] ICollector<TableSegment> paginationQueue)
         {

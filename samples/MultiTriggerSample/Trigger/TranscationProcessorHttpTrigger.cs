@@ -9,21 +9,14 @@ namespace Servernet.Samples.MultiTriggerSample.Trigger
 {
     public class TranscationProcessorHttpTrigger
     {
-        private readonly IFunction<Transaction, bool> _transactionFunction;
-
-        public TranscationProcessorHttpTrigger(
-            [Inject] TransactionProcessorFunction transactionFunction)
-        {
-            _transactionFunction = transactionFunction;
-        }
-
-        public async Task<HttpResponseMessage> RunAsync(
+        public static async Task<HttpResponseMessage> RunAsync(
             [HttpTrigger] HttpRequestMessage request)
         {
             var messageContent = await request.Content.ReadAsStringAsync();
             var transaction = JsonConvert.DeserializeObject<Transaction>(messageContent);
 
-            var success = _transactionFunction.Run(transaction);
+            IFunction<Transaction, bool> transactionFunction = new TransactionProcessorFunction();
+            var success = transactionFunction.Run(transaction);
 
             return new HttpResponseMessage(HttpStatusCode.OK)
             {

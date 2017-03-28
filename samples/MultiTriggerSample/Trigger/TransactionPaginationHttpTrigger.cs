@@ -7,7 +7,7 @@ namespace Servernet.Samples.MultiTriggerSample.Trigger
 {
     public class TransactionPaginationHttpTrigger
     {
-        public HttpResponseMessage Run(
+        public static HttpResponseMessage Run(
             [HttpTrigger] HttpRequestMessage request,
             [Queue("transaction_pagination_queue")] ICollector<TableSegment> paginationQueue)
         {

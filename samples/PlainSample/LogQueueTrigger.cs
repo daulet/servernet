@@ -6,7 +6,7 @@ namespace Servernet.Samples.PlainSample
 {
     public class LogQueueTrigger
     {
-        public void Run(
+        public static void Run(
             [QueueTrigger("plain_queue")] CloudQueueMessage message)
         {
             Console.WriteLine($"Received {message.AsString}");
