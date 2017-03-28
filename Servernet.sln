@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlainSample", "samples\Plai
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Servernet.CLI", "src\Servernet.CLI\Servernet.CLI.csproj", "{67500622-0253-486E-B7B3-AA578350E8BE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CertificateSample", "samples\CertificateSample\CertificateSample.csproj", "{78FFE2FF-5B82-4625-9F1D-EEDDE0193AC1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,10 @@ Global
 		{67500622-0253-486E-B7B3-AA578350E8BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{67500622-0253-486E-B7B3-AA578350E8BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{67500622-0253-486E-B7B3-AA578350E8BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78FFE2FF-5B82-4625-9F1D-EEDDE0193AC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78FFE2FF-5B82-4625-9F1D-EEDDE0193AC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78FFE2FF-5B82-4625-9F1D-EEDDE0193AC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78FFE2FF-5B82-4625-9F1D-EEDDE0193AC1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -42,5 +48,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{827F542C-4CB9-4C20-A730-ACF2DE6534EC} = {90EC7C49-1AA8-4FC1-80B9-5EDE797B6E38}
 		{CAE18CD0-4764-40EB-930C-9C85FC4AF450} = {90EC7C49-1AA8-4FC1-80B9-5EDE797B6E38}
+		{78FFE2FF-5B82-4625-9F1D-EEDDE0193AC1} = {90EC7C49-1AA8-4FC1-80B9-5EDE797B6E38}
 	EndGlobalSection
 EndGlobal
