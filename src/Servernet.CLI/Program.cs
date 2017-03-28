@@ -15,17 +15,15 @@ namespace Servernet.CLI
             {
                 var assemblyPath = Path.Combine(Environment.CurrentDirectory, options.Assembly);
                 
-                LoadFunction(assemblyPath, options.Type, options.Function);
+                LoadFunction(assemblyPath, options.Type, options.Function, options.OutputDirectory);
             }
             else
             {
                 Console.WriteLine("Invalid parameters");
             }
-
-            Console.ReadKey();
         }
 
-        private static void LoadFunction(string assemblyPath, string typeName, string functionName, string outputDirectory = null)
+        private static void LoadFunction(string assemblyPath, string typeName, string functionName, string outputDirectory)
         {
             Assembly functionAssembly;
             try
@@ -99,7 +97,7 @@ namespace Servernet.CLI
                 }
             }
 
-            if (outputDirectory == null)
+            if (string.IsNullOrEmpty(outputDirectory))
             {
                 outputDirectory = functionType.Name;
             }
@@ -111,8 +109,12 @@ namespace Servernet.CLI
                 bindingFile.Write(functionBuilder.ToString());
             }
 
-            var assemblyFileName = Path.GetFileName(functionAssembly.Location);
-            File.Copy(functionAssembly.Location, Path.Combine(outputDirectory, assemblyFileName), true);
+            var directory = new FileInfo(functionAssembly.Location).Directory;
+            var allReferencedAssemblies = directory.GetFiles();
+            foreach (var referencedAssembly in allReferencedAssemblies)
+            {
+                File.Copy(referencedAssembly.FullName, Path.Combine(outputDirectory, referencedAssembly.Name), overwrite: true);
+            }
         }
     }
 }

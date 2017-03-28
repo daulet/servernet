@@ -51,11 +51,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="appsettings.json" />
+    <Content Include="EncryptMessageQueueTrigger\Servernet.dll" />
+    <Content Include="EncryptMessageQueueTrigger\Servernet.Samples.CertificateSample.dll" />
     <Content Include="host.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="EncryptMessageQueueTrigger\function.json" />
-    <Content Include="EncryptMessageQueueTrigger\readme.md" />
     <Content Include="EncryptMessageQueueTrigger\run.csx" />
     <Content Include="EncryptMessageQueueTrigger\sample.dat" />
   </ItemGroup>

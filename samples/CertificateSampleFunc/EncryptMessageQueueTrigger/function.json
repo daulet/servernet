@@ -1,12 +1,21 @@
 {
   "disabled": false,
+  "scriptFile": "Servernet.Samples.CertificateSample.dll",
+  "entryPoint": "Servernet.Samples.CertificateSample.EncryptMessageQueueTrigger.Run",
   "bindings": [
     {
-      "name": "myQueueItem",
-      "type": "queueTrigger",
+      "connection": "EncryptMessageQueueTrigger_queue",
       "direction": "in",
-      "queueName": "myqueue-items",
-      "connection": "AzureWebJobsStorage"
+      "name": "message",
+      "queueName": "encrypt-queue",
+      "type": "queueTrigger"
+    },
+    {
+      "connection": "EncryptMessageQueueTrigger_blob",
+      "direction": "in",
+      "name": "certificateData",
+      "path": "certificates/message_encrypting.cer",
+      "type": "blob"
     }
   ]
 }

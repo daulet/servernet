@@ -10,9 +10,11 @@ namespace Servernet.Samples.CertificateSample
     {
         public static void Run(
             [QueueTrigger("encrypt-queue")] string message,
-            [Secret("certificates/message_encrypting.cer")] Certificate certificate,
+            [Secret("certificates/message_encrypting.cer")] string certificateData,
             TraceWriter traceWriter)
         {
+            var certificate = new Certificate(certificateData);
+
             var byteConverter = new ASCIIEncoding();
             var encodedBytes = byteConverter.GetBytes(message);;
 

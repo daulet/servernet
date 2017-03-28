@@ -1,4 +1,5 @@
-﻿using CommandLine;
+﻿using System;
+using CommandLine;
 using CommandLine.Text;
 
 namespace Servernet.CLI
@@ -16,6 +17,10 @@ namespace Servernet.CLI
         [Option('f', "Function", Required = true,
             HelpText = "Name of the entry function")]
         public string Function { get; set; }
+
+        [Option('o', "Output", Required = false,
+            HelpText = "Output directory")]
+        public string OutputDirectory { get; set; }
 
         [HelpOption]
         public string GetUsage()
