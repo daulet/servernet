@@ -80,6 +80,8 @@ namespace Servernet.CLI
                 return;
             }
             
+            var functionBuilder = new FunctionBuilder();
+
             foreach (var parameter in parameters)
             {
                 object[] attributes;
@@ -95,19 +97,11 @@ namespace Servernet.CLI
                 
                 foreach (var attribute in attributes)
                 {
-                    Console.WriteLine($"Found {attribute} on parameter {parameter.Name}");
-
-                    LoadAttribute(attribute);
+                    functionBuilder.AddBinding(parameter, attribute);
                 }
             }
-        }
 
-        private static void LoadAttribute(object attribute)
-        {
-            var typeSwitch = new TypeSwitch()
-                .Case((QueueTriggerAttribute x) => { Console.WriteLine(x.QueueName);});
-
-            typeSwitch.Switch(attribute);
+            Console.Write(functionBuilder.ToString());
         }
     }
 }

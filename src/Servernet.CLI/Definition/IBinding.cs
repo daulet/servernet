@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Servernet.CLI.Definition
 {
-    public class Binding
+    public interface IBinding
     {
     }
 }

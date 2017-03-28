@@ -8,23 +8,23 @@ namespace Servernet.CLI
 {
     internal class TypeSwitch
     {
-        private readonly Dictionary<Type, Action<object>> _matches
-            = new Dictionary<Type, Action<object>>();
+        private readonly Dictionary<Type, Action<string, object>> _matches
+            = new Dictionary<Type, Action<string, object>>();
 
-        public TypeSwitch Case<T>(Action<T> action)
+        public TypeSwitch Case<T>(Action<string, T> action)
         {
-            _matches.Add(typeof(T), (x) => action((T)x));
+            _matches.Add(typeof(T), (x, y) => action(x, (T)y));
             return this;
         }
 
-        public void Switch(object obj)
+        public void Switch(string paramName, object obj)
         {
             if (obj != null)
             {
                 var objType = obj.GetType();
                 if (_matches.ContainsKey(objType))
                 {
-                    _matches[objType](obj);
+                    _matches[objType](paramName, obj);
                 }
             }
         }
