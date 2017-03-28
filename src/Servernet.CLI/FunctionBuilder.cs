@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using Microsoft.Azure.WebJobs;
+using Microsoft.WindowsAzure.Storage.Table;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Servernet.CLI.Definition;
@@ -30,14 +31,38 @@ namespace Servernet.CLI
             _typeSwitch = new TypeSwitch()
                 .Case((ParameterInfo parameter, BlobAttribute x) =>
                 {
-                    IBinding binding = parameter.IsOut
+                    // based on https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-storage-blob
+                    var binding = parameter.IsOut
                         ? (IBinding) new BlobOutputBinding(parameter.Name, x)
                         : (IBinding) new BlobInputBinding(parameter.Name, x);
                     _function.Bindings.Add(binding);
                 })
                 .Case((ParameterInfo parameter, BlobTriggerAttribute x) => { _function.Bindings.Add(new BlobTriggerBinding(parameter.Name, x)); })
-                .Case((ParameterInfo parameter, QueueAttribute x) => { _function.Bindings.Add(new QueueBinding(parameter.Name, x)); })
-                .Case((ParameterInfo parameter, QueueTriggerAttribute x) => { _function.Bindings.Add(new QueueTriggerBinding(parameter.Name, x)); });
+                .Case((ParameterInfo parameter, QueueAttribute x) => { _function.Bindings.Add(new QueueOutputBinding(parameter.Name, x)); })
+                .Case((ParameterInfo parameter, QueueTriggerAttribute x) => { _function.Bindings.Add(new QueueTriggerBinding(parameter.Name, x)); })
+                .Case((ParameterInfo parameter, TableAttribute x) =>
+                {
+                    // based on https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-storage-table
+                    IBinding binding;
+                    if (parameter.IsOut)
+                    {
+                        binding = new TableOutputBinding(parameter.Name, x);
+                    }
+                    else
+                    {
+                        if (typeof(ICollector<>).IsAssignableFrom(parameter.ParameterType) ||
+                            typeof(IAsyncCollector<>).IsAssignableFrom(parameter.ParameterType) ||
+                            typeof(CloudTable).IsAssignableFrom(parameter.ParameterType))
+                        {
+                            binding = new TableOutputBinding(parameter.Name, x);
+                        }
+                        else
+                        {
+                            binding = new TableInputBinding(parameter.Name, x);
+                        }
+                    }
+                    _function.Bindings.Add(binding);
+                });
         }
 
         public void AddBinding(ParameterInfo parameter, object attribute)

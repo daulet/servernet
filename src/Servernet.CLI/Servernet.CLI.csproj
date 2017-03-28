@@ -41,8 +41,10 @@
     <Compile Include="Definition\BlobTriggerBinding.cs" />
     <Compile Include="Definition\IBinding.cs" />
     <Compile Include="Definition\Function.cs" />
-    <Compile Include="Definition\QueueBinding.cs" />
+    <Compile Include="Definition\QueueOutputBinding.cs" />
     <Compile Include="Definition\QueueTriggerBinding.cs" />
+    <Compile Include="Definition\TableInputBinding.cs" />
+    <Compile Include="Definition\TableOutputBinding.cs" />
     <Compile Include="FunctionBuilder.cs" />
     <Compile Include="Options.cs" />
     <Compile Include="Program.cs" />

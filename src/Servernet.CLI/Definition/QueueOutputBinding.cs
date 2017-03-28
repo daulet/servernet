@@ -7,9 +7,9 @@ using Microsoft.Azure.WebJobs;
 
 namespace Servernet.CLI.Definition
 {
-    public class QueueBinding : IBinding
+    public class QueueOutputBinding : IBinding
     {
-        internal QueueBinding(string paramName, QueueAttribute attribute)
+        internal QueueOutputBinding(string paramName, QueueAttribute attribute)
         {
             Connection = "<Name of app setting that contains a storage connection string>";
             Direction = "out";
