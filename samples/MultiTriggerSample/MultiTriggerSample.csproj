@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Servernet.Samples.MultiTriggerSample</RootNamespace>
-    <AssemblyName>MultiTriggerSample</AssemblyName>
+    <AssemblyName>Servernet.Samples.MultiTriggerSample</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

@@ -3,7 +3,7 @@ using CommandLine.Text;
 
 namespace Servernet.CLI
 {
-    class Options
+    internal class Options
     {
         [Option('a', "Assembly", Required = true,
             HelpText = "Name of the assembly that contains entry function")]

@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Servernet.Samples.PlainSample</RootNamespace>
-    <AssemblyName>PlainSample</AssemblyName>
+    <AssemblyName>Servernet.Samples.PlainSample</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
