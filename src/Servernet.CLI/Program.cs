@@ -52,11 +52,17 @@ namespace Servernet.CLI
             MethodInfo functionMethod;
             try
             {
-                functionMethod = functionType.GetMethod(functionName, BindingFlags.Instance | BindingFlags.Public);
+                functionMethod = functionType.GetMethod(functionName, BindingFlags.Static | BindingFlags.Public);
             }
             catch (AmbiguousMatchException)
             {
                 Console.WriteLine($"Failed to find unique method with name: {functionName}");
+                return;
+            }
+
+            if (functionMethod == null)
+            {
+                Console.WriteLine($"Failed to find method with name: {functionName}");
                 return;
             }
 
@@ -104,6 +110,9 @@ namespace Servernet.CLI
             {
                 bindingFile.Write(functionBuilder.ToString());
             }
+
+            var assemblyFileName = Path.GetFileName(functionAssembly.Location);
+            File.Copy(functionAssembly.Location, Path.Combine(outputDirectory, assemblyFileName), true);
         }
     }
 }

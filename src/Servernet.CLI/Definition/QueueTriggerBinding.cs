@@ -12,14 +12,14 @@ namespace Servernet.CLI.Definition
         {
             Name = paramName;
             QueueName = attribute.QueueName;
-            ConnectionName = "<Name of app setting that contains a storage connection string>";
+            Connection = "<Name of app setting that contains a storage connection string>";
             Type = "queueTrigger";
             Direction = "in";
         }
 
         public string Name { get; }
         public string QueueName { get; }
-        public string ConnectionName { get; }
+        public string Connection { get; }
         public string Type { get; }
         public string Direction { get; }
     }
