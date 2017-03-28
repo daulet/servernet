@@ -28,13 +28,21 @@ namespace Servernet.CLI
             };
             
             _typeSwitch = new TypeSwitch()
-                .Case((string paramName, QueueTriggerAttribute x) => { _function.Bindings.Add(new QueueTriggerBinding(paramName, x)); })
-                ;
+                .Case((ParameterInfo parameter, BlobAttribute x) =>
+                {
+                    IBinding binding = parameter.IsOut
+                        ? (IBinding) new BlobOutputBinding(parameter.Name, x)
+                        : (IBinding) new BlobInputBinding(parameter.Name, x);
+                    _function.Bindings.Add(binding);
+                })
+                .Case((ParameterInfo parameter, BlobTriggerAttribute x) => { _function.Bindings.Add(new BlobTriggerBinding(parameter.Name, x)); })
+                .Case((ParameterInfo parameter, QueueAttribute x) => { _function.Bindings.Add(new QueueBinding(parameter.Name, x)); })
+                .Case((ParameterInfo parameter, QueueTriggerAttribute x) => { _function.Bindings.Add(new QueueTriggerBinding(parameter.Name, x)); });
         }
 
         public void AddBinding(ParameterInfo parameter, object attribute)
         {
-            _typeSwitch.Switch(parameter.Name, attribute);
+            _typeSwitch.Switch(parameter, attribute);
         }
 
         public override string ToString()

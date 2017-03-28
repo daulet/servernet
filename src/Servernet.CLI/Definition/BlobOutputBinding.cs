@@ -2,25 +2,26 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using Microsoft.Azure.WebJobs;
 
 namespace Servernet.CLI.Definition
 {
-    public class QueueTriggerBinding : IBinding
+    public class BlobOutputBinding : IBinding
     {
-        internal QueueTriggerBinding(string paramName, QueueTriggerAttribute attribute)
+        public BlobOutputBinding(string paramName, BlobAttribute attribute)
         {
             Connection = "<Name of app setting that contains a storage connection string>";
-            Direction = "in";
+            Direction = "out";
             Name = paramName;
-            QueueName = attribute.QueueName;
-            Type = "queueTrigger";
+            Path = attribute.BlobPath;
+            Type = "blob";
         }
 
         public string Connection { get; }
         public string Direction { get; }
         public string Name { get; }
-        public string QueueName { get; }
+        public string Path { get; }
         public string Type { get; }
     }
 }
