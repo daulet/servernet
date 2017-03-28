@@ -18,6 +18,15 @@ namespace Servernet.CLI.Definition
             Type = "blob";
         }
 
+        public BlobInputBinding(string paramName, SecretAttribute attribute)
+        {
+            Connection = "<Name of app setting that contains a storage connection string>";
+            Direction = "in";
+            Name = paramName;
+            Path = attribute.Path;
+            Type = "blob";
+        }
+
         public string Connection { get; }
         public string Direction { get; }
         public string Name { get; }

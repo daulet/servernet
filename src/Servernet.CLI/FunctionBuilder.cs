@@ -40,6 +40,7 @@ namespace Servernet.CLI
                 .Case((ParameterInfo parameter, BlobTriggerAttribute x) => { _function.Bindings.Add(new BlobTriggerBinding(parameter.Name, x)); })
                 .Case((ParameterInfo parameter, QueueAttribute x) => { _function.Bindings.Add(new QueueOutputBinding(parameter.Name, x)); })
                 .Case((ParameterInfo parameter, QueueTriggerAttribute x) => { _function.Bindings.Add(new QueueTriggerBinding(parameter.Name, x)); })
+                .Case((ParameterInfo parameter, SecretAttribute x) => { _function.Bindings.Add(new BlobInputBinding(parameter.Name, x)); })
                 .Case((ParameterInfo parameter, TableAttribute x) =>
                 {
                     // based on https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-storage-table
