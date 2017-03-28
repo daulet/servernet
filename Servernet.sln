@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiTriggerSample", "sampl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlainSample", "samples\PlainSample\PlainSample.csproj", "{CAE18CD0-4764-40EB-930C-9C85FC4AF450}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Servernet.CLI", "src\Servernet.CLI\Servernet.CLI.csproj", "{67500622-0253-486E-B7B3-AA578350E8BE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +31,10 @@ Global
 		{CAE18CD0-4764-40EB-930C-9C85FC4AF450}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CAE18CD0-4764-40EB-930C-9C85FC4AF450}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CAE18CD0-4764-40EB-930C-9C85FC4AF450}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67500622-0253-486E-B7B3-AA578350E8BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67500622-0253-486E-B7B3-AA578350E8BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67500622-0253-486E-B7B3-AA578350E8BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67500622-0253-486E-B7B3-AA578350E8BE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

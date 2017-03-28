@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using CommandLine;
 
 namespace Servernet.CLI
 {
@@ -10,6 +7,20 @@ namespace Servernet.CLI
     {
         static void Main(string[] args)
         {
+            var options = new Options();
+
+            if (Parser.Default.ParseArguments(args, options))
+            {
+                Console.WriteLine($"Assembly: {options.Assembly}");
+                Console.WriteLine($"Type: {options.Type}");
+                Console.WriteLine($"Function: {options.Function}");
+            }
+            else
+            {
+                Console.WriteLine("Invalid parameters");
+            }
+
+            Console.ReadKey();
         }
     }
 }
