@@ -104,6 +104,8 @@ namespace Servernet.CLI
 
             Directory.CreateDirectory(outputDirectory);
 
+            // @TODO also add project.json and include Servernet as nuget package
+            // https://docs.microsoft.com/en-us/azure/azure-functions/functions-reference-csharp#package-management
             using (var bindingFile = new StreamWriter($"{outputDirectory}/function.json"))
             {
                 bindingFile.Write(functionBuilder.ToString());
