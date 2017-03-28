@@ -57,7 +57,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="EncryptMessageQueueTrigger\function.json" />
-    <Content Include="EncryptMessageQueueTrigger\run.csx" />
     <Content Include="EncryptMessageQueueTrigger\sample.dat" />
   </ItemGroup>
   <PropertyGroup>

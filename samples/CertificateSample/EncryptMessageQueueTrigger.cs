@@ -10,7 +10,7 @@ namespace Servernet.Samples.CertificateSample
     {
         public static void Run(
             [QueueTrigger("encrypt-queue")] string message,
-            [Secret("certificates/message_encrypting.cer")] string certificateData,
+            [Secret("certificates/message_encrypting.pfx")] string certificateData,
             TraceWriter traceWriter)
         {
             var certificate = new Certificate(certificateData);
