@@ -34,6 +34,8 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HttpAuthLevel.cs" />
+    <Compile Include="HttpMethod.cs" />
     <Compile Include="HttpTriggerAttribute.cs" />
     <Compile Include="IFunction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

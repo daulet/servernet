@@ -10,7 +10,7 @@ namespace Servernet.Samples.MultiTriggerSample.Trigger
     public class TranscationProcessorHttpTrigger
     {
         public static async Task<HttpResponseMessage> RunAsync(
-            [HttpTrigger] HttpRequestMessage request)
+            [HttpTrigger(HttpMethod.Post, "transaction/source=http")] HttpRequestMessage request)
         {
             var messageContent = await request.Content.ReadAsStringAsync();
             var transaction = JsonConvert.DeserializeObject<Transaction>(messageContent);

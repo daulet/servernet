@@ -15,7 +15,7 @@ namespace Servernet.Samples.MultiTriggerSample.Trigger
     {
         // @TODO IQueryable, needs to provide async equivalent
         public static async Task<HttpResponseMessage> RunAsync(
-            [HttpTrigger] HttpRequestMessage request,
+            [HttpTrigger(HttpMethod.Post, "transaction?source=table")] HttpRequestMessage request,
             [Table("transaction_table")] IQueryable<DynamicTableEntity> transactionsTable)
         {
             var messageContent = await request.Content.ReadAsStringAsync();

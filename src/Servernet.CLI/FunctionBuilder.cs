@@ -38,6 +38,7 @@ namespace Servernet.CLI
                     _function.Bindings.Add(binding);
                 })
                 .Case((ParameterInfo parameter, BlobTriggerAttribute x) => { _function.Bindings.Add(new BlobTriggerBinding(parameter.Name, x)); })
+                .Case((ParameterInfo parameter, HttpTriggerAttribute x) => { _function.Bindings.Add(new HttpTriggerBinding(parameter.Name, x)); })
                 .Case((ParameterInfo parameter, QueueAttribute x) => { _function.Bindings.Add(new QueueOutputBinding(parameter.Name, x)); })
                 .Case((ParameterInfo parameter, QueueTriggerAttribute x) => { _function.Bindings.Add(new QueueTriggerBinding(parameter.Name, x)); })
                 .Case((ParameterInfo parameter, SecretAttribute x) => { _function.Bindings.Add(new BlobInputBinding(parameter.Name, x)); })
