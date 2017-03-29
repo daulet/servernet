@@ -78,7 +78,7 @@ namespace Servernet.CLI
                 Formatting.Indented,
                 new JsonSerializerSettings
                 {
-                    ContractResolver = new CamelCasePropertyNamesContractResolver()
+                    ContractResolver = new CamelCasePropertyNamesContractResolver(),
                 });
         }
     }

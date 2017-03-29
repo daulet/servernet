@@ -3,7 +3,7 @@
     "Microsoft.Azure.WebJobs": "2.0.0",
     "Microsoft.Azure.WebJobs.Extensions": "2.0.0",
     "Newtonsoft.Json": "9.0.1",
-    "WindowsAzure.Storage": "8.1.1"
+    "WindowsAzure.Storage": "7.2.1"
   },
   "frameworks": {
     "net452": {}

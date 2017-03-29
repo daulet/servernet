@@ -8,12 +8,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{B6A7AEBC-6FA3-450C-9AC3-E137EB2777F4}</ProjectGuid>
+    <ProjectGuid>{CB477302-CED5-414A-8E51-911469278011}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CertificateSampleFunc</RootNamespace>
-    <AssemblyName>CertificateSampleFunc</AssemblyName>
+    <RootNamespace>Servernet.Samples.MultiTriggerSampleFunc</RootNamespace>
+    <AssemblyName>Servernet.Samples.MultiTriggerSampleFunc</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -52,12 +52,12 @@
   <ItemGroup>
     <Content Include="appsettings.json" />
     <Content Include="host.json" />
+    <Content Include="project.json" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="EncryptMessageQueueTrigger\function.json" />
-    <Content Include="EncryptMessageQueueTrigger\sample.dat" />
-    <Content Include="EncryptMessageQueueTrigger\Servernet.dll" />
-    <Content Include="EncryptMessageQueueTrigger\Servernet.Samples.CertificateSample.dll" />
+    <Content Include="TableEntityProcessorHttpTrigger\function.json" />
+    <Content Include="TableEntityProcessorHttpTrigger\Servernet.dll" />
+    <Content Include="TableEntityProcessorHttpTrigger\Servernet.Samples.MultiTriggerSample.dll" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="web.config" />
@@ -81,9 +81,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>53050</DevelopmentServerPort>
+          <DevelopmentServerPort>51520</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:53050/</IISUrl>
+          <IISUrl>http://localhost:51520/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace Servernet.CLI.Definition
 {
@@ -12,17 +11,25 @@ namespace Servernet.CLI.Definition
         {
             AuthLevel = attribute.AuthLevel;
             Direction = "in";
-            Methods = attribute.Methods;
+            Methods = new List<string>();
+            foreach (HttpMethod method in Enum.GetValues(typeof(HttpMethod)))
+            {
+                if ((attribute.Methods & method) != 0)
+                {
+                    Methods.Add(method.ToString().ToUpperInvariant());
+                }
+            }
             Name = paramName;
             Route = attribute.Route;
             Type = "httpTrigger";
         }
 
+        [JsonConverter(typeof(StringEnumConverter))]
         public HttpAuthLevel AuthLevel { get; set; }
 
         public string Direction { get; set; }
 
-        public HttpMethod Methods { get; set; }
+        public List<string> Methods { get; set; }
 
         public string Name { get; set; }
 

@@ -1,0 +1,28 @@
+{
+  "disabled": false,
+  "scriptFile": "Servernet.Samples.MultiTriggerSample.dll",
+  "entryPoint": "Servernet.Samples.MultiTriggerSample.Trigger.TableEntityProcessorHttpTrigger.RunAsync",
+  "bindings": [
+    {
+      "authLevel": "Anonymous",
+      "direction": "in",
+      "methods": [
+        "POST"
+      ],
+      "name": "request",
+      "route": "transaction?source=table",
+      "type": "httpTrigger"
+    },
+    {
+      "connection": "TableEntityProcessorHttpTrigger_table",
+      "direction": "in",
+      "filter": null,
+      "name": "transactionsTable",
+      "partitionKey": null,
+      "rowKey": null,
+      "tableName": "transaction_table",
+      "take": 0,
+      "type": "table"
+    }
+  ]
+}
