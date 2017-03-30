@@ -14,7 +14,8 @@ namespace Servernet.CLI
     internal class FunctionBuilder
     {
         private readonly Function _function;
-        private readonly TypeSwitch _typeSwitch;
+        private readonly TypeSwitch<MethodInfo> _methodAttributeSwitch;
+        private readonly TypeSwitch<ParameterInfo> _parameterAttributeSwitch;
 
         public FunctionBuilder(
             Type functionType,
@@ -27,8 +28,11 @@ namespace Servernet.CLI
                 EntryPoint = $"{functionType.FullName}.{functionMethod.Name}",
                 ScriptFile = $"{Path.GetFileName(functionType.Assembly.Location)}",
             };
-            
-            _typeSwitch = new TypeSwitch()
+
+            _methodAttributeSwitch = new TypeSwitch<MethodInfo>()
+                .Case((MethodInfo method, HttpResponseAttribute x) => { _function.Bindings.Add(new HttpOutputBinding("$return")); });
+
+            _parameterAttributeSwitch = new TypeSwitch<ParameterInfo>()
                 .Case((ParameterInfo parameter, BlobAttribute x) =>
                 {
                     // based on https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-storage-blob
@@ -70,16 +74,12 @@ namespace Servernet.CLI
 
         public void AddBinding(MethodInfo method, object attribute)
         {
-            var httpResponseAttribute = attribute as HttpResponseAttribute;
-            if (httpResponseAttribute != null)
-            {
-                _function.Bindings.Add(new HttpOutputBinding("$return"));
-            }
+            _methodAttributeSwitch.Switch(method, attribute);
         }
 
         public void AddBinding(ParameterInfo parameter, object attribute)
         {
-            _typeSwitch.Switch(parameter, attribute);
+            _parameterAttributeSwitch.Switch(parameter, attribute);
         }
 
         public Function ToFunction()

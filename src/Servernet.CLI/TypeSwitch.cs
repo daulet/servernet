@@ -1,21 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Reflection;
 
 namespace Servernet.CLI
 {
-    internal class TypeSwitch
+    internal class TypeSwitch<TParam>
     {
-        private readonly Dictionary<Type, Action<ParameterInfo, object>> _matches
-            = new Dictionary<Type, Action<ParameterInfo, object>>();
+        private readonly Dictionary<Type, Action<TParam, object>> _matches
+            = new Dictionary<Type, Action<TParam, object>>();
 
-        public TypeSwitch Case<T>(Action<ParameterInfo, T> action)
+        public TypeSwitch<TParam> Case<T>(Action<TParam, T> action)
         {
             _matches.Add(typeof(T), (x, y) => action(x, (T)y));
             return this;
         }
 
-        public void Switch(ParameterInfo parameter, object obj)
+        public void Switch(TParam parameter, object obj)
         {
             if (obj != null)
             {
