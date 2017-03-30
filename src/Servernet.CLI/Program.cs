@@ -1,42 +1,11 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Reflection;
-using CommandLine;
 
 namespace Servernet.CLI
 {
-    internal class Program
+    internal partial class Program
     {
-        private static void Main(string[] args)
-        {
-            ILogger log = new ColorfulConsole();
-            var options = new Options();
-
-            if (Parser.Default.ParseArguments(args, options))
-            {
-                var program = new Program(log, options);
-                try
-                {
-                    program.Run();
-                }
-                catch (ArgumentException e)
-                {
-#if DEBUG
-                    log.Error(e.ToString());
-#else
-                    log.Error(e.Message);
-#endif
-                }
-            }
-            else
-            {
-                log.Error("Invalid parameters");
-            }
-        }
-
         private readonly ILogger _log;
         private readonly Options _options;
 
