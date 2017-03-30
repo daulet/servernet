@@ -10,11 +10,8 @@ namespace Servernet.Samples.MultiTriggerSample.Trigger
     public class TranscationProcessorHttpTrigger
     {
         public static async Task<HttpResponseMessage> RunAsync(
-            [HttpTrigger(HttpMethod.Post, "TranscationProcessorHttpTrigger")] HttpRequestMessage request)
+            [HttpTrigger(HttpMethod.Post, "TranscationProcessorHttpTrigger")] Transaction transaction)
         {
-            var messageContent = await request.Content.ReadAsStringAsync();
-            var transaction = JsonConvert.DeserializeObject<Transaction>(messageContent);
-
             IFunction<Transaction, bool> transactionFunction = new TransactionProcessorFunction();
             var success = transactionFunction.Run(transaction);
 
