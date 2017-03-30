@@ -6,6 +6,7 @@
         Http,
         Queue,
         Table,
+        Timer,
     }
 
     internal static class BindingCategory
@@ -22,5 +23,6 @@
         Queue = Binding.Queue,
         QueueTrigger = Binding.Queue | BindingCategory.Trigger,
         Table = Binding.Table,
+        TimerTrigger = Binding.Timer | BindingCategory.Trigger,
     }
 }

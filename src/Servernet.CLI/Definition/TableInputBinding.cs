@@ -5,7 +5,7 @@ namespace Servernet.CLI.Definition
 {
     public class TableInputBinding : IBinding
     {
-        public TableInputBinding(Type functionType, string paramName, TableAttribute attribute)
+        internal TableInputBinding(Type functionType, string paramName, TableAttribute attribute)
         {
             Connection = $"{functionType.Name}_input_table_{paramName}";
             Direction = "in";
@@ -35,6 +35,6 @@ namespace Servernet.CLI.Definition
 
         public int Take { get; set; }
 
-        public BindingType Type { get; set; } = BindingType.Table;
+        public BindingType Type { get; } = BindingType.Table;
     }
 }

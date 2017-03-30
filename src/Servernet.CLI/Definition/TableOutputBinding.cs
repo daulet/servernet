@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Azure.WebJobs;
 
 namespace Servernet.CLI.Definition
 {
     public class TableOutputBinding : IBinding
     {
-        public TableOutputBinding(Type functionType, string paramName, TableAttribute attribute)
+        internal TableOutputBinding(Type functionType, string paramName, TableAttribute attribute)
         {
             Connection = $"{functionType.Name}_output_table_{paramName}";
             Direction = "out";
@@ -31,6 +27,6 @@ namespace Servernet.CLI.Definition
 
         public string TableName { get; set; }
 
-        public BindingType Type { get; set; } = BindingType.Table;
+        public BindingType Type { get; } = BindingType.Table;
     }
 }

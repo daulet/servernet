@@ -7,7 +7,7 @@ namespace Servernet.CLI.Definition
 {
     public class HttpTriggerBinding : IBinding
     {
-        public HttpTriggerBinding(string paramName, HttpTriggerAttribute attribute)
+        internal HttpTriggerBinding(string paramName, HttpTriggerAttribute attribute)
         {
             AuthLevel = attribute.AuthLevel;
             Direction = "in";
@@ -36,6 +36,6 @@ namespace Servernet.CLI.Definition
 
         public string Route { get; set; }
 
-        public BindingType Type { get; set; } = BindingType.HttpTrigger;
+        public BindingType Type { get; } = BindingType.HttpTrigger;
     }
 }

@@ -9,7 +9,7 @@ namespace Servernet.CLI.Definition
 {
     public class BlobTriggerBinding : IBinding
     {
-        public BlobTriggerBinding(Type functionType, string paramName, BlobTriggerAttribute attribute)
+        internal BlobTriggerBinding(Type functionType, string paramName, BlobTriggerAttribute attribute)
         {
             Connection = $"{functionType.Name}_trigger_blob_{paramName}";
             Direction = "in";

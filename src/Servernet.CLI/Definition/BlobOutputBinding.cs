@@ -9,7 +9,7 @@ namespace Servernet.CLI.Definition
 {
     public class BlobOutputBinding : IBinding
     {
-        public BlobOutputBinding(Type functionType, string paramName, BlobAttribute attribute)
+        internal BlobOutputBinding(Type functionType, string paramName, BlobAttribute attribute)
         {
             Connection = $"{functionType.Name}_output_blob_{paramName}";
             Direction = "out";

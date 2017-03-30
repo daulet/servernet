@@ -64,7 +64,8 @@ namespace Servernet.CLI
                         }
                     }
                     _function.Bindings.Add(binding);
-                });
+                })
+                .Case((ParameterInfo parameter, TimerTriggerAttribute x) => { _function.Bindings.Add(new TimerTriggerBinding(parameter.Name, x)); });
         }
 
         public void AddBinding(ParameterInfo parameter, object attribute)

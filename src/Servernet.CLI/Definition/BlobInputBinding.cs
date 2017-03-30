@@ -5,7 +5,7 @@ namespace Servernet.CLI.Definition
 {
     public class BlobInputBinding : IBinding
     {
-        public BlobInputBinding(Type functionType, string paramName, BlobAttribute attribute)
+        internal BlobInputBinding(Type functionType, string paramName, BlobAttribute attribute)
         {
             Connection = $"{functionType.Name}_input_blob_{paramName}";
             Direction = "in";
@@ -13,7 +13,7 @@ namespace Servernet.CLI.Definition
             Path = attribute.BlobPath;
         }
 
-        public BlobInputBinding(Type functionType, string paramName, SecretAttribute attribute)
+        internal BlobInputBinding(Type functionType, string paramName, SecretAttribute attribute)
         {
             Connection = $"{functionType.Name}_input_blob_{paramName}";
             Direction = "in";
