@@ -10,7 +10,7 @@
         "POST"
       ],
       "name": "request",
-      "route": "TableEntityProcessorHttpTrigger",
+      "route": "TableEntityProcessorHttpTrigger/{partitionKey}/{rowKey}",
       "type": "httpTrigger"
     },
     {

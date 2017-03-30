@@ -15,16 +15,15 @@ namespace Servernet.Samples.MultiTriggerSample.Trigger
     {
         // @TODO IQueryable, needs to provide async equivalent
         public static async Task<HttpResponseMessage> RunAsync(
-            [HttpTrigger(HttpMethod.Post, "TableEntityProcessorHttpTrigger")] HttpRequestMessage request,
+            [HttpTrigger(HttpMethod.Post, "TableEntityProcessorHttpTrigger/{partitionKey}/{rowKey}")] HttpRequestMessage request,
+            string partitionKey,
+            string rowKey,
             [Table("transactiontable")] IQueryable<DynamicTableEntity> transactionsTable)
         {
-            var messageContent = await request.Content.ReadAsStringAsync();
-            var entityId = JsonConvert.DeserializeObject<TableEntityId>(messageContent);
-
             var tableEntities = transactionsTable
                 .Where(x =>
-                    x.PartitionKey == entityId.PartitionKey &&
-                    x.RowKey == entityId.RowKey)
+                    x.PartitionKey == partitionKey &&
+                    x.RowKey == rowKey)
                 .AsTableQuery()
                 .Execute();
 
@@ -32,9 +31,9 @@ namespace Servernet.Samples.MultiTriggerSample.Trigger
 
             if (tableEntity == null)
             {
-                return new HttpResponseMessage(HttpStatusCode.NotFound)
+                return new HttpResponseMessage(HttpStatusCode.OK)
                 {
-                    Content = new StringContent($"Table entity {entityId.PartitionKey}/{entityId.RowKey} does not exist"),
+                    Content = new StringContent($"Table entity {partitionKey}/{rowKey} does not exist"),
                 };
             }
             else
