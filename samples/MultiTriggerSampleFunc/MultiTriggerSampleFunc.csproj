@@ -53,6 +53,8 @@
     <Content Include="appsettings.json" />
     <Content Include="host.json" />
     <Content Include="project.json" />
+    <Content Include="TransactionPaginationHttpTrigger\Servernet.dll" />
+    <Content Include="TransactionPaginationHttpTrigger\Servernet.Samples.MultiTriggerSample.dll" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="TableEntityProcessorHttpTrigger\function.json" />
@@ -61,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="web.config" />
+    <Content Include="TransactionPaginationHttpTrigger\function.json" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>

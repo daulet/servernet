@@ -9,9 +9,8 @@ namespace Servernet.Samples.MultiTriggerSample.Trigger
     {
         public static HttpResponseMessage Run(
             [HttpTrigger(HttpMethod.Post, "TransactionPaginationHttpTrigger")] HttpRequestMessage request,
-            [Queue("transaction_pagination_queue")] ICollector<TableSegment> paginationQueue)
+            [Queue("transaction-pagination-queue")] ICollector<TableSegment> paginationQueue)
         {
-            // @TODO create queue if does not exist
             // queue an empty segment to kick off pagination
             paginationQueue.Add(new TableSegment());
 

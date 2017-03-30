@@ -13,6 +13,7 @@ namespace Servernet.CLI.Definition
             Connection = $"{functionType.Name}_trigger_queue_{paramName}";
             Direction = "in";
             Name = paramName;
+            // @TODO Enforce: A queue name can contain only letters, numbers, and and dash(-) characters
             QueueName = attribute.QueueName;
             Type = "queueTrigger";
         }
