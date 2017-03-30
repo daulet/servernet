@@ -5,12 +5,11 @@ using System.Threading.Tasks;
 using Microsoft.Azure.WebJobs;
 using Microsoft.WindowsAzure.Storage.Table;
 using Microsoft.WindowsAzure.Storage.Table.Queryable;
-using Newtonsoft.Json;
 using Servernet.Samples.MultiTriggerSample.Function;
-using Servernet.Samples.MultiTriggerSample.Model;
 
 namespace Servernet.Samples.MultiTriggerSample.Trigger
 {
+    [AzureFunction]
     public class TableEntityProcessorHttpTrigger
     {
         // @TODO IQueryable, needs to provide async equivalent

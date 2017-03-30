@@ -5,6 +5,7 @@ using Servernet.Samples.MultiTriggerSample.Model;
 
 namespace Servernet.Samples.MultiTriggerSample.Trigger
 {
+    [AzureFunction]
     public class TransactionPaginationHttpTrigger
     {
         public static HttpResponseMessage Run(
