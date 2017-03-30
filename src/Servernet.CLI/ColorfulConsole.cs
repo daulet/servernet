@@ -2,7 +2,7 @@
 
 namespace Servernet.CLI
 {
-    public class ColorfulConsole : ILogger
+    internal class ColorfulConsole : ILogger
     {
         public void Error(string message)
         {

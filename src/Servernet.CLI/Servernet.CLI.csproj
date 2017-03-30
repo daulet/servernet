@@ -49,6 +49,7 @@
     <Compile Include="Definition\TableInputBinding.cs" />
     <Compile Include="Definition\TableOutputBinding.cs" />
     <Compile Include="FunctionBuilder.cs" />
+    <Compile Include="AttributeParser.cs" />
     <Compile Include="ILogger.cs" />
     <Compile Include="Options.cs" />
     <Compile Include="Program.cs" />

@@ -10,7 +10,7 @@ namespace Servernet.CLI
         public string Assembly { get; set; }
 
         [Option('f', "Function", Required = false,
-            HelpText = "Fulyl-qualified method name of the entry function, e.g. 'System.String.Compare' for Compare function")]
+            HelpText = "Fully-qualified method name of the entry function, e.g. 'System.String.Compare' for Compare function")]
         public string Function { get; set; }
 
         [Option('o', "Output", Required = false,

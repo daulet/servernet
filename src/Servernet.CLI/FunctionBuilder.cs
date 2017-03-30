@@ -17,7 +17,6 @@ namespace Servernet.CLI
         private readonly TypeSwitch _typeSwitch;
 
         public FunctionBuilder(
-            Assembly functionAssembly,
             Type functionType,
             MethodInfo functionMethod)
         {
@@ -26,7 +25,7 @@ namespace Servernet.CLI
                 Bindings = new List<IBinding>(),
                 Disabled = false,
                 EntryPoint = $"{functionType.FullName}.{functionMethod.Name}",
-                ScriptFile = $"{Path.GetFileName(functionAssembly.Location)}",
+                ScriptFile = $"{Path.GetFileName(functionType.Assembly.Location)}",
             };
             
             _typeSwitch = new TypeSwitch()

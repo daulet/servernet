@@ -4,14 +4,14 @@
   "entryPoint": "Servernet.Samples.CertificateSample.EncryptMessageQueueTrigger.Run",
   "bindings": [
     {
-      "connection": "EncryptMessageQueueTrigger_queue",
+      "connection": "EncryptMessageQueueTrigger_trigger_queue_message",
       "direction": "in",
       "name": "message",
       "queueName": "encrypt-queue",
       "type": "queueTrigger"
     },
     {
-      "connection": "EncryptMessageQueueTrigger_blob",
+      "connection": "EncryptMessageQueueTrigger_input_blob_certificateData",
       "direction": "in",
       "name": "certificateData",
       "path": "certificates/message_encrypting.pfx",

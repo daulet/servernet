@@ -17,8 +17,16 @@ namespace Servernet.CLI
             if (Parser.Default.ParseArguments(args, options))
             {
                 var assemblyPath = Path.Combine(Environment.CurrentDirectory, options.Assembly);
-                
-                LoadFunction(assemblyPath, options.Function, options.OutputDirectory);
+
+                ILogger log = new ColorfulConsole();
+                try
+                {
+                    LoadFunction(assemblyPath, options.Function, options.OutputDirectory);
+                }
+                catch (ArgumentException e)
+                {
+                    log.Error(e.ToString());
+                }
             }
             else
             {
@@ -82,38 +90,8 @@ namespace Servernet.CLI
                 return;
             }
 
-            ParameterInfo[] parameters;
-            try
-            {
-                parameters = functionMethod.GetParameters();
-            }
-            catch (FileLoadException e)
-            {
-                Console.WriteLine($"Failed to load one of dependency assemblies for method '{functionMethod.Name}': {e}");
-                return;
-            }
-            
-            var functionBuilder = new FunctionBuilder(functionAssembly, functionType, functionMethod);
-            
-            foreach (var parameter in parameters)
-            {
-                object[] attributes;
-                try
-                {
-                    attributes = parameter.GetCustomAttributes(inherit: false);
-                }
-                catch (FileNotFoundException e)
-                {
-                    Console.WriteLine($"Failed to load one of dependency assemblies for argument '{parameter.Name}': {e}");
-                    return;
-                }
-                
-                foreach (var attribute in attributes)
-                {
-                    // @TODO can't allow two bindings, but can have multiple custom attributes
-                    functionBuilder.AddBinding(parameter, attribute);
-                }
-            }
+            var parser = new AttributeParser();
+            var functionBuilder = parser.ParseEntryPoint(functionType, functionMethod);
 
             if (string.IsNullOrEmpty(outputDirectory))
             {
