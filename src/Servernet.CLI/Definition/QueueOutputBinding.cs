@@ -11,13 +11,16 @@ namespace Servernet.CLI.Definition
             Direction = "out";
             Name = paramName;
             QueueName = attribute.QueueName;
-            Type = "queue";
         }
 
         public string Connection { get; }
+
         public string Direction { get; }
+
         public string Name { get; }
+
         public string QueueName { get; }
-        public string Type { get; }
+
+        public BindingType Type { get; } = BindingType.Queue;
     }
 }

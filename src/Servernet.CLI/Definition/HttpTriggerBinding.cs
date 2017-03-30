@@ -23,7 +23,6 @@ namespace Servernet.CLI.Definition
             // @TODO Enforce: The route template cannot start with a '/' or '~' character and it cannot contain a '?' character.
             // @TODO Validate that dynamically assigned route parameters are present in route template
             Route = attribute.Route;
-            Type = "httpTrigger";
         }
 
         [JsonConverter(typeof(StringEnumConverter))]
@@ -37,6 +36,6 @@ namespace Servernet.CLI.Definition
 
         public string Route { get; set; }
 
-        public string Type { get; set; }
+        public BindingType Type { get; set; } = BindingType.HttpTrigger;
     }
 }

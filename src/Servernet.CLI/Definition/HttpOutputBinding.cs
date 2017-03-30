@@ -8,5 +8,6 @@ namespace Servernet.CLI.Definition
 {
     public class HttpOutputBinding : IBinding
     {
+        public BindingType Type { get; } = BindingType.Http;
     }
 }

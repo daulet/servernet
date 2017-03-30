@@ -17,15 +17,20 @@ namespace Servernet.CLI.Definition
             PartitionKey = attribute.PartitionKey;
             RowKey = attribute.RowKey;
             TableName = attribute.TableName;
-            Type = "table";
         }
 
         public string Connection { get; set; }
+
         public string Direction { get; set; }
+
         public string Name { get; set; }
+
         public string PartitionKey { get; set; }
+
         public string RowKey { get; set; }
+
         public string TableName { get; set; }
-        public string Type { get; set; }
+
+        public BindingType Type { get; set; } = BindingType.Table;
     }
 }

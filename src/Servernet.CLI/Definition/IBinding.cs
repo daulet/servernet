@@ -2,5 +2,6 @@
 {
     public interface IBinding
     {
+        BindingType Type { get; }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
 using Servernet.CLI.Definition;
 
@@ -16,13 +17,13 @@ namespace Servernet.CLI
             // https://docs.microsoft.com/en-us/azure/azure-functions/functions-reference-csharp#package-management
             using (var bindingFile = new StreamWriter($"{targetDirectory.FullName}/function.json"))
             {
+                var serializerSettings = new JsonSerializerSettings()
+                {
+                    ContractResolver = new CamelCasePropertyNamesContractResolver(),
+                };
+                serializerSettings.Converters.Add(new StringEnumConverter(camelCaseText: true));
                 bindingFile.Write(
-                    JsonConvert.SerializeObject(function,
-                        Formatting.Indented,
-                        new JsonSerializerSettings
-                        {
-                            ContractResolver = new CamelCasePropertyNamesContractResolver(),
-                        }));
+                    JsonConvert.SerializeObject(function, Formatting.Indented, serializerSettings));
             }
             
             var allReferencedAssemblies = sourceDirectory.GetFiles();

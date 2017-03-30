@@ -17,17 +17,24 @@ namespace Servernet.CLI.Definition
             // https://docs.microsoft.com/en-us/rest/api/storageservices/fileservices/Understanding-the-Table-Service-Data-Model
             TableName = attribute.TableName;
             Take = attribute.Take;
-            Type = "table";
         }
 
         public string Connection { get; set; }
+
         public string Direction { get; set; }
+
         public string Filter { get; set; }
+
         public string Name { get; set; }
+
         public string PartitionKey { get; set; }
+
         public string RowKey { get; set; }
+
         public string TableName { get; set; }
+
         public int Take { get; set; }
-        public string Type { get; set; }
+
+        public BindingType Type { get; set; } = BindingType.Table;
     }
 }

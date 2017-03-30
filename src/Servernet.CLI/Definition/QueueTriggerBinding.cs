@@ -15,13 +15,16 @@ namespace Servernet.CLI.Definition
             Name = paramName;
             // @TODO Enforce: A queue name can contain only letters, numbers, and and dash(-) characters
             QueueName = attribute.QueueName;
-            Type = "queueTrigger";
         }
 
         public string Connection { get; }
+
         public string Direction { get; }
+
         public string Name { get; }
+
         public string QueueName { get; }
-        public string Type { get; }
+
+        public BindingType Type { get; } = BindingType.QueueTrigger;
     }
 }

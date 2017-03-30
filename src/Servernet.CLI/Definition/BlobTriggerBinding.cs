@@ -15,13 +15,16 @@ namespace Servernet.CLI.Definition
             Direction = "in";
             Name = paramName;
             Path = attribute.BlobPath;
-            Type = "blobTrigger";
         }
 
         public string Connection { get; }
+
         public string Direction { get; }
+
         public string Name { get; }
+
         public string Path { get; }
-        public string Type { get; }
+
+        public BindingType Type { get; } = BindingType.BlobTrigger;
     }
 }
