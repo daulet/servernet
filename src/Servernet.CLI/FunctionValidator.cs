@@ -16,6 +16,16 @@ namespace Servernet.CLI
 
         public void Validate(Function function)
         {
+            try
+            {
+                function.Bindings
+                    .Single(x => ((int)x.Type & BindingCategory.Trigger) > 0);
+            }
+            catch (InvalidOperationException)
+            {
+                throw new FunctionValidationException($"{function.EntryPoint} must have exactly one trigger binding");
+            }
+
             if (function.Bindings.OfType<HttpTriggerBinding>().Any())
             {
                 if (!function.Bindings.OfType<HttpOutputBinding>().Any())

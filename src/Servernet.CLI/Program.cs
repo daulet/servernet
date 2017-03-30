@@ -70,6 +70,8 @@ namespace Servernet.CLI
                 var functionType = function.Item1;
                 var functionMethod = function.Item2;
 
+                _log.Info($"Generating {functionType.FullName}.{functionMethod.Name}");
+
                 // Generate bindings
                 var functionDefinition = _attributeParser.ParseEntryPoint(functionType, functionMethod);
 
