@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using CommandLine;
 
@@ -17,7 +18,7 @@ namespace Servernet.CLI
             {
                 var assemblyPath = Path.Combine(Environment.CurrentDirectory, options.Assembly);
                 
-                LoadFunction(assemblyPath, options.Type, options.Function, options.OutputDirectory);
+                LoadFunction(assemblyPath, options.Function, options.OutputDirectory);
             }
             else
             {
@@ -25,7 +26,7 @@ namespace Servernet.CLI
             }
         }
 
-        private static void LoadFunction(string assemblyPath, string typeName, string functionName, string outputDirectory)
+        private static void LoadFunction(string assemblyPath, string fullFunctionName, string outputDirectory)
         {
             Assembly functionAssembly;
             try
@@ -37,6 +38,21 @@ namespace Servernet.CLI
                 Console.WriteLine($"Failed to load assembly at location: {assemblyPath}");
                 return;
             }
+
+            if (string.IsNullOrEmpty(fullFunctionName))
+            {
+                Console.WriteLine("Function name can't be empty");
+                return;
+            }
+            // assuming function name can't contain a period
+            var indexOfLastPeriod = fullFunctionName.LastIndexOf(".", StringComparison.OrdinalIgnoreCase);
+            if (indexOfLastPeriod <= 0)
+            {
+                Console.WriteLine($"Invalid fully qualified method name: {fullFunctionName}");
+                return;
+            }
+            var typeName = fullFunctionName.Substring(0, indexOfLastPeriod);
+            var functionName = fullFunctionName.Substring(indexOfLastPeriod + 1);
 
             Type functionType;
             try

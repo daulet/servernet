@@ -6,15 +6,11 @@ namespace Servernet.CLI
     internal class Options
     {
         [Option('a', "Assembly", Required = true,
-            HelpText = "Name of the assembly that contains entry function")]
+            HelpText = "Path to the assembly that contains the entry function")]
         public string Assembly { get; set; }
 
-        [Option('t', "Type", Required = true,
-            HelpText = "Name of the type that defines the entry function")]
-        public string Type { get; set; }
-
-        [Option('f', "Function", Required = true,
-            HelpText = "Name of the entry function")]
+        [Option('f', "Function", Required = false,
+            HelpText = "Fulyl-qualified method name of the entry function, e.g. 'System.String.Compare' for Compare function")]
         public string Function { get; set; }
 
         [Option('o', "Output", Required = false,
@@ -25,7 +21,7 @@ namespace Servernet.CLI
         public string GetUsage()
         {
             return HelpText.AutoBuild(this,
-              (HelpText current) => HelpText.DefaultParsingErrorsHandler(this, current));
+              (current) => HelpText.DefaultParsingErrorsHandler(this, current));
         }
     }
 }
