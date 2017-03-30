@@ -9,9 +9,9 @@ namespace Servernet.CLI.Definition
 {
     public class TableOutputBinding : IBinding
     {
-        public TableOutputBinding(string paramName, TableAttribute attribute)
+        public TableOutputBinding(Type functionType, string paramName, TableAttribute attribute)
         {
-            Connection = "<Name of app setting that contains a storage connection string>";
+            Connection = $"{functionType.Name}_output_table_{paramName}";
             Direction = "out";
             Name = paramName;
             PartitionKey = attribute.PartitionKey;

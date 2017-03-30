@@ -34,22 +34,22 @@ namespace Servernet.CLI
                 {
                     // based on https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-storage-blob
                     var binding = parameter.IsOut
-                        ? (IBinding) new BlobOutputBinding(parameter.Name, x)
-                        : (IBinding) new BlobInputBinding(parameter.Name, x);
+                        ? (IBinding) new BlobOutputBinding(functionType, parameter.Name, x)
+                        : (IBinding) new BlobInputBinding(functionType, parameter.Name, x);
                     _function.Bindings.Add(binding);
                 })
-                .Case((ParameterInfo parameter, BlobTriggerAttribute x) => { _function.Bindings.Add(new BlobTriggerBinding(parameter.Name, x)); })
+                .Case((ParameterInfo parameter, BlobTriggerAttribute x) => { _function.Bindings.Add(new BlobTriggerBinding(functionType, parameter.Name, x)); })
                 .Case((ParameterInfo parameter, HttpTriggerAttribute x) => { _function.Bindings.Add(new HttpTriggerBinding(parameter.Name, x)); })
-                .Case((ParameterInfo parameter, QueueAttribute x) => { _function.Bindings.Add(new QueueOutputBinding(parameter.Name, x)); })
-                .Case((ParameterInfo parameter, QueueTriggerAttribute x) => { _function.Bindings.Add(new QueueTriggerBinding(parameter.Name, x)); })
-                .Case((ParameterInfo parameter, SecretAttribute x) => { _function.Bindings.Add(new BlobInputBinding(parameter.Name, x)); })
+                .Case((ParameterInfo parameter, QueueAttribute x) => { _function.Bindings.Add(new QueueOutputBinding(functionType, parameter.Name, x)); })
+                .Case((ParameterInfo parameter, QueueTriggerAttribute x) => { _function.Bindings.Add(new QueueTriggerBinding(functionType, parameter.Name, x)); })
+                .Case((ParameterInfo parameter, SecretAttribute x) => { _function.Bindings.Add(new BlobInputBinding(functionType, parameter.Name, x)); })
                 .Case((ParameterInfo parameter, TableAttribute x) =>
                 {
                     // based on https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-storage-table
                     IBinding binding;
                     if (parameter.IsOut)
                     {
-                        binding = new TableOutputBinding(parameter.Name, x);
+                        binding = new TableOutputBinding(functionType, parameter.Name, x);
                     }
                     else
                     {
@@ -57,11 +57,11 @@ namespace Servernet.CLI
                             typeof(IAsyncCollector<>).IsAssignableFrom(parameter.ParameterType) ||
                             typeof(CloudTable).IsAssignableFrom(parameter.ParameterType))
                         {
-                            binding = new TableOutputBinding(parameter.Name, x);
+                            binding = new TableOutputBinding(functionType, parameter.Name, x);
                         }
                         else
                         {
-                            binding = new TableInputBinding(parameter.Name, x);
+                            binding = new TableInputBinding(functionType, parameter.Name, x);
                         }
                     }
                     _function.Bindings.Add(binding);

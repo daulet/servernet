@@ -1,26 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Azure.WebJobs;
 
 namespace Servernet.CLI.Definition
 {
     public class BlobInputBinding : IBinding
     {
-        public BlobInputBinding(string paramName, BlobAttribute attribute)
+        public BlobInputBinding(Type functionType, string paramName, BlobAttribute attribute)
         {
-            Connection = "<Name of app setting that contains a storage connection string>";
+            Connection = $"{functionType.Name}_input_blob_{paramName}";
             Direction = "in";
             Name = paramName;
             Path = attribute.BlobPath;
             Type = "blob";
         }
 
-        public BlobInputBinding(string paramName, SecretAttribute attribute)
+        public BlobInputBinding(Type functionType, string paramName, SecretAttribute attribute)
         {
-            Connection = "<Name of app setting that contains a storage connection string>";
+            Connection = $"{functionType.Name}_input_blob_{paramName}";
             Direction = "in";
             Name = paramName;
             Path = attribute.Path;

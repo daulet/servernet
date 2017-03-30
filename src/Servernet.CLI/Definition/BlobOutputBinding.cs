@@ -9,9 +9,9 @@ namespace Servernet.CLI.Definition
 {
     public class BlobOutputBinding : IBinding
     {
-        public BlobOutputBinding(string paramName, BlobAttribute attribute)
+        public BlobOutputBinding(Type functionType, string paramName, BlobAttribute attribute)
         {
-            Connection = "<Name of app setting that contains a storage connection string>";
+            Connection = $"{functionType.Name}_output_blob_{paramName}";
             Direction = "out";
             Name = paramName;
             Path = attribute.BlobPath;

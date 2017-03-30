@@ -9,9 +9,9 @@ namespace Servernet.CLI.Definition
 {
     public class BlobTriggerBinding : IBinding
     {
-        public BlobTriggerBinding(string paramName, BlobTriggerAttribute attribute)
+        public BlobTriggerBinding(Type functionType, string paramName, BlobTriggerAttribute attribute)
         {
-            Connection = "<Name of app setting that contains a storage connection string>";
+            Connection = $"{functionType.Name}_trigger_blob_{paramName}";
             Direction = "in";
             Name = paramName;
             Path = attribute.BlobPath;

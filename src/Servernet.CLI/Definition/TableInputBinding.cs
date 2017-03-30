@@ -1,12 +1,13 @@
-﻿using Microsoft.Azure.WebJobs;
+﻿using System;
+using Microsoft.Azure.WebJobs;
 
 namespace Servernet.CLI.Definition
 {
     public class TableInputBinding : IBinding
     {
-        public TableInputBinding(string paramName, TableAttribute attribute)
+        public TableInputBinding(Type functionType, string paramName, TableAttribute attribute)
         {
-            Connection = "<Name of app setting that contains a storage connection string>";
+            Connection = $"{functionType.Name}_input_table_{paramName}";
             Direction = "in";
             Filter = attribute.Filter;
             Name = paramName;

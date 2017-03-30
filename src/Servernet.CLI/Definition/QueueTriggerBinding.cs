@@ -8,9 +8,9 @@ namespace Servernet.CLI.Definition
 {
     public class QueueTriggerBinding : IBinding
     {
-        internal QueueTriggerBinding(string paramName, QueueTriggerAttribute attribute)
+        internal QueueTriggerBinding(Type functionType, string paramName, QueueTriggerAttribute attribute)
         {
-            Connection = "<Name of app setting that contains a storage connection string>";
+            Connection = $"{functionType.Name}_trigger_queue_{paramName}";
             Direction = "in";
             Name = paramName;
             QueueName = attribute.QueueName;

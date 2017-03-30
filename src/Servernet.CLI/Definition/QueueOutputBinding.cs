@@ -1,17 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Azure.WebJobs;
 
 namespace Servernet.CLI.Definition
 {
     public class QueueOutputBinding : IBinding
     {
-        internal QueueOutputBinding(string paramName, QueueAttribute attribute)
+        internal QueueOutputBinding(Type functionType, string paramName, QueueAttribute attribute)
         {
-            Connection = "<Name of app setting that contains a storage connection string>";
+            Connection = $"{functionType.Name}_output_queue_{paramName}";
             Direction = "out";
             Name = paramName;
             QueueName = attribute.QueueName;
