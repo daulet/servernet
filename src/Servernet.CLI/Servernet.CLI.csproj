@@ -36,9 +36,11 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ColorfulConsole.cs" />
     <Compile Include="Definition\BlobInputBinding.cs" />
     <Compile Include="Definition\BlobOutputBinding.cs" />
     <Compile Include="Definition\BlobTriggerBinding.cs" />
+    <Compile Include="Definition\HttpOutputBinding.cs" />
     <Compile Include="Definition\HttpTriggerBinding.cs" />
     <Compile Include="Definition\IBinding.cs" />
     <Compile Include="Definition\Function.cs" />
@@ -47,6 +49,7 @@
     <Compile Include="Definition\TableInputBinding.cs" />
     <Compile Include="Definition\TableOutputBinding.cs" />
     <Compile Include="FunctionBuilder.cs" />
+    <Compile Include="ILogger.cs" />
     <Compile Include="Options.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

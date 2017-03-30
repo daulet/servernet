@@ -20,7 +20,8 @@ namespace Servernet.CLI.Definition
                 }
             }
             Name = paramName;
-            // /@TODO Enforce: The route template cannot start with a '/' or '~' character and it cannot contain a '?' character.
+            // @TODO Enforce: The route template cannot start with a '/' or '~' character and it cannot contain a '?' character.
+            // @TODO Validate that dynamically assigned route parameters are present in route template
             Route = attribute.Route;
             Type = "httpTrigger";
         }

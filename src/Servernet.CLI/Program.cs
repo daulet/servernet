@@ -102,6 +102,8 @@ namespace Servernet.CLI
                 outputDirectory = functionType.Name;
             }
 
+            functionBuilder.Validate(new ColorfulConsole());
+
             Directory.CreateDirectory(outputDirectory);
 
             // @TODO also add project.json and include Servernet as nuget package
