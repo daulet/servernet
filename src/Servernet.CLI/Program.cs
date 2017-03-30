@@ -7,13 +7,24 @@ namespace Servernet.CLI
 {
     internal partial class Program
     {
+        private readonly AttributeParser _attributeParser;
         private readonly ILogger _log;
+        private readonly MethodLocator _methodLocator;
         private readonly Options _options;
+        private readonly ReleaseBuilder _releaseBuilder;
 
-        private Program(ILogger log, Options options)
+        private Program(
+            AttributeParser attributeParser,
+            ILogger log,
+            MethodLocator methodLocator,
+            Options options,
+            ReleaseBuilder releaseBuilder)
         {
+            _attributeParser = attributeParser;
             _log = log;
+            _methodLocator = methodLocator;
             _options = options;
+            _releaseBuilder = releaseBuilder;
         }
 
         private void Run()
@@ -40,9 +51,7 @@ namespace Servernet.CLI
 
                 // Locate a method
 
-                var locator = new MethodLocator();
-                var locatedMethod = locator.Locate(assemblyPath, typeName, methodName);
-
+                var locatedMethod = _methodLocator.Locate(assemblyPath, typeName, methodName);
                 foundFunctions.Add(locatedMethod);
             }
 
@@ -53,8 +62,7 @@ namespace Servernet.CLI
 
                 // Generate bindings
 
-                var parser = new AttributeParser();
-                var functionBuilder = parser.ParseEntryPoint(functionType, functionMethod);
+                var functionBuilder = _attributeParser.ParseEntryPoint(functionType, functionMethod);
                 functionBuilder.Validate(_log);
 
                 // Generate output
@@ -64,8 +72,7 @@ namespace Servernet.CLI
                     : _options.OutputDirectory;
                 var sourceDirectory = new FileInfo(functionType.Assembly.Location).Directory;
                 var targetDirectory = new DirectoryInfo(outputDirectory);
-                var releaseBuilder = new ReleaseBuilder();
-                releaseBuilder.Release(sourceDirectory, targetDirectory, functionBuilder);
+                _releaseBuilder.Release(sourceDirectory, targetDirectory, functionBuilder);
             }
         }
     }

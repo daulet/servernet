@@ -12,7 +12,12 @@ namespace Servernet.CLI
 
             if (Parser.Default.ParseArguments(args, options))
             {
-                var program = new Program(log, options);
+                var program = new Program(
+                    new AttributeParser(),
+                    log,
+                    new MethodLocator(),
+                    options,
+                    new ReleaseBuilder());
                 try
                 {
                     program.Run();
