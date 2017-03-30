@@ -2,8 +2,6 @@
 
 namespace Servernet
 {
-
-    // @TODO HttpRoute attribute to dynamically parse and assign HttpTrigger route parameters
     [AttributeUsage(AttributeTargets.Parameter)]
     public sealed class HttpTriggerAttribute : Attribute
     {

@@ -12,6 +12,7 @@ namespace Servernet.Samples.MultiTriggerSample.Trigger
     [AzureFunction]
     public class TableEntityProcessorHttpTrigger
     {
+        [HttpResponse]
         public static async Task<HttpResponseMessage> RunAsync(
             [HttpTrigger(HttpMethod.Post, "TableEntityProcessorHttpTrigger/{partitionKey}/{rowKey}")] HttpRequestMessage request,
             string partitionKey,

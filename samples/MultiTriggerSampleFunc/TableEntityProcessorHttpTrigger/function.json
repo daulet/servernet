@@ -4,6 +4,11 @@
   "entryPoint": "Servernet.Samples.MultiTriggerSample.Trigger.TableEntityProcessorHttpTrigger.RunAsync",
   "bindings": [
     {
+      "direction": "out",
+      "name": "$return",
+      "type": "http"
+    },
+    {
       "authLevel": "Anonymous",
       "direction": "in",
       "methods": [

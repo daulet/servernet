@@ -68,6 +68,15 @@ namespace Servernet.CLI
                 .Case((ParameterInfo parameter, TimerTriggerAttribute x) => { _function.Bindings.Add(new TimerTriggerBinding(parameter.Name, x)); });
         }
 
+        public void AddBinding(MethodInfo method, object attribute)
+        {
+            var httpResponseAttribute = attribute as HttpResponseAttribute;
+            if (httpResponseAttribute != null)
+            {
+                _function.Bindings.Add(new HttpOutputBinding("$return"));
+            }
+        }
+
         public void AddBinding(ParameterInfo parameter, object attribute)
         {
             _typeSwitch.Switch(parameter, attribute);

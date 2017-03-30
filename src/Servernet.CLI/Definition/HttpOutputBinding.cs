@@ -1,14 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Servernet.CLI.Definition
+﻿namespace Servernet.CLI.Definition
 {
     public class HttpOutputBinding : IBinding
     {
+        public HttpOutputBinding(string paramName)
+        {
+            Name = paramName;
+        }
+
         public BindingDirection Direction { get; } = BindingDirection.Out;
+
+        public string Name { get; }
 
         public BindingType Type { get; } = BindingType.Http;
     }
