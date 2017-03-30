@@ -4,7 +4,7 @@ using System.Reflection;
 
 namespace Servernet.CLI
 {
-    internal class FunctionLocator
+    internal class MethodLocator
     {
         public Tuple<Type, MethodInfo> Locate(string assemblyPath, string typeName, string methodName)
         {

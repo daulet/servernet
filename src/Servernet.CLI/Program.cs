@@ -67,7 +67,7 @@ namespace Servernet.CLI
             var typeName = fullFunctionName.Substring(0, indexOfLastPeriod);
             var methodName = fullFunctionName.Substring(indexOfLastPeriod + 1);
 
-            var locator = new FunctionLocator();
+            var locator = new MethodLocator();
             var locatedMethod = locator.Locate(assemblyPath, typeName, methodName);
             var functionType = locatedMethod.Item1;
             var functionMethod = locatedMethod.Item2;
