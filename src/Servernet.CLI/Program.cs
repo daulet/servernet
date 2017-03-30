@@ -18,9 +18,8 @@ namespace Servernet.CLI
         private void Run()
         {
             var assemblyPath = Path.Combine(Environment.CurrentDirectory, _options.Assembly);
-            var fullFunctionName = _options.Function;
-            var outputDirectory = _options.OutputDirectory;
 
+            var fullFunctionName = _options.Function;
             if (string.IsNullOrEmpty(fullFunctionName))
             {
                 Console.WriteLine("Function name can't be empty");
@@ -36,21 +35,24 @@ namespace Servernet.CLI
             var typeName = fullFunctionName.Substring(0, indexOfLastPeriod);
             var methodName = fullFunctionName.Substring(indexOfLastPeriod + 1);
 
+            // Locate a method
+
             var locator = new MethodLocator();
             var locatedMethod = locator.Locate(assemblyPath, typeName, methodName);
             var functionType = locatedMethod.Item1;
             var functionMethod = locatedMethod.Item2;
 
+            // Generate bindings
+
             var parser = new AttributeParser();
             var functionBuilder = parser.ParseEntryPoint(functionType, functionMethod);
-            
             functionBuilder.Validate(_log);
 
-            if (string.IsNullOrEmpty(outputDirectory))
-            {
-                outputDirectory = functionType.Name;
-            }
+            // Generate output
 
+            var outputDirectory = string.IsNullOrEmpty(_options.OutputDirectory)
+                ? functionType.Name
+                : _options.OutputDirectory;
             var sourceDirectory = new FileInfo(functionType.Assembly.Location).Directory;
             var targetDirectory = new DirectoryInfo(outputDirectory);
             var releaseBuilder = new ReleaseBuilder();
