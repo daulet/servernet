@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using CommandLine;
@@ -113,10 +115,41 @@ namespace Servernet.CLI
                 bindingFile.Write(functionBuilder.ToString());
             }
 
+            // List of dependencies available to any function and hence should not be part of release
+            // https://docs.microsoft.com/en-us/azure/azure-functions/functions-reference-csharp
+            var excludedAssemblies = new HashSet<string>()
+            {
+                // Microsoft.Azure.WebJobs and its dependencies
+                "Microsoft.Azure.WebJobs.dll",
+                "Microsoft.Azure.WebJobs.Host.dll",
+                "Microsoft.WindowsAzure.Storage.dll",
+                "Newtonsoft.Json.dll",
+                // Microsoft.Azure.WebJobs.Extensions and its dependencies
+                "Microsoft.Azure.WebJobs.Extensions.dll",
+                "Microsoft.Azure.WebJobs.dll",
+                "NCrontab.dll",
+                "System.Threading.Tasks.Dataflow.dll",
+                // Microsoft.WindowsAzure.Storage and its dependencies
+                "Microsoft.WindowsAzure.Storage.dll",
+                "Microsoft.Azure.KeyVault.Core.dll",
+                "Microsoft.Data.Edm.dll",
+                "Microsoft.Data.OData.dll",
+                "Microsoft.Data.Services.Client.dll",
+                "Newtonsoft.Json.dll",
+                "System.Spatial.dll",
+                // Newtonsoft.Json and its dependencies
+                "Newtonsoft.Json.dll",
+            };
+
             var directory = new FileInfo(functionAssembly.Location).Directory;
             var allReferencedAssemblies = directory.GetFiles();
             foreach (var referencedAssembly in allReferencedAssemblies)
             {
+                if (excludedAssemblies.Contains(referencedAssembly.Name))
+                {
+                    // don't copy assemblies that are available to Azure Functions anyway
+                    continue;
+                }
                 File.Copy(referencedAssembly.FullName, Path.Combine(outputDirectory, referencedAssembly.Name), overwrite: true);
             }
         }
