@@ -8,7 +8,6 @@ namespace Servernet.CLI.Definition
         internal TableInputBinding(Type functionType, string paramName, TableAttribute attribute)
         {
             Connection = $"{functionType.Name}_input_table_{paramName}";
-            Direction = "in";
             Filter = attribute.Filter;
             Name = paramName;
             PartitionKey = attribute.PartitionKey;
@@ -19,21 +18,21 @@ namespace Servernet.CLI.Definition
             Take = attribute.Take;
         }
 
-        public string Connection { get; set; }
+        public string Connection { get; }
 
-        public string Direction { get; set; }
+        public BindingDirection Direction { get; } = BindingDirection.In;
 
-        public string Filter { get; set; }
+        public string Filter { get; }
 
-        public string Name { get; set; }
+        public string Name { get; }
 
-        public string PartitionKey { get; set; }
+        public string PartitionKey { get; }
 
-        public string RowKey { get; set; }
+        public string RowKey { get; }
 
-        public string TableName { get; set; }
+        public string TableName { get; }
 
-        public int Take { get; set; }
+        public int Take { get; }
 
         public BindingType Type { get; } = BindingType.Table;
     }

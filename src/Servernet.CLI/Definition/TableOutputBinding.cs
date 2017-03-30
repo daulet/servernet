@@ -8,24 +8,23 @@ namespace Servernet.CLI.Definition
         internal TableOutputBinding(Type functionType, string paramName, TableAttribute attribute)
         {
             Connection = $"{functionType.Name}_output_table_{paramName}";
-            Direction = "out";
             Name = paramName;
             PartitionKey = attribute.PartitionKey;
             RowKey = attribute.RowKey;
             TableName = attribute.TableName;
         }
 
-        public string Connection { get; set; }
+        public string Connection { get; }
 
-        public string Direction { get; set; }
+        public BindingDirection Direction { get; } = BindingDirection.Out;
 
-        public string Name { get; set; }
+        public string Name { get; }
 
-        public string PartitionKey { get; set; }
+        public string PartitionKey { get; }
 
-        public string RowKey { get; set; }
+        public string RowKey { get; }
 
-        public string TableName { get; set; }
+        public string TableName { get; }
 
         public BindingType Type { get; } = BindingType.Table;
     }

@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Azure.WebJobs;
 
 namespace Servernet.CLI.Definition
@@ -12,14 +8,13 @@ namespace Servernet.CLI.Definition
         internal BlobTriggerBinding(Type functionType, string paramName, BlobTriggerAttribute attribute)
         {
             Connection = $"{functionType.Name}_trigger_blob_{paramName}";
-            Direction = "in";
             Name = paramName;
             Path = attribute.BlobPath;
         }
 
         public string Connection { get; }
 
-        public string Direction { get; }
+        public BindingDirection Direction { get; } = BindingDirection.In;
 
         public string Name { get; }
 

@@ -8,14 +8,13 @@ namespace Servernet.CLI.Definition
         internal QueueOutputBinding(Type functionType, string paramName, QueueAttribute attribute)
         {
             Connection = $"{functionType.Name}_output_queue_{paramName}";
-            Direction = "out";
             Name = paramName;
             QueueName = attribute.QueueName;
         }
 
         public string Connection { get; }
 
-        public string Direction { get; }
+        public BindingDirection Direction { get; } = BindingDirection.Out;
 
         public string Name { get; }
 

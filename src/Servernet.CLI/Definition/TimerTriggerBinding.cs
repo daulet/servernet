@@ -6,12 +6,11 @@ namespace Servernet.CLI.Definition
     {
         internal TimerTriggerBinding(string paramName, TimerTriggerAttribute attribute)
         {
-            Direction = "in";
             Name = paramName;
             Schedule = attribute.ScheduleExpression;
         }
 
-        public string Direction { get; }
+        public BindingDirection Direction { get; } = BindingDirection.In;
 
         public string Name { get; set; }
 

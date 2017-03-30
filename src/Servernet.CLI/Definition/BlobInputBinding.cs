@@ -8,7 +8,6 @@ namespace Servernet.CLI.Definition
         internal BlobInputBinding(Type functionType, string paramName, BlobAttribute attribute)
         {
             Connection = $"{functionType.Name}_input_blob_{paramName}";
-            Direction = "in";
             Name = paramName;
             Path = attribute.BlobPath;
         }
@@ -16,14 +15,13 @@ namespace Servernet.CLI.Definition
         internal BlobInputBinding(Type functionType, string paramName, SecretAttribute attribute)
         {
             Connection = $"{functionType.Name}_input_blob_{paramName}";
-            Direction = "in";
             Name = paramName;
             Path = attribute.Path;
         }
 
         public string Connection { get; }
 
-        public string Direction { get; }
+        public BindingDirection Direction { get; } = BindingDirection.In;
 
         public string Name { get; }
 

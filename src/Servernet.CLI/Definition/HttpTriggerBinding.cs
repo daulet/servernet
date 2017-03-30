@@ -10,7 +10,6 @@ namespace Servernet.CLI.Definition
         internal HttpTriggerBinding(string paramName, HttpTriggerAttribute attribute)
         {
             AuthLevel = attribute.AuthLevel;
-            Direction = "in";
             Methods = new List<string>();
             foreach (HttpMethod method in Enum.GetValues(typeof(HttpMethod)))
             {
@@ -26,15 +25,15 @@ namespace Servernet.CLI.Definition
         }
 
         [JsonConverter(typeof(StringEnumConverter))]
-        public HttpAuthLevel AuthLevel { get; set; }
+        public HttpAuthLevel AuthLevel { get; }
 
-        public string Direction { get; set; }
+        public BindingDirection Direction { get; } = BindingDirection.In;
 
-        public List<string> Methods { get; set; }
+        public List<string> Methods { get; }
 
-        public string Name { get; set; }
+        public string Name { get; }
 
-        public string Route { get; set; }
+        public string Route { get; }
 
         public BindingType Type { get; } = BindingType.HttpTrigger;
     }

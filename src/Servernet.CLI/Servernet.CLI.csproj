@@ -37,6 +37,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ColorfulConsole.cs" />
+    <Compile Include="Definition\BindingDirection.cs" />
     <Compile Include="Definition\BindingType.cs" />
     <Compile Include="Definition\BlobInputBinding.cs" />
     <Compile Include="Definition\BlobOutputBinding.cs" />
