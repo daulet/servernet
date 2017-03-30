@@ -1,0 +1,23 @@
+{
+  "disabled": false,
+  "scriptFile": "Servernet.Samples.SoapEndpointSample.dll",
+  "entryPoint": "Servernet.Samples.SoapEndpointSample.SoapHandler.RunAsync",
+  "bindings": [
+    {
+      "direction": "out",
+      "name": "$return",
+      "type": "http"
+    },
+    {
+      "authLevel": "Anonymous",
+      "direction": "in",
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "name": "request",
+      "route": "ols/olsclient.svc/olsclient",
+      "type": "httpTrigger"
+    }
+  ]
+}
