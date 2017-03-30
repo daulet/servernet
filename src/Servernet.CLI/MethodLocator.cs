@@ -8,10 +8,10 @@ namespace Servernet.CLI
     {
         public Tuple<Type, MethodInfo> Locate(string assemblyPath, string typeName, string methodName)
         {
-            Assembly functionAssembly;
+            Assembly assembly;
             try
             {
-                functionAssembly = Assembly.LoadFrom(assemblyPath);
+                assembly = Assembly.LoadFrom(assemblyPath);
             }
             catch (FileNotFoundException e)
             {
@@ -19,10 +19,10 @@ namespace Servernet.CLI
                     $"Failed to load assembly at location: {assemblyPath}", e);
             }
 
-            Type functionType;
+            Type type;
             try
             {
-                functionType = functionAssembly.GetType(typeName, throwOnError: true, ignoreCase: true);
+                type = assembly.GetType(typeName, throwOnError: true, ignoreCase: true);
             }
             catch (TypeLoadException e)
             {
@@ -30,10 +30,10 @@ namespace Servernet.CLI
                     $"Failed to load type with name: {typeName}", e);
             }
 
-            MethodInfo functionMethod;
+            MethodInfo method;
             try
             {
-                functionMethod = functionType.GetMethod(methodName, BindingFlags.Static | BindingFlags.Public);
+                method = type.GetMethod(methodName, BindingFlags.Static | BindingFlags.Public);
             }
             catch (AmbiguousMatchException e)
             {
@@ -41,13 +41,13 @@ namespace Servernet.CLI
                     $"Failed to find unique method with name: {methodName}", e);
             }
 
-            if (functionMethod == null)
+            if (method == null)
             {
                 throw new ArgumentException(
                     $"Failed to find method with name: {methodName}");
             }
 
-            return new Tuple<Type, MethodInfo>(functionType, functionMethod);
+            return new Tuple<Type, MethodInfo>(type, method);
         }
     }
 }
