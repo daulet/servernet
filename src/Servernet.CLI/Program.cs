@@ -43,60 +43,18 @@ namespace Servernet.CLI
 
             var parser = new AttributeParser();
             var functionBuilder = parser.ParseEntryPoint(functionType, functionMethod);
+            
+            functionBuilder.Validate(_log);
 
             if (string.IsNullOrEmpty(outputDirectory))
             {
                 outputDirectory = functionType.Name;
             }
 
-            functionBuilder.Validate(new ColorfulConsole());
-
-            Directory.CreateDirectory(outputDirectory);
-
-            // @TODO also add project.json and include Servernet as nuget package
-            // https://docs.microsoft.com/en-us/azure/azure-functions/functions-reference-csharp#package-management
-            using (var bindingFile = new StreamWriter($"{outputDirectory}/function.json"))
-            {
-                bindingFile.Write(functionBuilder.ToString());
-            }
-
-            // List of dependencies available to any function and hence should not be part of release
-            // https://docs.microsoft.com/en-us/azure/azure-functions/functions-reference-csharp
-            var excludedAssemblies = new HashSet<string>()
-            {
-                // Microsoft.Azure.WebJobs and its dependencies
-                "Microsoft.Azure.WebJobs.dll",
-                "Microsoft.Azure.WebJobs.Host.dll",
-                "Microsoft.WindowsAzure.Storage.dll",
-                "Newtonsoft.Json.dll",
-                // Microsoft.Azure.WebJobs.Extensions and its dependencies
-                "Microsoft.Azure.WebJobs.Extensions.dll",
-                "Microsoft.Azure.WebJobs.dll",
-                "NCrontab.dll",
-                "System.Threading.Tasks.Dataflow.dll",
-                // Microsoft.WindowsAzure.Storage and its dependencies
-                "Microsoft.WindowsAzure.Storage.dll",
-                "Microsoft.Azure.KeyVault.Core.dll",
-                "Microsoft.Data.Edm.dll",
-                "Microsoft.Data.OData.dll",
-                "Microsoft.Data.Services.Client.dll",
-                "Newtonsoft.Json.dll",
-                "System.Spatial.dll",
-                // Newtonsoft.Json and its dependencies
-                "Newtonsoft.Json.dll",
-            };
-
-            var directory = new FileInfo(functionType.Assembly.Location).Directory;
-            var allReferencedAssemblies = directory.GetFiles();
-            foreach (var referencedAssembly in allReferencedAssemblies)
-            {
-                if (excludedAssemblies.Contains(referencedAssembly.Name))
-                {
-                    // don't copy assemblies that are available to Azure Functions anyway
-                    continue;
-                }
-                File.Copy(referencedAssembly.FullName, Path.Combine(outputDirectory, referencedAssembly.Name), overwrite: true);
-            }
+            var sourceDirectory = new FileInfo(functionType.Assembly.Location).Directory;
+            var targetDirectory = new DirectoryInfo(outputDirectory);
+            var releaseBuilder = new ReleaseBuilder();
+            releaseBuilder.Release(sourceDirectory, targetDirectory, functionBuilder);
         }
     }
 }
