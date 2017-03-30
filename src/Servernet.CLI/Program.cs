@@ -12,30 +12,46 @@ namespace Servernet.CLI
     {
         private static void Main(string[] args)
         {
+            ILogger log = new ColorfulConsole();
             var options = new Options();
 
             if (Parser.Default.ParseArguments(args, options))
             {
-                var assemblyPath = Path.Combine(Environment.CurrentDirectory, options.Assembly);
-
-                ILogger log = new ColorfulConsole();
+                var program = new Program(log, options);
                 try
                 {
-                    LoadFunction(assemblyPath, options.Function, options.OutputDirectory);
+                    program.Run();
                 }
                 catch (ArgumentException e)
                 {
+#if DEBUG
                     log.Error(e.ToString());
+#else
+                    log.Error(e.Message);
+#endif
                 }
             }
             else
             {
-                Console.WriteLine("Invalid parameters");
+                log.Error("Invalid parameters");
             }
         }
 
-        private static void LoadFunction(string assemblyPath, string fullFunctionName, string outputDirectory)
+        private readonly ILogger _log;
+        private readonly Options _options;
+
+        private Program(ILogger log, Options options)
         {
+            _log = log;
+            _options = options;
+        }
+
+        private void Run()
+        {
+            var assemblyPath = Path.Combine(Environment.CurrentDirectory, _options.Assembly);
+            var fullFunctionName = _options.Function;
+            var outputDirectory = _options.OutputDirectory;
+
             if (string.IsNullOrEmpty(fullFunctionName))
             {
                 Console.WriteLine("Function name can't be empty");
