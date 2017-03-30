@@ -36,17 +36,6 @@ namespace Servernet.CLI
 
         private static void LoadFunction(string assemblyPath, string fullFunctionName, string outputDirectory)
         {
-            Assembly functionAssembly;
-            try
-            {
-                functionAssembly = Assembly.LoadFrom(assemblyPath);
-            }
-            catch (FileNotFoundException)
-            {
-                Console.WriteLine($"Failed to load assembly at location: {assemblyPath}");
-                return;
-            }
-
             if (string.IsNullOrEmpty(fullFunctionName))
             {
                 Console.WriteLine("Function name can't be empty");
@@ -60,35 +49,12 @@ namespace Servernet.CLI
                 return;
             }
             var typeName = fullFunctionName.Substring(0, indexOfLastPeriod);
-            var functionName = fullFunctionName.Substring(indexOfLastPeriod + 1);
+            var methodName = fullFunctionName.Substring(indexOfLastPeriod + 1);
 
-            Type functionType;
-            try
-            {
-                functionType = functionAssembly.GetType(typeName, throwOnError: true, ignoreCase: true);
-            }
-            catch (TypeLoadException)
-            {
-                Console.WriteLine($"Failed to load type with name: {typeName}");
-                return;
-            }
-
-            MethodInfo functionMethod;
-            try
-            {
-                functionMethod = functionType.GetMethod(functionName, BindingFlags.Static | BindingFlags.Public);
-            }
-            catch (AmbiguousMatchException)
-            {
-                Console.WriteLine($"Failed to find unique method with name: {functionName}");
-                return;
-            }
-
-            if (functionMethod == null)
-            {
-                Console.WriteLine($"Failed to find method with name: {functionName}");
-                return;
-            }
+            var locator = new FunctionLocator();
+            var locatedMethod = locator.Locate(assemblyPath, typeName, methodName);
+            var functionType = locatedMethod.Item1;
+            var functionMethod = locatedMethod.Item2;
 
             var parser = new AttributeParser();
             var functionBuilder = parser.ParseEntryPoint(functionType, functionMethod);
@@ -135,7 +101,7 @@ namespace Servernet.CLI
                 "Newtonsoft.Json.dll",
             };
 
-            var directory = new FileInfo(functionAssembly.Location).Directory;
+            var directory = new FileInfo(functionType.Assembly.Location).Directory;
             var allReferencedAssemblies = directory.GetFiles();
             foreach (var referencedAssembly in allReferencedAssemblies)
             {
