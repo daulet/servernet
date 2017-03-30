@@ -7,14 +7,14 @@
       "connection": "TransactionPaginationQueueTrigger_trigger_queue_paginationQueueMessage",
       "direction": "in",
       "name": "paginationQueueMessage",
-      "queueName": "transaction_pagination_queue",
+      "queueName": "transaction-pagination-queue",
       "type": "queueTrigger"
     },
     {
       "connection": "TransactionPaginationQueueTrigger_output_queue_paginationQueue",
       "direction": "out",
       "name": "paginationQueue",
-      "queueName": "transaction_pagination_queue",
+      "queueName": "transaction-pagination-queue",
       "type": "queue"
     },
     {
@@ -24,7 +24,7 @@
       "name": "transactionsTable",
       "partitionKey": null,
       "rowKey": null,
-      "tableName": "transaction_table",
+      "tableName": "transactiontable",
       "take": 0,
       "type": "table"
     }

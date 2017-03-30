@@ -8,7 +8,7 @@ namespace Servernet.Samples.MultiTriggerSample.Trigger
     {
         public static void Run(
             [TimerTrigger("0 0 2 * * *")] TimerInfo timer,
-            [Queue("transaction_pagination_queue")] ICollector<TableSegment> paginationQueue)
+            [Queue("transaction-pagination-queue")] ICollector<TableSegment> paginationQueue)
         {
             // queue an empty segment to kick off pagination
             paginationQueue.Add(new TableSegment());

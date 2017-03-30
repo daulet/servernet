@@ -10,9 +10,9 @@ namespace Servernet.Samples.MultiTriggerSample.Trigger
     public class TransactionPaginationQueueTrigger
     {
         public static void Run(
-            [QueueTrigger("transaction_pagination_queue")] TableSegment paginationQueueMessage,
-            [Queue("transaction_pagination_queue")] ICollector<TableSegment> paginationQueue,
-            [Table("transaction_table")] IQueryable<DynamicTableEntity> transactionsTable)
+            [QueueTrigger("transaction-pagination-queue")] TableSegment paginationQueueMessage,
+            [Queue("transaction-pagination-queue")] ICollector<TableSegment> paginationQueue,
+            [Table("transactiontable")] IQueryable<DynamicTableEntity> transactionsTable)
         {
             var paginationFunction = new PaginationFunction(
                 new TableEntityProcessorFunction(
