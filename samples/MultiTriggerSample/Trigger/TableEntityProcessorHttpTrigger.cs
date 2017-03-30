@@ -19,14 +19,14 @@ namespace Servernet.Samples.MultiTriggerSample.Trigger
             string rowKey,
             [Table("transactiontable")] IQueryable<DynamicTableEntity> transactionsTable)
         {
-            var tableEntities = transactionsTable
+            var tableSegment = await transactionsTable
                 .Where(x =>
                     x.PartitionKey == partitionKey &&
                     x.RowKey == rowKey)
                 .AsTableQuery()
-                .Execute();
+                .ExecuteSegmentedAsync(currentToken: null);
 
-            var tableEntity = tableEntities.SingleOrDefault();
+            var tableEntity = tableSegment.Results.SingleOrDefault();
 
             if (tableEntity == null)
             {

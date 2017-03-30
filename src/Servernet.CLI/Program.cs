@@ -8,6 +8,7 @@ namespace Servernet.CLI
     internal partial class Program
     {
         private readonly AttributeParser _attributeParser;
+        private readonly FunctionLocator _functionLocator;
         private readonly ILogger _log;
         private readonly MethodLocator _methodLocator;
         private readonly Options _options;
@@ -15,12 +16,14 @@ namespace Servernet.CLI
 
         private Program(
             AttributeParser attributeParser,
+            FunctionLocator functionLocator,
             ILogger log,
             MethodLocator methodLocator,
             Options options,
             ReleaseBuilder releaseBuilder)
         {
             _attributeParser = attributeParser;
+            _functionLocator = functionLocator;
             _log = log;
             _methodLocator = methodLocator;
             _options = options;
@@ -30,11 +33,12 @@ namespace Servernet.CLI
         private void Run()
         {
             var assemblyPath = Path.Combine(Environment.CurrentDirectory, _options.Assembly);
-            var foundFunctions = new HashSet<Tuple<Type, MethodInfo>>();
 
+            HashSet<Tuple<Type, MethodInfo>> allFunctions;
             if (string.IsNullOrEmpty(_options.Function))
             {
-                // find all [AzureFunction] attributes
+                var foundFunctions = _functionLocator.Locate(assemblyPath);
+                allFunctions = new HashSet<Tuple<Type, MethodInfo>>(foundFunctions);
             }
             else
             {
@@ -52,10 +56,13 @@ namespace Servernet.CLI
                 // Locate a method
 
                 var locatedMethod = _methodLocator.Locate(assemblyPath, typeName, methodName);
-                foundFunctions.Add(locatedMethod);
+                allFunctions = new HashSet<Tuple<Type, MethodInfo>>()
+                {
+                    locatedMethod,
+                };
             }
 
-            foreach (var function in foundFunctions)
+            foreach (var function in allFunctions)
             {
                 var functionType = function.Item1;
                 var functionMethod = function.Item2;
@@ -67,11 +74,8 @@ namespace Servernet.CLI
 
                 // Generate output
 
-                var outputDirectory = string.IsNullOrEmpty(_options.OutputDirectory)
-                    ? functionType.Name
-                    : _options.OutputDirectory;
                 var sourceDirectory = new FileInfo(functionType.Assembly.Location).Directory;
-                var targetDirectory = new DirectoryInfo(outputDirectory);
+                var targetDirectory = new DirectoryInfo(Path.Combine(_options.OutputDirectory?? string.Empty, functionType.Name));
                 _releaseBuilder.Release(sourceDirectory, targetDirectory, functionBuilder);
             }
         }

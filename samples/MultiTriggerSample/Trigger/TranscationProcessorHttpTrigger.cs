@@ -9,7 +9,7 @@ namespace Servernet.Samples.MultiTriggerSample.Trigger
 {
     public class TranscationProcessorHttpTrigger
     {
-        public static async Task<HttpResponseMessage> RunAsync(
+        public static HttpResponseMessage Run(
             [HttpTrigger(HttpMethod.Post, "TranscationProcessorHttpTrigger")] Transaction transaction)
         {
             IFunction<Transaction, bool> transactionFunction = new TransactionProcessorFunction();

@@ -14,6 +14,7 @@ namespace Servernet.CLI
             {
                 var program = new Program(
                     new AttributeParser(),
+                    new FunctionLocator(log),
                     log,
                     new MethodLocator(),
                     options,
