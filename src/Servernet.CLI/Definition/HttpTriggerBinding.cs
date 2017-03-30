@@ -20,6 +20,7 @@ namespace Servernet.CLI.Definition
                 }
             }
             Name = paramName;
+            // /@TODO Enforce: The route template cannot start with a '/' or '~' character and it cannot contain a '?' character.
             Route = attribute.Route;
             Type = "httpTrigger";
         }

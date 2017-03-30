@@ -10,7 +10,7 @@
         "POST"
       ],
       "name": "request",
-      "route": "transaction?source=table",
+      "route": "TableEntityProcessorHttpTrigger",
       "type": "httpTrigger"
     },
     {
@@ -20,7 +20,7 @@
       "name": "transactionsTable",
       "partitionKey": null,
       "rowKey": null,
-      "tableName": "transaction_table",
+      "tableName": "transactiontable",
       "take": 0,
       "type": "table"
     }

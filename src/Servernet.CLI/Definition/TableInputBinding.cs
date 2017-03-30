@@ -12,6 +12,8 @@ namespace Servernet.CLI.Definition
             Name = paramName;
             PartitionKey = attribute.PartitionKey;
             RowKey = attribute.RowKey;
+            // @TODO enforce table name rules:
+            // https://docs.microsoft.com/en-us/rest/api/storageservices/fileservices/Understanding-the-Table-Service-Data-Model
             TableName = attribute.TableName;
             Take = attribute.Take;
             Type = "table";

@@ -15,17 +15,20 @@ namespace Servernet.Samples.MultiTriggerSample.Trigger
     {
         // @TODO IQueryable, needs to provide async equivalent
         public static async Task<HttpResponseMessage> RunAsync(
-            [HttpTrigger(HttpMethod.Post, "transaction?source=table")] HttpRequestMessage request,
-            [Table("transaction_table")] IQueryable<DynamicTableEntity> transactionsTable)
+            [HttpTrigger(HttpMethod.Post, "TableEntityProcessorHttpTrigger")] HttpRequestMessage request,
+            [Table("transactiontable")] IQueryable<DynamicTableEntity> transactionsTable)
         {
             var messageContent = await request.Content.ReadAsStringAsync();
             var entityId = JsonConvert.DeserializeObject<TableEntityId>(messageContent);
 
-            var tableEntity = transactionsTable
-                .AsTableQuery()
-                .SingleOrDefault(x =>
+            var tableEntities = transactionsTable
+                .Where(x =>
                     x.PartitionKey == entityId.PartitionKey &&
-                    x.RowKey == entityId.RowKey);
+                    x.RowKey == entityId.RowKey)
+                .AsTableQuery()
+                .Execute();
+
+            var tableEntity = tableEntities.SingleOrDefault();
 
             if (tableEntity == null)
             {
