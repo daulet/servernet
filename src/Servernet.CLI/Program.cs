@@ -69,7 +69,7 @@ namespace Servernet.CLI
                 var functionType = function.Item1;
                 var functionMethod = function.Item2;
 
-                _log.Info($"Generating {functionType.FullName}.{functionMethod.Name}");
+                _log.Info($"Parsing {functionType.FullName}.{functionMethod.Name}");
 
                 // Generate bindings
                 var functionDefinition = _attributeParser.ParseEntryPoint(functionType, functionMethod);
@@ -87,7 +87,7 @@ namespace Servernet.CLI
 
                 // Generate output
                 var sourceDirectory = new FileInfo(functionType.Assembly.Location).Directory;
-                var targetDirectory = new DirectoryInfo(Path.Combine(_options.OutputDirectory?? string.Empty, functionType.Name));
+                var targetDirectory = new DirectoryInfo(Path.Combine(_options.OutputDirectory?? string.Empty, functionDefinition.Name));
                 _releaseBuilder.Release(sourceDirectory, targetDirectory, functionDefinition);
             }
         }

@@ -31,7 +31,7 @@ namespace Servernet.CLI
             var foundTypes = assembly.GetTypes();
             foreach (var type in foundTypes)
             {
-                var attribute = type.GetCustomAttribute<AzureFunctionAttribute>();
+                var attribute = type.GetCustomAttribute<AzureFunctionAttribute>(inherit: false);
                 if (attribute != null)
                 {
                     MethodInfo method;

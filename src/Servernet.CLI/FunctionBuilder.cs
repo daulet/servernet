@@ -25,9 +25,17 @@ namespace Servernet.CLI
             {
                 Bindings = new List<IBinding>(),
                 Disabled = false,
+                Name = functionType.Name,
                 EntryPoint = $"{functionType.FullName}.{functionMethod.Name}",
                 ScriptFile = $"{Path.GetFileName(functionType.Assembly.Location)}",
             };
+
+            var attribute = functionType.GetCustomAttribute<AzureFunctionAttribute>(inherit: false);
+            if (attribute != null)
+            {
+                _function.Disabled = attribute.Disabled;
+                _function.Name = attribute.Name?? functionType.Name;
+            }
 
             _methodAttributeSwitch = new TypeSwitch<MethodInfo>()
                 .Case((MethodInfo method, HttpResponseAttribute x) => { _function.Bindings.Add(new HttpOutputBinding("$return")); });

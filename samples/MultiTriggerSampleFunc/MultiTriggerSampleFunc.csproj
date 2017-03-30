@@ -53,14 +53,14 @@
     <Content Include="appsettings.json" />
     <Content Include="host.json" />
     <Content Include="project.json" />
-    <Content Include="TransactionPaginationHttpTrigger\Servernet.dll" />
-    <Content Include="TransactionPaginationHttpTrigger\Servernet.Samples.MultiTriggerSample.dll" />
     <Content Include="TransactionPaginationQueueTrigger\Servernet.dll" />
     <Content Include="TransactionPaginationQueueTrigger\Servernet.Samples.MultiTriggerSample.dll" />
     <Content Include="TransactionPaginationTimerTrigger\Servernet.dll" />
     <Content Include="TransactionPaginationTimerTrigger\Servernet.Samples.MultiTriggerSample.dll" />
     <Content Include="TranscationProcessorHttpTrigger\Servernet.dll" />
     <Content Include="TranscationProcessorHttpTrigger\Servernet.Samples.MultiTriggerSample.dll" />
+    <Content Include="TriggerProcessingTransactionTable\Servernet.dll" />
+    <Content Include="TriggerProcessingTransactionTable\Servernet.Samples.MultiTriggerSample.dll" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="TableEntityProcessorHttpTrigger\function.json" />
@@ -69,10 +69,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="web.config" />
-    <Content Include="TransactionPaginationHttpTrigger\function.json" />
     <Content Include="TranscationProcessorHttpTrigger\function.json" />
     <Content Include="TransactionPaginationTimerTrigger\function.json" />
     <Content Include="TransactionPaginationQueueTrigger\function.json" />
+    <Content Include="TriggerProcessingTransactionTable\function.json" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>

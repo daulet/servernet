@@ -3,7 +3,7 @@ using Servernet.Samples.MultiTriggerSample.Model;
 
 namespace Servernet.Samples.MultiTriggerSample.Trigger
 {
-    [AzureFunction]
+    [AzureFunction(Disabled = true)]
     public class TransactionPaginationTimerTrigger
     {
         public static void Run(

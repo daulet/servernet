@@ -1,5 +1,5 @@
 {
-  "disabled": false,
+  "disabled": true,
   "scriptFile": "Servernet.Samples.MultiTriggerSample.dll",
   "entryPoint": "Servernet.Samples.MultiTriggerSample.Trigger.TransactionPaginationTimerTrigger.Run",
   "bindings": [
