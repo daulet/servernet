@@ -50,8 +50,7 @@ namespace Servernet.CLI
                 var indexOfLastPeriod = fullFunctionName.LastIndexOf(".", StringComparison.OrdinalIgnoreCase);
                 if (indexOfLastPeriod <= 0)
                 {
-                    Console.WriteLine($"Invalid fully qualified method name: {fullFunctionName}");
-                    return;
+                    throw new ArgumentException($"Invalid fully qualified method name: {fullFunctionName}");
                 }
                 var typeName = fullFunctionName.Substring(0, indexOfLastPeriod);
                 var methodName = fullFunctionName.Substring(indexOfLastPeriod + 1);
