@@ -12,7 +12,6 @@ namespace Servernet.Samples.MultiTriggerSample.Trigger
     [AzureFunction]
     public class TableEntityProcessorHttpTrigger
     {
-        // @TODO IQueryable, needs to provide async equivalent
         public static async Task<HttpResponseMessage> RunAsync(
             [HttpTrigger(HttpMethod.Post, "TableEntityProcessorHttpTrigger/{partitionKey}/{rowKey}")] HttpRequestMessage request,
             string partitionKey,

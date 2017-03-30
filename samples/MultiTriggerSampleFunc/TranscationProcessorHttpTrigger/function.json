@@ -1,0 +1,17 @@
+{
+  "disabled": false,
+  "scriptFile": "Servernet.Samples.MultiTriggerSample.dll",
+  "entryPoint": "Servernet.Samples.MultiTriggerSample.Trigger.TranscationProcessorHttpTrigger.Run",
+  "bindings": [
+    {
+      "authLevel": "Anonymous",
+      "direction": "in",
+      "methods": [
+        "POST"
+      ],
+      "name": "transaction",
+      "route": "TranscationProcessorHttpTrigger",
+      "type": "httpTrigger"
+    }
+  ]
+}

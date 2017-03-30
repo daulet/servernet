@@ -1,11 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
+using Servernet.CLI.Definition;
 
 namespace Servernet.CLI
 {
     internal class ReleaseBuilder
     {
-        public void Release(DirectoryInfo sourceDirectory, DirectoryInfo targetDirectory, FunctionBuilder functionBuilder)
+        public void Release(DirectoryInfo sourceDirectory, DirectoryInfo targetDirectory, Function function)
         {
             Directory.CreateDirectory(targetDirectory.FullName);
 
@@ -13,7 +16,13 @@ namespace Servernet.CLI
             // https://docs.microsoft.com/en-us/azure/azure-functions/functions-reference-csharp#package-management
             using (var bindingFile = new StreamWriter($"{targetDirectory.FullName}/function.json"))
             {
-                bindingFile.Write(functionBuilder.ToString());
+                bindingFile.Write(
+                    JsonConvert.SerializeObject(function,
+                        Formatting.Indented,
+                        new JsonSerializerSettings
+                        {
+                            ContractResolver = new CamelCasePropertyNamesContractResolver(),
+                        }));
             }
             
             var allReferencedAssemblies = sourceDirectory.GetFiles();

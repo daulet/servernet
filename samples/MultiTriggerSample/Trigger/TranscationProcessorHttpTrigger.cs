@@ -1,12 +1,11 @@
 ﻿using System.Net;
 using System.Net.Http;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
 using Servernet.Samples.MultiTriggerSample.Function;
 using Servernet.Samples.MultiTriggerSample.Model;
 
 namespace Servernet.Samples.MultiTriggerSample.Trigger
 {
+    [AzureFunction]
     public class TranscationProcessorHttpTrigger
     {
         public static HttpResponseMessage Run(

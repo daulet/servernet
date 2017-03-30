@@ -9,6 +9,7 @@ namespace Servernet.CLI
     {
         private readonly AttributeParser _attributeParser;
         private readonly FunctionLocator _functionLocator;
+        private readonly FunctionValidator _functionValidator;
         private readonly ILogger _log;
         private readonly MethodLocator _methodLocator;
         private readonly Options _options;
@@ -17,6 +18,7 @@ namespace Servernet.CLI
         private Program(
             AttributeParser attributeParser,
             FunctionLocator functionLocator,
+            FunctionValidator functionValidator,
             ILogger log,
             MethodLocator methodLocator,
             Options options,
@@ -24,6 +26,7 @@ namespace Servernet.CLI
         {
             _attributeParser = attributeParser;
             _functionLocator = functionLocator;
+            _functionValidator = functionValidator;
             _log = log;
             _methodLocator = methodLocator;
             _options = options;
@@ -68,15 +71,23 @@ namespace Servernet.CLI
                 var functionMethod = function.Item2;
 
                 // Generate bindings
+                var functionDefinition = _attributeParser.ParseEntryPoint(functionType, functionMethod);
 
-                var functionBuilder = _attributeParser.ParseEntryPoint(functionType, functionMethod);
-                functionBuilder.Validate(_log);
+                // Validate function
+                try
+                {
+                    _functionValidator.Validate(functionDefinition);
+                }
+                catch (FunctionValidationException e)
+                {
+                    _log.Error($"{functionDefinition.EntryPoint} failed validation: {e.Message}");
+                    continue;
+                }
 
                 // Generate output
-
                 var sourceDirectory = new FileInfo(functionType.Assembly.Location).Directory;
                 var targetDirectory = new DirectoryInfo(Path.Combine(_options.OutputDirectory?? string.Empty, functionType.Name));
-                _releaseBuilder.Release(sourceDirectory, targetDirectory, functionBuilder);
+                _releaseBuilder.Release(sourceDirectory, targetDirectory, functionDefinition);
             }
         }
     }

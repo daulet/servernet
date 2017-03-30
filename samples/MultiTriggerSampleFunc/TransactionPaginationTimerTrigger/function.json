@@ -1,0 +1,14 @@
+{
+  "disabled": false,
+  "scriptFile": "Servernet.Samples.MultiTriggerSample.dll",
+  "entryPoint": "Servernet.Samples.MultiTriggerSample.Trigger.TransactionPaginationTimerTrigger.Run",
+  "bindings": [
+    {
+      "connection": "TransactionPaginationTimerTrigger_output_queue_paginationQueue",
+      "direction": "out",
+      "name": "paginationQueue",
+      "queueName": "transaction_pagination_queue",
+      "type": "queue"
+    }
+  ]
+}

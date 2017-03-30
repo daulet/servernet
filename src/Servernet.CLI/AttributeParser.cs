@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using Servernet.CLI.Definition;
 
 namespace Servernet.CLI
 {
     internal class AttributeParser
     {
-        public FunctionBuilder ParseEntryPoint(Type functionType, MethodInfo functionMethod)
+        public Function ParseEntryPoint(Type functionType, MethodInfo functionMethod)
         {
             ParameterInfo[] parameters;
             try
@@ -44,7 +45,7 @@ namespace Servernet.CLI
                 }
             }
 
-            return functionBuilder;
+            return functionBuilder.ToFunction();
         }
     }
 }

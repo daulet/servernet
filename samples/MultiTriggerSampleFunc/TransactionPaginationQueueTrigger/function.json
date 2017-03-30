@@ -1,0 +1,32 @@
+{
+  "disabled": false,
+  "scriptFile": "Servernet.Samples.MultiTriggerSample.dll",
+  "entryPoint": "Servernet.Samples.MultiTriggerSample.Trigger.TransactionPaginationQueueTrigger.Run",
+  "bindings": [
+    {
+      "connection": "TransactionPaginationQueueTrigger_trigger_queue_paginationQueueMessage",
+      "direction": "in",
+      "name": "paginationQueueMessage",
+      "queueName": "transaction_pagination_queue",
+      "type": "queueTrigger"
+    },
+    {
+      "connection": "TransactionPaginationQueueTrigger_output_queue_paginationQueue",
+      "direction": "out",
+      "name": "paginationQueue",
+      "queueName": "transaction_pagination_queue",
+      "type": "queue"
+    },
+    {
+      "connection": "TransactionPaginationQueueTrigger_input_table_transactionsTable",
+      "direction": "in",
+      "filter": null,
+      "name": "transactionsTable",
+      "partitionKey": null,
+      "rowKey": null,
+      "tableName": "transaction_table",
+      "take": 0,
+      "type": "table"
+    }
+  ]
+}

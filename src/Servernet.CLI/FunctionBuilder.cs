@@ -72,36 +72,9 @@ namespace Servernet.CLI
             _typeSwitch.Switch(parameter, attribute);
         }
 
-        public void Validate(ILogger log)
+        public Function ToFunction()
         {
-            if (_function.Bindings.OfType<HttpTriggerBinding>().Any())
-            {
-                if (!_function.Bindings.OfType<HttpOutputBinding>().Any())
-                {
-                    log.Warning(
-                        "If an HTTP output binding is not provided, " +
-                        "an HTTP trigger will return HTTP 200 OK with an empty body.");
-                }
-            }
-
-            if (_function.Bindings.OfType<HttpOutputBinding>().Any())
-            {
-                if (!_function.Bindings.OfType<HttpTriggerBinding>().Any())
-                {
-                    log.Error("HttpOutput attribute requires an HTTP trigger " + 
-                        "and allows you to customize the response associated with the trigger's request");
-                }
-            }
-        }
-
-        public override string ToString()
-        {
-            return JsonConvert.SerializeObject(_function,
-                Formatting.Indented,
-                new JsonSerializerSettings
-                {
-                    ContractResolver = new CamelCasePropertyNamesContractResolver(),
-                });
+            return _function;
         }
     }
 }

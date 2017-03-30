@@ -51,6 +51,8 @@
     <Compile Include="FunctionBuilder.cs" />
     <Compile Include="AttributeParser.cs" />
     <Compile Include="FunctionLocator.cs" />
+    <Compile Include="FunctionValidationException.cs" />
+    <Compile Include="FunctionValidator.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="MethodLocator.cs" />
     <Compile Include="ILogger.cs" />
