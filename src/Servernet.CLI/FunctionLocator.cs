@@ -28,7 +28,17 @@ namespace Servernet.CLI
                     $"Failed to load assembly at location: {assemblyPath}", e);
             }
 
-            var foundTypes = assembly.GetTypes();
+            Type[] foundTypes;
+            try
+            {
+                foundTypes = assembly.GetTypes();
+            }
+            catch (ReflectionTypeLoadException e)
+            {
+                throw new ArgumentException(
+                    $"Failed to load types of assembly {assembly.FullName}", e);
+            }
+            
             foreach (var type in foundTypes)
             {
                 var attribute = type.GetCustomAttribute<AzureFunctionAttribute>(inherit: false);
