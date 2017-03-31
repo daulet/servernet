@@ -26,11 +26,8 @@ namespace Servernet.CLI
                 }
                 catch (ArgumentException e)
                 {
-#if DEBUG
-                    log.Error(e.ToString());
-#else
                     log.Error(e.Message);
-#endif
+                    log.Verbose($"Exception: {e.ToString()}");
                 }
             }
             else

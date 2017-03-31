@@ -6,12 +6,7 @@ namespace Servernet.CLI
     {
         public void Error(string message)
         {
-            var currentColor = Console.ForegroundColor;
-            Console.ForegroundColor = ConsoleColor.Red;
-
-            Console.WriteLine(message);
-
-            Console.ForegroundColor = currentColor;
+            WriteWithForeground(message, ConsoleColor.Red);
         }
 
         public void Info(string message)
@@ -19,10 +14,22 @@ namespace Servernet.CLI
             Console.WriteLine(message);
         }
 
+        public void Verbose(string message)
+        {
+#if DEBUG
+            WriteWithForeground(message, ConsoleColor.DarkGray);
+#endif
+        }
+
         public void Warning(string message)
         {
+            WriteWithForeground(message, ConsoleColor.Yellow);
+        }
+
+        private void WriteWithForeground(string message, ConsoleColor foregroundColor)
+        {
             var currentColor = Console.ForegroundColor;
-            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.ForegroundColor = foregroundColor;
 
             Console.WriteLine(message);
 
