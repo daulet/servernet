@@ -1,7 +1,8 @@
 ﻿{
   "dependencies": {
     "Microsoft.Azure.WebJobs": "2.0.0",
-    "Microsoft.AspNet.WebApi.Core":  "5.2.3" 
+    "Microsoft.Azure.WebJobs.Extensions": "2.0.0",
+    "Microsoft.AspNet.WebApi.Core": "5.2.3"
   },
   "frameworks": {
     "net452": {}
