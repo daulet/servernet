@@ -6,7 +6,7 @@ namespace Servernet.Samples.DocumentationSamples
     [AzureFunction]
     public class WebHookTriggerFunction
     {
-        [HttpResponse]
+        [HttpOutput]
         public static HttpResponseMessage Run(
             [WebHookTrigger("products/{category:alpha}/{id:int?}", WebhookType.GenericJson)] HttpRequestMessage request,
             string category,

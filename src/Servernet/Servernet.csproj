@@ -37,7 +37,7 @@
     <Compile Include="AzureFunctionAttribute.cs" />
     <Compile Include="HttpAuthLevel.cs" />
     <Compile Include="HttpMethod.cs" />
-    <Compile Include="HttpResponseAttribute.cs" />
+    <Compile Include="HttpOutputAttribute.cs" />
     <Compile Include="HttpTriggerAttribute.cs" />
     <Compile Include="IFunction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
