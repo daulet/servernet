@@ -15,9 +15,9 @@ Decorate your entry method parameter with [HttpTrigger] attribute ([sample](./sa
 * [HttpRequestMessage](https://msdn.microsoft.com/en-us/library/system.net.http.httprequestmessage(v=vs.118).aspx);
 * Custom type, request body will be deserialized from JSON into your object;
 
-### Webhook Trigger
+### WebHook Trigger
 
-Decorate your entry method parameter with [WebHookTrigger] attribute.
+Decorate your entry method parameter with [WebHookTrigger] attribute ([sample](./samples/DocumentationSamples/WebHookTriggerFunction.cs)). Works with the same parameter types as [HTTP Trigger](#http-trigger).
 
 ### HTTP Output
 
