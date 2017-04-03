@@ -1,7 +1,7 @@
 # ServerNET
 *Azure Functions made easy.*
 
-![Code + Events](./docs/code+events.jpg)
+![Code + Events](./docs/code%2Bevents.jpg)
 
 Azure Functions provides binding of your code to various events/triggers. What ServerNET provides is letting you to focus on your code and generate valid Azure Functions package, including boilerplate like *function.json* with trigger/input/output bindings and release layout of the Azure Function. ServerNET also limits you to things that are supported by Azure Functions, e.g. according to [Azure Function guidelines](https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-http-webhook#httptrigger) when you want to setup a webhook trigger you can't use *methods* property that you'd normally use for HTTP trigger. ServerNET provides strongly typed parameterization of your triggers, input and output parameters. What can't be enforced in design time (i.e. at compile time) is enforced at generation time (using ServerNET CLI), before you deploy to Azure, which means if there is any problem with your function definition you'll find out as soon as possible.
 
