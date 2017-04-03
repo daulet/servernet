@@ -20,5 +20,5 @@ Decorate your entry method parameter with [WebhookTrigger] attribute.
 
 ### HTTP Output
 
-Decoreate your entry method (not parameter) with [HttpResponse] attribute ([sample](./samples/MultiTriggerSample/Trigger/TableEntityProcessorHttpTrigger.cs)). Using out HttpResponseMessage parameter is bad practice, hence only return parameter is supported (including async option with Task<HttpResponseMessage>). Here is a list of parameter types that are supported with [HttpResponse] attribute:
-* [HttpResponseMessage](https://msdn.microsoft.com/en-us/library/system.net.http.httpresponsemessage(v=vs.118).aspx), including async equivalent Task<HttpResponseMessage>;
+Decoreate your entry method (not parameter) with [HttpResponse] attribute ([sample](./samples/MultiTriggerSample/Trigger/TableEntityProcessorHttpTrigger.cs)). Using out HttpResponseMessage parameter is bad practice, hence only return parameter is supported (including async option with Task\<HttpResponseMessage\>). Here is a list of parameter types that are supported with [HttpResponse] attribute:
+* [HttpResponseMessage](https://msdn.microsoft.com/en-us/library/system.net.http.httpresponsemessage(v=vs.118).aspx), including async equivalent Task\<HttpResponseMessage\>;
