@@ -12,10 +12,11 @@ namespace Servernet.Samples.DocumentationSamples
     {
         [HttpOutput]
         public static async Task<HttpResponseMessage> Run(
-               [HttpTrigger(HttpMethod.Get, "HttpOutputFunction")] HttpRequestMessage req,
+               [HttpTrigger(HttpMethod.Get, "HttpOutputFunction/{subPath:alpha}")] HttpRequestMessage req,
+               string subPath,
                TraceWriter log)
         {
-            log.Info($"C# HTTP trigger function processed a request. RequestUri={req.RequestUri}");
+            log.Info($"C# HTTP trigger function processed a request. RequestUri={req.RequestUri}, subPath={subPath}");
 
             // parse query parameter
             var name = req.GetQueryNameValuePairs()

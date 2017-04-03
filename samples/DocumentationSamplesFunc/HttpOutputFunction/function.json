@@ -15,7 +15,7 @@
         "GET"
       ],
       "name": "req",
-      "route": "HttpOutputFunction",
+      "route": "HttpOutputFunction/{subPath:alpha}",
       "type": "httpTrigger"
     }
   ]

@@ -7,11 +7,11 @@ Azure Functions provides binding of your code to various events/triggers. What S
 
 ## Azure Functions HTTP and webhook bindings
 
-This library supports all the same parameter types as Azure Function as documented [here](https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-http-webhook). The only exception to supported parameters are ones that are bad practice, e.g. out HttpResponseMessage parameter. For complete example that uses HTTP request and response see [TableEntityProcessorHttpTrigger](./samples/MultiTriggerSample/Trigger/TableEntityProcessorHttpTrigger.cs).
+This library supports all the same HTTP and WebHook parameter types as Azure Function, which is documented [here](https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-http-webhook). The only exception to supported parameters are ones that are bad practice, e.g. out HttpResponseMessage parameter. For complete example that uses HTTP request and response see [HttpOutputFunction](./samples/DocumentationSamples/HttpOutputFunction.cs).
 
 ### HTTP Trigger
 
-Decorate your entry method parameter with [HttpTrigger] attribute ([sample](./samples/MultiTriggerSample/Trigger/TableEntityProcessorHttpTrigger.cs)). Here is a list of parameter types that are supported with [HttpTrigger] attribute:
+Decorate your entry method parameter with [HttpTrigger] attribute ([sample](./samples/DocumentationSamples/HttpTriggerFunction.cs)). Here is a list of parameter types that are supported with [HttpTrigger] attribute:
 * [HttpRequestMessage](https://msdn.microsoft.com/en-us/library/system.net.http.httprequestmessage(v=vs.118).aspx);
 * Custom type, request body will be deserialized from JSON into your object;
 
@@ -21,5 +21,5 @@ Decorate your entry method parameter with [WebHookTrigger] attribute ([sample](.
 
 ### HTTP Output
 
-Decoreate your entry method (not parameter) with [HttpResponse] attribute ([sample](./samples/MultiTriggerSample/Trigger/TableEntityProcessorHttpTrigger.cs)). Using out HttpResponseMessage parameter is bad practice, hence only return parameter is supported (including async option with Task\<HttpResponseMessage\>). Here is a list of parameter types that are supported with [HttpResponse] attribute:
+Decoreate your entry method (not parameter) with [HttpOutput] attribute ([sample](./samples/DocumentationSamples/HttpOutputFunction.cs)). Using *out HttpResponseMessage* parameter is bad practice, hence only return parameter is supported (including async option with Task\<HttpResponseMessage\>). Here is a list of parameter types that are supported with [HttpResponse] attribute:
 * [HttpResponseMessage](https://msdn.microsoft.com/en-us/library/system.net.http.httpresponsemessage(v=vs.118).aspx), including async equivalent Task\<HttpResponseMessage\>;
