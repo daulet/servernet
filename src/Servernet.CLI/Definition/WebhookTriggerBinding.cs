@@ -6,7 +6,7 @@ namespace Servernet.CLI.Definition
 {
     public class WebHookTriggerBinding : IBinding
     {
-        internal WebHookTriggerBinding(ParameterInfo parameter, WebhookTriggerAttribute attribute)
+        internal WebHookTriggerBinding(ParameterInfo parameter, WebHookTriggerAttribute attribute)
         {
             AuthLevel = attribute.AuthLevel;
             Name = parameter.Name;

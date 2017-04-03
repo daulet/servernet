@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26228.9
+VisualStudioVersion = 15.0.26228.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{90EC7C49-1AA8-4FC1-80B9-5EDE797B6E38}"
 EndProject
@@ -26,6 +26,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoapEndpointSampleFunc", "samples\SoapEndpointSampleFunc\SoapEndpointSampleFunc.csproj", "{09DC028C-3A27-4369-BAF9-0441506D9430}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocumentationSamples", "samples\DocumentationSamples\DocumentationSamples.csproj", "{9DAABDC1-1194-41A8-A61D-FDC6598EDAE8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocumentationSamplesFunc", "samples\DocumentationSamplesFunc\DocumentationSamplesFunc.csproj", "{A2DE5F58-44A4-4F5C-BB31-6DE3109BC0AD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -77,6 +79,10 @@ Global
 		{9DAABDC1-1194-41A8-A61D-FDC6598EDAE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9DAABDC1-1194-41A8-A61D-FDC6598EDAE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9DAABDC1-1194-41A8-A61D-FDC6598EDAE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2DE5F58-44A4-4F5C-BB31-6DE3109BC0AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2DE5F58-44A4-4F5C-BB31-6DE3109BC0AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2DE5F58-44A4-4F5C-BB31-6DE3109BC0AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2DE5F58-44A4-4F5C-BB31-6DE3109BC0AD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -91,5 +97,6 @@ Global
 		{2C195CB3-AF7F-4D57-9190-1DB5BE871C76} = {90EC7C49-1AA8-4FC1-80B9-5EDE797B6E38}
 		{09DC028C-3A27-4369-BAF9-0441506D9430} = {90EC7C49-1AA8-4FC1-80B9-5EDE797B6E38}
 		{9DAABDC1-1194-41A8-A61D-FDC6598EDAE8} = {90EC7C49-1AA8-4FC1-80B9-5EDE797B6E38}
+		{A2DE5F58-44A4-4F5C-BB31-6DE3109BC0AD} = {90EC7C49-1AA8-4FC1-80B9-5EDE797B6E38}
 	EndGlobalSection
 EndGlobal

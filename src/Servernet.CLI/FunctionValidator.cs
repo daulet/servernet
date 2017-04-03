@@ -26,7 +26,7 @@ namespace Servernet.CLI
                 throw new FunctionValidationException($"{function.EntryPoint} must have exactly one trigger binding");
             }
 
-            if (function.Bindings.OfType<HttpTriggerBinding>().Any())
+            if (function.Bindings.Any(x => x.Type == BindingType.HttpTrigger))
             {
                 if (!function.Bindings.OfType<HttpOutputBinding>().Any())
                 {
@@ -38,9 +38,10 @@ namespace Servernet.CLI
 
             if (function.Bindings.OfType<HttpOutputBinding>().Any())
             {
-                if (!function.Bindings.OfType<HttpTriggerBinding>().Any())
+                if (function.Bindings.All(x => x.Type != BindingType.HttpTrigger))
                 {
-                    _log.Error("HttpOutput attribute requires an HTTP trigger " +
+                    _log.Error(
+                        "HttpOutput attribute requires an HTTP trigger or WebHook Trigger" +
                         "and allows you to customize the response associated with the trigger's request");
                 }
             }

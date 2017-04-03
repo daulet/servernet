@@ -8,7 +8,7 @@ namespace Servernet.Samples.DocumentationSamples
     {
         [HttpResponse]
         public static HttpResponseMessage Run(
-            [WebhookTrigger("products/{category:alpha}/{id:int?}", WebhookType.GenericJson)] HttpRequestMessage request,
+            [WebHookTrigger("products/{category:alpha}/{id:int?}", WebhookType.GenericJson)] HttpRequestMessage request,
             string category,
             int? id)
         {
