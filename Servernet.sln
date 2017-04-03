@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoapEndpointSample", "sampl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoapEndpointSampleFunc", "samples\SoapEndpointSampleFunc\SoapEndpointSampleFunc.csproj", "{09DC028C-3A27-4369-BAF9-0441506D9430}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocumentationSamples", "samples\DocumentationSamples\DocumentationSamples.csproj", "{9DAABDC1-1194-41A8-A61D-FDC6598EDAE8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -71,6 +73,10 @@ Global
 		{09DC028C-3A27-4369-BAF9-0441506D9430}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{09DC028C-3A27-4369-BAF9-0441506D9430}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{09DC028C-3A27-4369-BAF9-0441506D9430}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DAABDC1-1194-41A8-A61D-FDC6598EDAE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DAABDC1-1194-41A8-A61D-FDC6598EDAE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DAABDC1-1194-41A8-A61D-FDC6598EDAE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DAABDC1-1194-41A8-A61D-FDC6598EDAE8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -84,5 +90,6 @@ Global
 		{CB477302-CED5-414A-8E51-911469278011} = {90EC7C49-1AA8-4FC1-80B9-5EDE797B6E38}
 		{2C195CB3-AF7F-4D57-9190-1DB5BE871C76} = {90EC7C49-1AA8-4FC1-80B9-5EDE797B6E38}
 		{09DC028C-3A27-4369-BAF9-0441506D9430} = {90EC7C49-1AA8-4FC1-80B9-5EDE797B6E38}
+		{9DAABDC1-1194-41A8-A61D-FDC6598EDAE8} = {90EC7C49-1AA8-4FC1-80B9-5EDE797B6E38}
 	EndGlobalSection
 EndGlobal
