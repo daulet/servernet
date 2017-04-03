@@ -55,11 +55,11 @@
   <ItemGroup>
     <Content Include="appsettings.json" />
     <Content Include="host.json" />
-    <Content Include="WebhookTriggerFunction\function.json" />
+    <Content Include="WebHookTriggerFunction\function.json" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="WebhookTriggerFunction\Servernet.dll" />
-    <Content Include="WebhookTriggerFunction\Servernet.Samples.DocumentationSamples.dll" />
+    <Content Include="WebHookTriggerFunction\Servernet.dll" />
+    <Content Include="WebHookTriggerFunction\Servernet.Samples.DocumentationSamples.dll" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="web.config" />

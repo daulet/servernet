@@ -4,7 +4,7 @@ using System.Net.Http;
 namespace Servernet.Samples.DocumentationSamples
 {
     [AzureFunction]
-    public class WebhookTriggerFunction
+    public class WebHookTriggerFunction
     {
         [HttpResponse]
         public static HttpResponseMessage Run(
