@@ -62,6 +62,15 @@ namespace Servernet.CLI
             "System.Spatial.dll",
             // Newtonsoft.Json and its dependencies
             "Newtonsoft.Json.dll",
+            // The following assemblies are automatically added by the Azure Functions hosting environment
+            // (https://docs.microsoft.com/en-us/azure/azure-functions/functions-reference-csharp#referencing-external-assemblies):
+            "mscorlib.dll",
+            "System.dll",
+            "System.Core.dll",
+            "System.Xml.dll",
+            "System.Net.Http",
+            "System.Net.Http.Formatting.dll",
+            "System.Web.Http.dll",
         };
     }
 }

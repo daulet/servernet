@@ -1,0 +1,17 @@
+{
+  "disabled": false,
+  "scriptFile": "Servernet.Samples.DocumentationSamples.dll",
+  "entryPoint": "Servernet.Samples.DocumentationSamples.HttpTriggerFunction.Run",
+  "bindings": [
+    {
+      "authLevel": "Anonymous",
+      "direction": "in",
+      "methods": [
+        "GET"
+      ],
+      "name": "req",
+      "route": "HttpTriggerFunction",
+      "type": "httpTrigger"
+    }
+  ]
+}

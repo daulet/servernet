@@ -7,7 +7,7 @@ namespace Servernet.Samples.SoapEndpointSample
     [AzureFunction]
     public class SoapHandler
     {
-        [HttpResponse]
+        [HttpOutput]
         public static async Task<HttpResponseMessage> RunAsync(
             [HttpTrigger(HttpMethod.Get | HttpMethod.Post, "ols/olsclient.svc/olsclient")] HttpRequestMessage request,
             TraceWriter logger)

@@ -1,0 +1,22 @@
+{
+  "disabled": false,
+  "scriptFile": "Servernet.Samples.DocumentationSamples.dll",
+  "entryPoint": "Servernet.Samples.DocumentationSamples.HttpOutputFunction.Run",
+  "bindings": [
+    {
+      "direction": "out",
+      "name": "$return",
+      "type": "http"
+    },
+    {
+      "authLevel": "Anonymous",
+      "direction": "in",
+      "methods": [
+        "GET"
+      ],
+      "name": "req",
+      "route": "HttpOutputFunction/{subPath:alpha}",
+      "type": "httpTrigger"
+    }
+  ]
+}

@@ -38,7 +38,7 @@ namespace Servernet.CLI
             }
 
             _methodAttributeSwitch = new TypeSwitch<MethodInfo>()
-                .Case((MethodInfo method, HttpResponseAttribute x) => { _function.Bindings.Add(new HttpOutputBinding("$return")); });
+                .Case((MethodInfo method, HttpOutputAttribute x) => { _function.Bindings.Add(new HttpOutputBinding("$return")); });
 
             _parameterAttributeSwitch = new TypeSwitch<ParameterInfo>()
                 .Case((ParameterInfo parameter, BlobAttribute x) =>
@@ -77,7 +77,8 @@ namespace Servernet.CLI
                     }
                     _function.Bindings.Add(binding);
                 })
-                .Case((ParameterInfo parameter, TimerTriggerAttribute x) => { _function.Bindings.Add(new TimerTriggerBinding(parameter.Name, x)); });
+                .Case((ParameterInfo parameter, TimerTriggerAttribute x) => { _function.Bindings.Add(new TimerTriggerBinding(parameter.Name, x)); })
+                .Case((ParameterInfo parameter, WebHookTriggerAttribute x) => { _function.Bindings.Add(new WebHookTriggerBinding(parameter, x)); });
         }
 
         public void AddBinding(MethodInfo method, object attribute)
