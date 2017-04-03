@@ -44,6 +44,8 @@
     <Compile Include="Certificate.cs" />
     <Compile Include="SecretAttribute.cs" />
     <Compile Include="SecureString.cs" />
+    <Compile Include="WebhookTrigger.cs" />
+    <Compile Include="WebhookType.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="project.json" />
