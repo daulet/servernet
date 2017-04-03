@@ -1,7 +1,7 @@
 {
   "disabled": false,
   "scriptFile": "Servernet.Samples.DocumentationSamples.dll",
-  "entryPoint": "Servernet.Samples.DocumentationSamples.WebhookTriggerFunction.Run",
+  "entryPoint": "Servernet.Samples.DocumentationSamples.WebHookTriggerFunction.Run",
   "bindings": [
     {
       "direction": "out",
