@@ -3,9 +3,9 @@
 namespace Servernet
 {
     [AttributeUsage(AttributeTargets.Parameter)]
-    public sealed class WebhookTrigger : Attribute
+    public sealed class WebHookTriggerAttribute : Attribute
     {
-        public WebhookTrigger(string route, WebhookType type)
+        public WebHookTriggerAttribute(string route, WebhookType type)
         {
             Route = route;
             Type = type;

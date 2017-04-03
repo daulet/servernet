@@ -77,7 +77,8 @@ namespace Servernet.CLI
                     }
                     _function.Bindings.Add(binding);
                 })
-                .Case((ParameterInfo parameter, TimerTriggerAttribute x) => { _function.Bindings.Add(new TimerTriggerBinding(parameter.Name, x)); });
+                .Case((ParameterInfo parameter, TimerTriggerAttribute x) => { _function.Bindings.Add(new TimerTriggerBinding(parameter.Name, x)); })
+                .Case((ParameterInfo parameter, WebHookTriggerAttribute x) => { _function.Bindings.Add(new WebHookTriggerBinding(parameter, x)); });
         }
 
         public void AddBinding(MethodInfo method, object attribute)
