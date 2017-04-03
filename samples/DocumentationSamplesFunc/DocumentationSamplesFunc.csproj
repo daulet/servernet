@@ -55,6 +55,8 @@
   <ItemGroup>
     <Content Include="appsettings.json" />
     <Content Include="host.json" />
+    <Content Include="HttpTriggerFunction\Servernet.dll" />
+    <Content Include="HttpTriggerFunction\Servernet.Samples.DocumentationSamples.dll" />
     <Content Include="WebHookTriggerFunction\function.json" />
   </ItemGroup>
   <ItemGroup>
@@ -65,6 +67,7 @@
     <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="HttpTriggerFunction\function.json" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>

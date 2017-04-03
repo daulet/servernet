@@ -30,11 +30,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net.Http" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HttpTriggerFunction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebHookTriggerFunction.cs" />
   </ItemGroup>
