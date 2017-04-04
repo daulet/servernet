@@ -54,6 +54,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="appsettings.json" />
+    <Content Include="BlobInputOutputFunction\Servernet.dll" />
+    <Content Include="BlobInputOutputFunction\Servernet.Samples.DocumentationSamples.dll" />
+    <Content Include="BlobTriggerFunction\Servernet.dll" />
+    <Content Include="BlobTriggerFunction\Servernet.Samples.DocumentationSamples.dll" />
     <Content Include="host.json" />
     <Content Include="HttpOutputFunction\Servernet.dll" />
     <Content Include="HttpOutputFunction\Servernet.Samples.DocumentationSamples.dll" />
@@ -74,6 +78,8 @@
     <Content Include="HttpTriggerFunction\function.json" />
     <Content Include="HttpOutputFunction\function.json" />
     <Content Include="TimerTriggerFunction\function.json" />
+    <Content Include="BlobTriggerFunction\function.json" />
+    <Content Include="BlobInputOutputFunction\function.json" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
