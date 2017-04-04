@@ -63,7 +63,7 @@ Decorate your entry method parameter with \[[BlobTrigger](https://github.com/Azu
 
 ### Blob Input
 
-Decorate your entry method parameter with \[[Blob](https://github.com/Azure/azure-webjobs-sdk/blob/dev/src/Microsoft.Azure.WebJobs/BlobAttribute.cs)\] attribute ([sample](./samples/DocumentationSamplesFunc/BlobInputOutputFunction.cs)). Below is the list of parameter types that can be used with [Blob] attribute:
+Decorate your entry method parameter with \[[Blob](https://github.com/Azure/azure-webjobs-sdk/blob/dev/src/Microsoft.Azure.WebJobs/BlobAttribute.cs)\] attribute ([sample](./samples/DocumentationSamples/BlobInputOutputFunction.cs)). Below is the list of parameter types that can be used with [Blob] attribute:
 * Custom type, blob will be deserialized from JSON into your object;
 * [String](https://msdn.microsoft.com/en-us/library/system.string(v=vs.110).aspx);
 * [TextReader](https://msdn.microsoft.com/en-us/library/system.io.textreader(v=vs.110).aspx);
@@ -74,7 +74,7 @@ Decorate your entry method parameter with \[[Blob](https://github.com/Azure/azur
 
 ### Blob Output
 
-Decorate your entry method *out* parameter with \[[Blob](https://github.com/Azure/azure-webjobs-sdk/blob/dev/src/Microsoft.Azure.WebJobs/BlobAttribute.cs)\] attribute ([sample](./samples/DocumentationSamplesFunc/BlobInputOutputFunction.cs)). Below is the list of parameter types that can be used with [Blob] attribute:
+Decorate your entry method *out* parameter with \[[Blob](https://github.com/Azure/azure-webjobs-sdk/blob/dev/src/Microsoft.Azure.WebJobs/BlobAttribute.cs)\] attribute ([sample](./samples/DocumentationSamples/BlobInputOutputFunction.cs)). Below is the list of parameter types that can be used with [Blob] attribute:
 * Custom type, blob will be deserialized from JSON into your object;
 * [String](https://msdn.microsoft.com/en-us/library/system.string(v=vs.110).aspx);
 * [TextReader](https://msdn.microsoft.com/en-us/library/system.io.textreader(v=vs.110).aspx);
