@@ -1,0 +1,25 @@
+{
+  "disabled": false,
+  "scriptFile": "Servernet.Samples.DocumentationSamples.dll",
+  "entryPoint": "Servernet.Samples.DocumentationSamples.TableOutputFunction.Run",
+  "bindings": [
+    {
+      "connection": "TableOutputFunction_trigger_queue_input",
+      "direction": "in",
+      "name": "input",
+      "queueName": "myqueue-items",
+      "type": "queueTrigger"
+    },
+    {
+      "connection": "TableOutputFunction_input_table_tableBinding",
+      "direction": "in",
+      "filter": null,
+      "name": "tableBinding",
+      "partitionKey": null,
+      "rowKey": null,
+      "tableName": "Person",
+      "take": 0,
+      "type": "table"
+    }
+  ]
+}
