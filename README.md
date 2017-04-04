@@ -5,11 +5,15 @@
 
 Azure Functions provides binding of your code to various events/triggers. What ServerNET provides is letting you to focus on your code and generate deployable Azure Functions package, including boilerplate like *function.json* with trigger/input/output bindings and release layout of the Azure Function. ServerNET also limits you to things that are supported by Azure Functions, e.g. according to [Azure Function guidelines](https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-http-webhook#httptrigger) when you want to setup a webhook trigger you can't use *methods* property that you'd normally use for HTTP trigger. ServerNET provides strongly typed parameterization of your triggers, input and output parameters. What can't be enforced in design time (i.e. at compile time) is enforced at generation time (using ServerNET CLI), before you deploy to Azure, which means if there is any problem with your function definition you'll find out as soon as possible.
 
-This library supports all the same trigger, input and output parameters as Azure Functions. Few exceptions are patterns that are bad practice, e.g. *out HttpResponseMessage* parameter. Pick entry method/function (currently only *public static* methods are supported) for your logic, decorate it with provided attributes and ServerNET CLI will generate deployable Azure Functions for you: 
-* [HTTP and WebHook bindings](#http-and-webhook-bindings);
-* [Timer bindings](#timer-bindings);
-* [Storage Blob bindings](#blob-bindings);
+This library supports all the same trigger, input and output parameters as Azure Functions. Few exceptions are patterns that are bad practice, e.g. *out HttpResponseMessage* parameter. Pick entry method/function (currently only *public static* methods are supported) for your logic, decorate it with provided attributes and ServerNET CLI will generate deployable Azure Functions for you:
 
+| Kind | Trigger | Input | Output |
+| ---- | :-----: | :---: | :----: |
+| [HTTP](#http-and-webhook-bindings) | [✔](#http-trigger) | | [✔](#http-output) |
+| [WebHook](#http-and-webhook-bindings) | [✔](#webhook-trigger) | | [✔](#http-output) |
+| [Timer](#timer-bindings) | [✔](#timer-trigger) | | |
+| [Storage Blob](#blob-bindings) | [✔](#blob-trigger) | [✔](#blob-input) | [✔](#blob-output) |
+| [Storage Table](#table-bindings) | | [✔](#table-input) | [✔](#table-output)
 
 ## HTTP and WebHook bindings
 
@@ -83,3 +87,11 @@ Decorate your entry method *out* parameter with \[[Blob](https://github.com/Azur
 * [ICloudBlob](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.blob.icloudblob.aspx);
 * [CloudBlockBlob](https://msdn.microsoft.com/en-us/library/azure/microsoft.windowsazure.storage.blob.cloudblockblob.aspx);
 * [CloudPageBlob](https://msdn.microsoft.com/en-us/library/azure/microsoft.windowsazure.storage.blob.cloudpageblob.aspx);
+
+## Table bindings
+
+For complete documentation on how to use Table parameters in Azure Functions see [official documentaion](https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-storage-table).
+
+### Table Input
+
+
