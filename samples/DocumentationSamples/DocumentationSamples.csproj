@@ -41,6 +41,8 @@
     <Compile Include="HttpOutputFunction.cs" />
     <Compile Include="HttpTriggerFunction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueueOutputFunction.cs" />
+    <Compile Include="QueueTriggerFunction.cs" />
     <Compile Include="TableInputFunction.cs" />
     <Compile Include="TableOutputFunction.cs" />
     <Compile Include="TimerTriggerFunction.cs" />

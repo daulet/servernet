@@ -63,6 +63,10 @@
     <Content Include="HttpOutputFunction\Servernet.Samples.DocumentationSamples.dll" />
     <Content Include="HttpTriggerFunction\Servernet.dll" />
     <Content Include="HttpTriggerFunction\Servernet.Samples.DocumentationSamples.dll" />
+    <Content Include="QueueOutputFunction\Servernet.dll" />
+    <Content Include="QueueOutputFunction\Servernet.Samples.DocumentationSamples.dll" />
+    <Content Include="QueueTriggerFunction\Servernet.dll" />
+    <Content Include="QueueTriggerFunction\Servernet.Samples.DocumentationSamples.dll" />
     <Content Include="TableInputFunction\Servernet.dll" />
     <Content Include="TableInputFunction\Servernet.Samples.DocumentationSamples.dll" />
     <Content Include="TableOutputFunction\Servernet.dll" />
@@ -86,6 +90,8 @@
     <Content Include="BlobInputOutputFunction\function.json" />
     <Content Include="TableInputFunction\function.json" />
     <Content Include="TableOutputFunction\function.json" />
+    <Content Include="QueueOutputFunction\function.json" />
+    <Content Include="QueueTriggerFunction\function.json" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
