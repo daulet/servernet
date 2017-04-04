@@ -36,6 +36,7 @@
     <Reference Include="System.Net.Http" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BlobInputOutputFunction.cs" />
     <Compile Include="BlobTriggerFunction.cs" />
     <Compile Include="HttpOutputFunction.cs" />
     <Compile Include="HttpTriggerFunction.cs" />
