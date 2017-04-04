@@ -1,0 +1,25 @@
+{
+  "disabled": false,
+  "scriptFile": "Servernet.Samples.DocumentationSamples.dll",
+  "entryPoint": "Servernet.Samples.DocumentationSamples.TableInputFunction.Run",
+  "bindings": [
+    {
+      "connection": "TableInputFunction_trigger_queue_myQueueItem",
+      "direction": "in",
+      "name": "myQueueItem",
+      "queueName": "myqueue-items",
+      "type": "queueTrigger"
+    },
+    {
+      "connection": "TableInputFunction_input_table_personEntity",
+      "direction": "in",
+      "filter": null,
+      "name": "personEntity",
+      "partitionKey": "Test",
+      "rowKey": "{queueTrigger}",
+      "tableName": "Person",
+      "take": 0,
+      "type": "table"
+    }
+  ]
+}
