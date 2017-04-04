@@ -1,6 +1,77 @@
 # ServerNET
 *Azure Functions made easy.*
 
+Declare your Azure Function triggers, inputs and outputs in code:
+``` cs
+public static void Run(
+    [QueueTrigger("myqueue-items")] string myQueueItem,
+    [Blob("samples-workitems/{queueTrigger}")] string myInputBlob,
+    [Blob("samples-workitems/{queueTrigger}-Copy)")] out string myOutputBlob)
+{
+    // your code here
+}
+```
+and then use servernet command line tool to generate Azure Functions release package:
+```
+servernet.CLI.exe -a assembly.dll -f MyNamespace.Example.Run -o release/path
+```
+that will generate *project.json* that is ready to deploy:
+``` 
+{
+  "disabled": false,
+  "scriptFile": "assembly.dll",
+  "entryPoint": "MyNamespace.Example.Run",
+  "bindings": [
+    {
+      "connection": "BlobInputOutputFunction_trigger_queue_myQueueItem",
+      "direction": "in",
+      "name": "myQueueItem",
+      "queueName": "myqueue-items",
+      "type": "queueTrigger"
+    },
+    {
+      "connection": "BlobInputOutputFunction_input_blob_myInputBlob",
+      "direction": "in",
+      "name": "myInputBlob",
+      "path": "samples-workitems/{queueTrigger}",
+      "type": "blob"
+    },
+    {
+      "connection": "BlobInputOutputFunction_output_blob_myOutputBlob",
+      "direction": "out",
+      "name": "myOutputBlob",
+      "path": "samples-workitems/{queueTrigger}-Copy)",
+      "type": "blob"
+    }
+  ]
+}
+```
+
+## Using command line tool
+
+Generate a single function: 
+```
+servernet.CLI.exe -a assembly.dll -f Namespace.Type.FunctionName -o release/path
+```
+
+Generate functions for all types decorated with [AzureFunction] in the assembly: 
+```
+servernet.CLI.exe -a assembly.dll -o release/path
+```
+
+## Using [AzureFunction] attribute
+
+Use [AzureFunction] attribute to let command line tool to autodetect functions to generate ([see above](#using-command-line-tool)), or to override parameters like *Disabled* and *Name*:
+```cs
+[AzureFunction(Disabled = false, Name = "NameToUseInAzureFunctions")]
+public class MyFunctionClass
+{
+    // currently expecting a single public static method defined
+}
+```
+
+# Bindings
+
 ![Code + Events](./docs/code%2Bevents.jpg)
 
 Azure Functions provides binding of your code to various events/triggers. What ServerNET provides is letting you to focus on your code and generate deployable Azure Functions package, including boilerplate like *function.json* with trigger/input/output bindings and release layout of the Azure Function. ServerNET also limits you to things that are supported by Azure Functions, e.g. according to [Azure Function guidelines](https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-http-webhook#httptrigger) when you want to setup a webhook trigger you can't use *methods* property that you'd normally use for HTTP trigger. ServerNET provides strongly typed parameterization of your triggers, input and output parameters. What can't be enforced in design time (i.e. at compile time) is enforced at generation time (using ServerNET CLI), before you deploy to Azure, which means if there is any problem with your function definition you'll find out as soon as possible.
