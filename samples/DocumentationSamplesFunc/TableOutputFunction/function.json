@@ -11,14 +11,12 @@
       "type": "queueTrigger"
     },
     {
-      "connection": "TableOutputFunction_input_table_tableBinding",
-      "direction": "in",
-      "filter": null,
+      "connection": "TableOutputFunction_output_table_tableBinding",
+      "direction": "out",
       "name": "tableBinding",
       "partitionKey": null,
       "rowKey": null,
       "tableName": "Person",
-      "take": 0,
       "type": "table"
     }
   ]

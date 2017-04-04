@@ -64,9 +64,9 @@ namespace Servernet.CLI
                     }
                     else
                     {
-                        if (typeof(ICollector<>).IsAssignableFrom(parameter.ParameterType) ||
-                            typeof(IAsyncCollector<>).IsAssignableFrom(parameter.ParameterType) ||
-                            typeof(CloudTable).IsAssignableFrom(parameter.ParameterType))
+                        if (parameter.ParameterType.IsAssignableFrom(typeof(ICollector<object>)) ||
+                            parameter.ParameterType.IsAssignableFrom(typeof(IAsyncCollector<object>)) ||
+                            parameter.ParameterType.IsAssignableFrom(typeof(CloudTable)))
                         {
                             binding = new TableOutputBinding(functionType, parameter.Name, x);
                         }
