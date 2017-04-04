@@ -94,4 +94,16 @@ For complete documentation on how to use Table parameters in Azure Functions see
 
 ### Table Input
 
+Decorate your entry method parameter with \[[Table](https://github.com/Azure/azure-webjobs-sdk/blob/dev/src/Microsoft.Azure.WebJobs/TableAttribute.cs)\] attribute ([sample](./samples/DocumentationSamples/TableInputFunction.cs)). Below is the list of parameter types that can be used with [Table] attribute:
+* T, where T is the data type that you want to deserialize the data into;
+* Any type that implements [ITableEntity](https://msdn.microsoft.com/en-us/library/microsoft.windowsazure.storage.table.itableentity.aspx);
+* IQueryable\<T\>, where T is the data type that you want to deserialize the data into;
 
+### Table Output
+
+Decorate your entry method parameter with \[[Table](https://github.com/Azure/azure-webjobs-sdk/blob/dev/src/Microsoft.Azure.WebJobs/TableAttribute.cs)\] attribute ([sample](./samples/DocumentationSamples/TableOutputFunction.cs)). Below is the list of parameter types that can be used with [Table] attribute:
+* out \<T\>, where T is the data type that you want to serialize the data into;
+* out \<T\>, where T implements [ITableEntity](https://msdn.microsoft.com/en-us/library/microsoft.windowsazure.storage.table.itableentity.aspx);
+* ICollector\<T\>, where T is the data type that you want to serialize the data into;
+* IAsyncCollector\<T\> (async version of ICollector\<T\>);
+* [CloudTable](https://msdn.microsoft.com/en-us/library/microsoft.windowsazure.storage.table.cloudtable.aspx);
