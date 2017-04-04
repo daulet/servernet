@@ -18,7 +18,7 @@ and then use servernet command line tool to generate Azure Functions release pac
 ```
 servernet.CLI.exe -a Servernet.Samples.DocumentationSamples.dll -o release/path
 ```
-that will generate *project.json* that is ready to deploy:
+that will copy your assembly with its dependencies and generate *project.json* that is ready to deploy:
 ``` 
 {
   "disabled": false,
@@ -64,15 +64,15 @@ that will generate *project.json* that is ready to deploy:
 
 ## Using command line tool
 
-Generate a single function: 
+Using [Azure Functions CLI](https://www.npmjs.com/package/azure-functions-cli) create a new Function App, and then generate a function from your binary: 
 ```
 servernet.CLI.exe -a assembly.dll -f Namespace.Type.FunctionName -o release/path
 ```
-
-Generate functions for all types decorated with [AzureFunction] in the assembly: 
+Or generate functions for all types decorated with [AzureFunction] in the assembly:
 ```
 servernet.CLI.exe -a assembly.dll -o release/path
 ```
+Ready to run it? Follow [these steps](https://blogs.msdn.microsoft.com/appserviceteam/2017/03/16/publishing-a-net-class-library-as-a-function-app/) to configure you Function App as Visual Studio project. If you are going to test it locally be sure to setup connection strings in appsettings.json (you most likely will need to set *IsEncrypted: false*), but if you are not sure how, just start running the app locally, the console prompt will guide you.
 
 ## Using [AzureFunction] attribute
 
