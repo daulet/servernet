@@ -3,45 +3,60 @@
 
 Declare your Azure Function triggers, inputs and outputs in code:
 ``` cs
-public static void Run(
-    [QueueTrigger("myqueue-items")] string myQueueItem,
-    [Blob("samples-workitems/{queueTrigger}")] string myInputBlob,
-    [Blob("samples-workitems/{queueTrigger}-Copy)")] out string myOutputBlob)
+[HttpOutput]
+public static async Task<HttpResponseMessage> RunAsync(
+    [HttpTrigger(HttpMethod.Post, "users/{username:alpha}")] HttpRequestMessage request,
+    string username,
+    [Table("User", partitionKey: "{username}", rowKey: "payment")] PaymentInstrument paymentInstrument,
+    [Queue("user-queue")] IAsyncCollector<PaymentInstrument> paymentQueue,
+    TraceWriter log)
 {
     // your code here
 }
 ```
 and then use servernet command line tool to generate Azure Functions release package:
 ```
-servernet.CLI.exe -a assembly.dll -f MyNamespace.Example.Run -o release/path
+servernet.CLI.exe -a Servernet.Samples.DocumentationSamples.dll -o release/path
 ```
 that will generate *project.json* that is ready to deploy:
 ``` 
 {
   "disabled": false,
-  "scriptFile": "assembly.dll",
-  "entryPoint": "MyNamespace.Example.Run",
+  "scriptFile": "Servernet.Samples.DocumentationSamples.dll",
+  "entryPoint": "Servernet.Samples.DocumentationSamples.ReadmeFunction.RunAsync",
   "bindings": [
     {
-      "connection": "BlobInputOutputFunction_trigger_queue_myQueueItem",
-      "direction": "in",
-      "name": "myQueueItem",
-      "queueName": "myqueue-items",
-      "type": "queueTrigger"
-    },
-    {
-      "connection": "BlobInputOutputFunction_input_blob_myInputBlob",
-      "direction": "in",
-      "name": "myInputBlob",
-      "path": "samples-workitems/{queueTrigger}",
-      "type": "blob"
-    },
-    {
-      "connection": "BlobInputOutputFunction_output_blob_myOutputBlob",
       "direction": "out",
-      "name": "myOutputBlob",
-      "path": "samples-workitems/{queueTrigger}-Copy)",
-      "type": "blob"
+      "name": "$return",
+      "type": "http"
+    },
+    {
+      "authLevel": "Anonymous",
+      "direction": "in",
+      "methods": [
+        "POST"
+      ],
+      "name": "request",
+      "route": "users/{username:alpha}",
+      "type": "httpTrigger"
+    },
+    {
+      "connection": "ReadmeFunction_input_table_paymentInstrument",
+      "direction": "in",
+      "filter": null,
+      "name": "paymentInstrument",
+      "partitionKey": "{username}",
+      "rowKey": "payment",
+      "tableName": "User",
+      "take": 0,
+      "type": "table"
+    },
+    {
+      "connection": "ReadmeFunction_output_queue_paymentQueue",
+      "direction": "out",
+      "name": "paymentQueue",
+      "queueName": "user-queue",
+      "type": "queue"
     }
   ]
 }

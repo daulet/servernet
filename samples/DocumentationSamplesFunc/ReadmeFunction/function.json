@@ -1,0 +1,40 @@
+{
+  "disabled": false,
+  "scriptFile": "Servernet.Samples.DocumentationSamples.dll",
+  "entryPoint": "Servernet.Samples.DocumentationSamples.ReadmeFunction.RunAsync",
+  "bindings": [
+    {
+      "direction": "out",
+      "name": "$return",
+      "type": "http"
+    },
+    {
+      "authLevel": "Anonymous",
+      "direction": "in",
+      "methods": [
+        "POST"
+      ],
+      "name": "request",
+      "route": "users/{username:alpha}",
+      "type": "httpTrigger"
+    },
+    {
+      "connection": "ReadmeFunction_input_table_paymentInstrument",
+      "direction": "in",
+      "filter": null,
+      "name": "paymentInstrument",
+      "partitionKey": "{username}",
+      "rowKey": "payment",
+      "tableName": "User",
+      "take": 0,
+      "type": "table"
+    },
+    {
+      "connection": "ReadmeFunction_output_queue_paymentQueue",
+      "direction": "out",
+      "name": "paymentQueue",
+      "queueName": "user-queue",
+      "type": "queue"
+    }
+  ]
+}
