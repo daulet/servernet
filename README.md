@@ -13,7 +13,8 @@ This library supports all the same trigger, input and output parameters as Azure
 | [WebHook](#http-and-webhook-bindings) | [✔](#webhook-trigger) | | [✔](#http-output) |
 | [Timer](#timer-bindings) | [✔](#timer-trigger) | | |
 | [Storage Blob](#blob-bindings) | [✔](#blob-trigger) | [✔](#blob-input) | [✔](#blob-output) |
-| [Storage Table](#table-bindings) | | [✔](#table-input) | [✔](#table-output)
+| [Storage Queue](#queue-bindings) | [✔](#queue-trigger) | | [✔](#queue-output) |
+| [Storage Table](#table-bindings) | | [✔](#table-input) | [✔](#table-output) |
 
 ## HTTP and WebHook bindings
 
@@ -34,7 +35,6 @@ Decorate your entry method parameter with [WebHookTrigger] attribute ([sample](.
 Decoreate your entry method (not parameter) with [HttpOutput] attribute ([sample](./samples/DocumentationSamples/HttpOutputFunction.cs)). Using *out HttpResponseMessage* parameter is bad practice, hence only return parameter is supported (including async option with Task\<HttpResponseMessage\>). Below is the list of parameter types that can be used with [HttpResponse] attribute:
 * [HttpResponseMessage](https://msdn.microsoft.com/en-us/library/system.net.http.httpresponsemessage(v=vs.118).aspx), including async equivalent Task\<HttpResponseMessage\>;
 
-
 ## Timer bindings
 
 For complete documentation on how to use Timer parameters in Azure Functions see [official documentaion](https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-timer).
@@ -43,7 +43,6 @@ For complete documentation on how to use Timer parameters in Azure Functions see
 
 Decorate your entry method parameter with \[[TimerTrigger](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/TimerTrigger)\] attribute ([sample](./samples/DocumentationSamples/TimerTriggerFunction.cs)). Below is the list of parameter types that can be used with [TimerTrigger] attribute:
 * [TimerInfo](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs);
-
 
 ## Blob bindings
 
@@ -87,6 +86,27 @@ Decorate your entry method *out* parameter with \[[Blob](https://github.com/Azur
 * [ICloudBlob](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.blob.icloudblob.aspx);
 * [CloudBlockBlob](https://msdn.microsoft.com/en-us/library/azure/microsoft.windowsazure.storage.blob.cloudblockblob.aspx);
 * [CloudPageBlob](https://msdn.microsoft.com/en-us/library/azure/microsoft.windowsazure.storage.blob.cloudpageblob.aspx);
+
+## Queue bindings
+
+For complete documentation on how to use Queue parameters in Azure Functions see [official documentaion](https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-storage-queue).
+
+### Queue Trigger
+
+Decorate your entry method parameter with \[[QueueTrigger](hhttps://github.com/Azure/azure-webjobs-sdk/blob/dev/src/Microsoft.Azure.WebJobs/QueueTriggerAttribute.cs)\] attribute ([sample](./samples/DocumentationSamples/QueueTriggerFunction.cs)). Below is the list of parameter types that can be used with [QueueTrigger] attribute:
+* T, where T is the type that you want to deserialize the queue message into as JSON;
+* [String](https://msdn.microsoft.com/en-us/library/system.string(v=vs.110).aspx);
+* [byte](https://msdn.microsoft.com/en-us/library/5bdb6693.aspx)[];
+* [CloudQueueMessage](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.queue.cloudqueuemessage.aspx);
+
+### Queue Output
+
+Decorate your entry method *out* parameter with \[[Queue](hhttps://github.com/Azure/azure-webjobs-sdk/blob/dev/src/Microsoft.Azure.WebJobs/QueueTriggerAttribute.cs)\] attribute ([sample](./samples/DocumentationSamples/QueueOutputFunction.cs)). Below is the list of parameter types that can be used with [Queue] attribute:
+* out T, where T is the type that you want to deserialize as JSON into queue message;
+* out [String](https://msdn.microsoft.com/en-us/library/system.string(v=vs.110).aspx);
+* out [byte](https://msdn.microsoft.com/en-us/library/5bdb6693.aspx)[];
+* out [CloudQueueMessage](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.queue.cloudqueuemessage.aspx);
+* ICollector\<T\> or IAsyncCollector\<T\>, where T is one of the supported types;
 
 ## Table bindings
 

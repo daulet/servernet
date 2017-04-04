@@ -1,0 +1,14 @@
+{
+  "disabled": false,
+  "scriptFile": "Servernet.Samples.DocumentationSamples.dll",
+  "entryPoint": "Servernet.Samples.DocumentationSamples.QueueTriggerFunction.Run",
+  "bindings": [
+    {
+      "connection": "QueueTriggerFunction_trigger_queue_myQueueItem",
+      "direction": "in",
+      "name": "myQueueItem",
+      "queueName": "myqueue-items",
+      "type": "queueTrigger"
+    }
+  ]
+}
