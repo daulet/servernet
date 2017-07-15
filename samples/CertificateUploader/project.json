@@ -3,7 +3,7 @@
     "WindowsAzure.Storage": "7.2.1"
   },
   "frameworks": {
-    "net452": {}
+    "net46": {}
   },
   "runtimes": {
     "win": {}

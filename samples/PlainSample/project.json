@@ -1,10 +1,10 @@
 ﻿{
   "dependencies": {
-    "Microsoft.Azure.WebJobs": "2.0.0",
+    "Microsoft.Azure.WebJobs": "2.1.0-beta1",
     "WindowsAzure.Storage": "7.2.1"
   },
   "frameworks": {
-    "net452": {}
+    "net46": {}
   },
   "runtimes": {
     "win": {}
