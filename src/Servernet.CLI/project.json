@@ -1,14 +1,14 @@
 ﻿{
-  "dependencies": {
-    "CommandLineParser": "1.9.71",
-    "Microsoft.Azure.WebJobs": "2.0.0",
-    "Microsoft.Azure.WebJobs.Extensions": "2.0.0",
-    "Newtonsoft.Json": "10.0.1"
-  },
-  "frameworks": {
-    "net452": {}
-  },
-  "runtimes": {
-    "win": {}
-  }
+    "dependencies": {
+        "CommandLineParser": "1.9.71",
+        "Microsoft.Azure.WebJobs": "2.1.0-beta1",
+        "Microsoft.Azure.WebJobs.Extensions": "2.1.0-beta1",
+        "Newtonsoft.Json": "10.0.1"
+    },
+    "frameworks": {
+        "net46": {}
+    },
+    "runtimes": {
+        "win": {}
+    }
 }

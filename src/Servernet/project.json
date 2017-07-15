@@ -1,11 +1,11 @@
 ﻿{
-  "dependencies": {
-    "Microsoft.Azure.WebJobs": "2.1.0-beta1"
-  },
-  "frameworks": {
-    "net452": {}
-  },
-  "runtimes": {
-    "win": {}
-  }
+    "dependencies": {
+        "Microsoft.Azure.WebJobs": "2.1.0-beta1"
+    },
+    "frameworks": {
+        "net46": {}
+    },
+    "runtimes": {
+        "win": {}
+    }
 }
