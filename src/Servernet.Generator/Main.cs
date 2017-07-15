@@ -1,7 +1,7 @@
 ﻿using System;
 using CommandLine;
 
-namespace Servernet.CLI
+namespace Servernet.Generator
 {
     internal partial class Program
     {
