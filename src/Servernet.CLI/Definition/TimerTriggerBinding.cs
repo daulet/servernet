@@ -1,6 +1,6 @@
 ﻿using Microsoft.Azure.WebJobs;
 
-namespace Servernet.CLI.Definition
+namespace Servernet.Generator.Definition
 {
     public class TimerTriggerBinding : IBinding
     {

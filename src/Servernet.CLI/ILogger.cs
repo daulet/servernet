@@ -1,4 +1,4 @@
-﻿namespace Servernet.CLI
+﻿namespace Servernet.Generator
 {
     public interface ILogger
     {

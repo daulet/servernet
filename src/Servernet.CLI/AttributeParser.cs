@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
-using Servernet.CLI.Definition;
+using Servernet.Generator.Definition;
 
-namespace Servernet.CLI
+namespace Servernet.Generator
 {
     internal class AttributeParser
     {

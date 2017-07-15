@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Servernet.CLI
+namespace Servernet.Generator
 {
     internal class TypeSwitch<TParam>
     {

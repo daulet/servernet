@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace Servernet.CLI.Definition
+namespace Servernet.Generator.Definition
 {
     public class HttpTriggerBinding : IBinding
     {

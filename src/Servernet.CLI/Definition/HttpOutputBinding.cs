@@ -1,4 +1,4 @@
-﻿namespace Servernet.CLI.Definition
+﻿namespace Servernet.Generator.Definition
 {
     public class HttpOutputBinding : IBinding
     {

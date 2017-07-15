@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Servernet.CLI
+namespace Servernet.Generator
 {
     internal class ColorfulConsole : ILogger
     {

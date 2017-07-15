@@ -1,7 +1,7 @@
 ﻿using CommandLine;
 using CommandLine.Text;
 
-namespace Servernet.CLI
+namespace Servernet.Generator
 {
     internal class Options
     {

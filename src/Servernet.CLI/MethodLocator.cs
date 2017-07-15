@@ -2,7 +2,7 @@
 using System.IO;
 using System.Reflection;
 
-namespace Servernet.CLI
+namespace Servernet.Generator
 {
     internal class MethodLocator
     {

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace Servernet.CLI.Definition
+namespace Servernet.Generator.Definition
 {
     public class Function
     {

@@ -3,9 +3,9 @@ using System.IO;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
-using Servernet.CLI.Definition;
+using Servernet.Generator.Definition;
 
-namespace Servernet.CLI
+namespace Servernet.Generator
 {
     internal class ReleaseBuilder
     {

@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Reflection;
 using Microsoft.Azure.WebJobs;
 using Microsoft.WindowsAzure.Storage.Table;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
-using Servernet.CLI.Definition;
+using Servernet.Generator.Definition;
 
-namespace Servernet.CLI
+namespace Servernet.Generator
 {
     internal class FunctionBuilder
     {
