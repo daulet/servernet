@@ -3,7 +3,7 @@ using CommandLine;
 
 namespace Servernet.Generator
 {
-    internal partial class Program
+    public partial class Program
     {
         private static void Main(string[] args)
         {
@@ -13,13 +13,8 @@ namespace Servernet.Generator
             if (Parser.Default.ParseArguments(args, options))
             {
                 var program = new Program(
-                    new AttributeParser(),
-                    new FunctionLocator(log),
-                    new FunctionValidator(log), 
                     log,
-                    new MethodLocator(),
-                    options,
-                    new ReleaseBuilder());
+                    options);
                 try
                 {
                     program.Run();

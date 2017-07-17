@@ -1,4 +1,5 @@
-﻿using Xunit;
+﻿using Moq;
+using Xunit;
 
 namespace Servernet.Generator.UnitTests
 {
@@ -7,7 +8,9 @@ namespace Servernet.Generator.UnitTests
         [Fact]
         public void Test()
         {
-            
+            var program = new Program(
+                Mock.Of<ILogger>(),
+                Mock.Of<Options>());
         }
     }
 }

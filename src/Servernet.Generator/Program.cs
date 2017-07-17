@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace Servernet.Generator
 {
-    internal partial class Program
+    public partial class Program
     {
         private readonly AttributeParser _attributeParser;
         private readonly FunctionLocator _functionLocator;
@@ -14,6 +14,19 @@ namespace Servernet.Generator
         private readonly MethodLocator _methodLocator;
         private readonly Options _options;
         private readonly ReleaseBuilder _releaseBuilder;
+
+        public Program(
+            ILogger log,
+            Options options)
+            : this(
+                  new AttributeParser(),
+                  new FunctionLocator(log),
+                  new FunctionValidator(log),
+                  log,
+                  new MethodLocator(),
+                  options,
+                  new ReleaseBuilder())
+        { }
 
         private Program(
             AttributeParser attributeParser,

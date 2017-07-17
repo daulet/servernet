@@ -3,7 +3,7 @@ using CommandLine.Text;
 
 namespace Servernet.Generator
 {
-    internal class Options
+    public class Options
     {
         [Option('a', "Assembly", Required = true,
             HelpText = "Path to the assembly that contains the entry function")]
