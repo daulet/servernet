@@ -38,6 +38,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ColorfulConsole.cs" />
+    <Compile Include="Core\AssemblyLoader.cs" />
+    <Compile Include="Core\Environment.cs" />
     <Compile Include="Definition\BindingDirection.cs" />
     <Compile Include="Definition\BindingType.cs" />
     <Compile Include="Definition\BlobInputBinding.cs" />
@@ -58,6 +60,8 @@
     <Compile Include="FunctionLocator.cs" />
     <Compile Include="FunctionValidationException.cs" />
     <Compile Include="FunctionValidator.cs" />
+    <Compile Include="IAssemblyLoader.cs" />
+    <Compile Include="IEnvironment.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="MethodLocator.cs" />
     <Compile Include="ILogger.cs" />

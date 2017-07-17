@@ -1,5 +1,6 @@
 ﻿using System;
 using CommandLine;
+using Servernet.Generator.Core;
 
 namespace Servernet.Generator
 {
@@ -13,6 +14,8 @@ namespace Servernet.Generator
             if (Parser.Default.ParseArguments(args, options))
             {
                 var program = new Program(
+                    new Core.AssemblyLoader(),
+                    new Core.Environment(),
                     log,
                     options);
                 try

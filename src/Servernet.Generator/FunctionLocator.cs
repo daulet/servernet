@@ -8,10 +8,12 @@ namespace Servernet.Generator
 {
     internal class FunctionLocator
     {
+        private readonly IAssemblyLoader _assemblyLoader;
         private readonly ILogger _log;
 
-        public FunctionLocator(ILogger log)
+        public FunctionLocator(IAssemblyLoader assemblyLoader, ILogger log)
         {
+            _assemblyLoader = assemblyLoader;
             _log = log;
         }
 
@@ -20,7 +22,7 @@ namespace Servernet.Generator
             Assembly assembly;
             try
             {
-                assembly = Assembly.LoadFrom(assemblyPath);
+                assembly = _assemblyLoader.LoadFrom(assemblyPath);
             }
             catch (FileNotFoundException e)
             {

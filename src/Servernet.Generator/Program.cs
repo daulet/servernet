@@ -8,6 +8,7 @@ namespace Servernet.Generator
     public partial class Program
     {
         private readonly AttributeParser _attributeParser;
+        private readonly IEnvironment _environment;
         private readonly FunctionLocator _functionLocator;
         private readonly FunctionValidator _functionValidator;
         private readonly ILogger _log;
@@ -16,11 +17,14 @@ namespace Servernet.Generator
         private readonly ReleaseBuilder _releaseBuilder;
 
         public Program(
+            IAssemblyLoader assemblyLoader,
+            IEnvironment environment,
             ILogger log,
             Options options)
             : this(
                   new AttributeParser(),
-                  new FunctionLocator(log),
+                  environment,
+                  new FunctionLocator(assemblyLoader, log),
                   new FunctionValidator(log),
                   log,
                   new MethodLocator(),
@@ -30,6 +34,7 @@ namespace Servernet.Generator
 
         private Program(
             AttributeParser attributeParser,
+            IEnvironment environment,
             FunctionLocator functionLocator,
             FunctionValidator functionValidator,
             ILogger log,
@@ -38,6 +43,7 @@ namespace Servernet.Generator
             ReleaseBuilder releaseBuilder)
         {
             _attributeParser = attributeParser;
+            _environment = environment;
             _functionLocator = functionLocator;
             _functionValidator = functionValidator;
             _log = log;
@@ -46,9 +52,9 @@ namespace Servernet.Generator
             _releaseBuilder = releaseBuilder;
         }
 
-        private void Run()
+        public void Run()
         {
-            var assemblyPath = Path.Combine(Environment.CurrentDirectory, _options.Assembly);
+            var assemblyPath = Path.Combine(_environment.CurrentDirectory, _options.Assembly);
 
             HashSet<Tuple<Type, MethodInfo>> allFunctions;
             if (string.IsNullOrEmpty(_options.Function))
