@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocumentationSamplesFunc", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Generator", "src\Servernet.Generator\Generator.csproj", "{67500622-0253-486E-B7B3-AA578350E8BE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Generator.UnitTests", "src\Servernet.Generator.UnitTests\Generator.UnitTests\Generator.UnitTests.csproj", "{48334211-E78F-49F8-BF78-079576942415}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -83,6 +85,10 @@ Global
 		{67500622-0253-486E-B7B3-AA578350E8BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{67500622-0253-486E-B7B3-AA578350E8BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{67500622-0253-486E-B7B3-AA578350E8BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48334211-E78F-49F8-BF78-079576942415}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48334211-E78F-49F8-BF78-079576942415}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48334211-E78F-49F8-BF78-079576942415}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48334211-E78F-49F8-BF78-079576942415}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
