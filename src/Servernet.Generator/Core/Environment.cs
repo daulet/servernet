@@ -1,6 +1,6 @@
 ﻿namespace Servernet.Generator.Core
 {
-    public class Environment : IEnvironment
+    internal class Environment : IEnvironment
     {
         public string CurrentDirectory => System.Environment.CurrentDirectory;
     }

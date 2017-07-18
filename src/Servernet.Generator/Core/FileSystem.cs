@@ -2,7 +2,7 @@
 
 namespace Servernet.Generator.Core
 {
-    public class FileSystem : IFileSystem
+    internal class FileSystem : IFileSystem
     {
         public void CopyFile(string source, string destination, bool overwrite)
         {

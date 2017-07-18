@@ -2,7 +2,7 @@
 
 namespace Servernet.Generator.Core
 {
-    public class AssemblyLoader : IAssemblyLoader
+    internal class AssemblyLoader : IAssemblyLoader
     {
         public Assembly LoadFrom(string assemblyPath)
         {
