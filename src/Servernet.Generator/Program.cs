@@ -55,7 +55,7 @@ namespace Servernet.Generator
 
         public void Run()
         {
-            var assemblyPath = Path.Combine(_environment.CurrentDirectory, _options.Assembly);
+            var assemblyPath = Path.Combine(_environment.CurrentDirectory, _options.AssemblyPath);
 
             HashSet<Tuple<Type, MethodInfo>> allFunctions;
             if (string.IsNullOrEmpty(_options.Function))
@@ -106,7 +106,7 @@ namespace Servernet.Generator
                 }
 
                 // Generate output
-                var sourceDirectory = assemblyPath;
+                var sourceDirectory = Path.GetDirectoryName(assemblyPath);
                 var targetDirectory = Path.Combine(_options.OutputDirectory?? string.Empty, functionDefinition.Name);
                 _releaseBuilder.Release(sourceDirectory, targetDirectory, functionDefinition);
             }

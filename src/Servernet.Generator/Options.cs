@@ -5,9 +5,11 @@ namespace Servernet.Generator
 {
     public class Options
     {
-        [Option('a', "Assembly", Required = true,
+        // @TODO if AssemblyPath is relative, use CurrentDirectory, otherwise accept absolute path
+
+        [Option('a', "AssemblyPath", Required = true,
             HelpText = "Path to the assembly that contains the entry function")]
-        public string Assembly { get; set; }
+        public string AssemblyPath { get; set; }
 
         [Option('f', "Function", Required = false,
             HelpText = "Fully-qualified method name of the entry function, e.g. 'System.String.Compare' for Compare function")]

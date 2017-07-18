@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
@@ -34,13 +35,9 @@ namespace Servernet.Generator
             }
             
             var allReferencedAssemblies = _fileSystem.GetFiles(sourceDirectoryPath);
-            foreach (var referencedAssembly in allReferencedAssemblies)
+            foreach (var referencedAssembly in allReferencedAssemblies
+                .Where(x => !KnownAssemblies.Contains(x.Name)))
             {
-                if (KnownAssemblies.Contains(referencedAssembly.Name))
-                {
-                    // don't copy assemblies that are available to Azure Functions anyway
-                    continue;
-                }
                 _fileSystem.CopyFile(referencedAssembly.FullName, Path.Combine(targetDirectoryPath, referencedAssembly.Name), overwrite: true);
             }
         }
