@@ -27,7 +27,7 @@ namespace Servernet.Generator
                   new FunctionLocator(assemblyLoader, log),
                   new FunctionValidator(log),
                   log,
-                  new MethodLocator(),
+                  new MethodLocator(assemblyLoader),
                   options,
                   new ReleaseBuilder())
         { }

@@ -6,12 +6,19 @@ namespace Servernet.Generator
 {
     internal class MethodLocator
     {
+        private readonly IAssemblyLoader _assemblyLoader;
+
+        public MethodLocator(IAssemblyLoader assemblyLoader)
+        {
+            _assemblyLoader = assemblyLoader;
+        }
+
         public Tuple<Type, MethodInfo> Locate(string assemblyPath, string typeName, string methodName)
         {
             Assembly assembly;
             try
             {
-                assembly = Assembly.LoadFrom(assemblyPath);
+                assembly = _assemblyLoader.LoadFrom(assemblyPath);
             }
             catch (FileNotFoundException e)
             {
