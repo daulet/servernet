@@ -16,6 +16,7 @@ namespace Servernet.Generator
                 var program = new Program(
                     new Core.AssemblyLoader(),
                     new Core.Environment(),
+                    new Core.FileSystem(),
                     log,
                     options);
                 try

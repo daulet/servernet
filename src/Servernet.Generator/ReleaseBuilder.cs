@@ -9,13 +9,20 @@ namespace Servernet.Generator
 {
     internal class ReleaseBuilder
     {
-        public void Release(DirectoryInfo sourceDirectory, DirectoryInfo targetDirectory, Function function)
+        private readonly IFileSystem _fileSystem;
+
+        public ReleaseBuilder(IFileSystem fileSystem)
         {
-            Directory.CreateDirectory(targetDirectory.FullName);
+            _fileSystem = fileSystem;
+        }
+
+        public void Release(string sourceDirectoryPath, string targetDirectoryPath, Function function)
+        {
+            _fileSystem.CreateDirectory(targetDirectoryPath);
 
             // @TODO also add project.json and include Servernet as nuget package
             // https://docs.microsoft.com/en-us/azure/azure-functions/functions-reference-csharp#package-management
-            using (var bindingFile = new StreamWriter($"{targetDirectory.FullName}/function.json"))
+            using (var bindingFile = _fileSystem.CreateFileWriter($"{targetDirectoryPath}/function.json"))
             {
                 var serializerSettings = new JsonSerializerSettings()
                 {
@@ -26,7 +33,7 @@ namespace Servernet.Generator
                     JsonConvert.SerializeObject(function, Formatting.Indented, serializerSettings));
             }
             
-            var allReferencedAssemblies = sourceDirectory.GetFiles();
+            var allReferencedAssemblies = _fileSystem.GetFiles(sourceDirectoryPath);
             foreach (var referencedAssembly in allReferencedAssemblies)
             {
                 if (KnownAssemblies.Contains(referencedAssembly.Name))
@@ -34,7 +41,7 @@ namespace Servernet.Generator
                     // don't copy assemblies that are available to Azure Functions anyway
                     continue;
                 }
-                File.Copy(referencedAssembly.FullName, Path.Combine(targetDirectory.FullName, referencedAssembly.Name), overwrite: true);
+                _fileSystem.CopyFile(referencedAssembly.FullName, Path.Combine(targetDirectoryPath, referencedAssembly.Name), overwrite: true);
             }
         }
 

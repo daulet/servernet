@@ -19,6 +19,7 @@ namespace Servernet.Generator
         public Program(
             IAssemblyLoader assemblyLoader,
             IEnvironment environment,
+            IFileSystem fileSystem,
             ILogger log,
             Options options)
             : this(
@@ -29,7 +30,7 @@ namespace Servernet.Generator
                   log,
                   new MethodLocator(assemblyLoader),
                   options,
-                  new ReleaseBuilder())
+                  new ReleaseBuilder(fileSystem))
         { }
 
         private Program(
@@ -105,8 +106,8 @@ namespace Servernet.Generator
                 }
 
                 // Generate output
-                var sourceDirectory = new FileInfo(functionType.Assembly.Location).Directory;
-                var targetDirectory = new DirectoryInfo(Path.Combine(_options.OutputDirectory?? string.Empty, functionDefinition.Name));
+                var sourceDirectory = assemblyPath;
+                var targetDirectory = Path.Combine(_options.OutputDirectory?? string.Empty, functionDefinition.Name);
                 _releaseBuilder.Release(sourceDirectory, targetDirectory, functionDefinition);
             }
         }
