@@ -181,350 +181,293 @@ namespace Servernet.Generator.UnitTests
         [Fact]
         public void Run_NoOutputPath_ReleasedToDefaultPath()
         {
-            using (var memoryStream = new MemoryStream())
+            var assemblyLoader = new Mock<IAssemblyLoader>();
+            assemblyLoader
+                .Setup(x => x.LoadFrom(It.IsAny<string>()))
+                .Returns(typeof(AFunction).Assembly);
+
+            var environment = new Mock<IEnvironment>();
+            environment
+                .Setup(x => x.CurrentDirectory)
+                .Returns(@"D:\fake\root\directory");
+
+            var fileSystem = new Mock<IFileSystem>();
+
+            var options = new Options()
             {
-                using (var textWriter = new StreamWriter(memoryStream))
-                {
-                    var assemblyLoader = new Mock<IAssemblyLoader>();
-                    assemblyLoader
-                        .Setup(x => x.LoadFrom(It.IsAny<string>()))
-                        .Returns(typeof(AFunction).Assembly);
+                AssemblyPath = string.Empty,
+                Function = "Servernet.Generator.UnitTests.AFunction.Run"
+            };
 
-                    var environment = new Mock<IEnvironment>();
-                    environment
-                        .Setup(x => x.CurrentDirectory)
-                        .Returns(@"D:\fake\root\directory");
+            var program = new Program(
+                assemblyLoader.Object,
+                environment.Object,
+                fileSystem.Object,
+                Mock.Of<ILogger>(),
+                options);
 
-                    var fileSystem = new Mock<IFileSystem>();
-                    fileSystem
-                        .Setup(x => x.CreateFileWriter(It.IsAny<string>()))
-                        .Returns(textWriter);
+            program.Run();
 
-                    var options = new Options()
-                    {
-                        AssemblyPath = string.Empty,
-                        Function = "Servernet.Generator.UnitTests.AFunction.Run"
-                    };
+            // @TODO shouldn't this be CurrentDirectory + AFunction?
 
-                    var program = new Program(
-                        assemblyLoader.Object,
-                        environment.Object,
-                        fileSystem.Object,
-                        Mock.Of<ILogger>(),
-                        options);
-
-                    program.Run();
-
-                    // @TODO shouldn't this be CurrentDirectory + AFunction?
-
-                    fileSystem.Verify(x => x.CreateDirectory(
-                        It.Is<string>(path => path.Equals("AFunction"))));
-                }
-            }
+            fileSystem.Verify(x => x.CreateDirectory(
+                It.Is<string>(path => path.Equals("AFunction"))));
         }
 
         [Fact]
         public void Run_OutputPathProvided_ReleasedToProvidedPath()
         {
-            using (var memoryStream = new MemoryStream())
+            var assemblyLoader = new Mock<IAssemblyLoader>();
+            assemblyLoader
+                .Setup(x => x.LoadFrom(It.IsAny<string>()))
+                .Returns(typeof(AFunction).Assembly);
+
+            var environment = new Mock<IEnvironment>();
+            environment
+                .Setup(x => x.CurrentDirectory)
+                .Returns(@"D:\fake\root\directory");
+
+            var fileSystem = new Mock<IFileSystem>();
+
+            var options = new Options()
             {
-                using (var textWriter = new StreamWriter(memoryStream))
-                {
-                    var assemblyLoader = new Mock<IAssemblyLoader>();
-                    assemblyLoader
-                        .Setup(x => x.LoadFrom(It.IsAny<string>()))
-                        .Returns(typeof(AFunction).Assembly);
+                AssemblyPath = string.Empty,
+                Function = "Servernet.Generator.UnitTests.AFunction.Run",
+                OutputDirectory = @"E:\fake\output\directory",
+            };
 
-                    var environment = new Mock<IEnvironment>();
-                    environment
-                        .Setup(x => x.CurrentDirectory)
-                        .Returns(@"D:\fake\root\directory");
+            var program = new Program(
+                assemblyLoader.Object,
+                environment.Object,
+                fileSystem.Object,  
+                Mock.Of<ILogger>(),
+                options);
 
-                    var fileSystem = new Mock<IFileSystem>();
-                    fileSystem
-                        .Setup(x => x.CreateFileWriter(It.IsAny<string>()))
-                        .Returns(textWriter);
+            program.Run();
 
-                    var options = new Options()
-                    {
-                        AssemblyPath = string.Empty,
-                        Function = "Servernet.Generator.UnitTests.AFunction.Run",
-                        OutputDirectory = @"E:\fake\output\directory",
-                    };
-
-                    var program = new Program(
-                        assemblyLoader.Object,
-                        environment.Object,
-                        fileSystem.Object,  
-                        Mock.Of<ILogger>(),
-                        options);
-
-                    program.Run();
-
-                    fileSystem.Verify(x => x.CreateDirectory(
-                        It.Is<string>(path => path.Equals(@"E:\fake\output\directory\AFunction"))));
-                }
-            }
+            fileSystem.Verify(x => x.CreateDirectory(
+                It.Is<string>(path => path.Equals(@"E:\fake\output\directory\AFunction"))));
         }
 
         [Fact]
         public void Run_NoOutputPathProvided_GeneratedFunctionJsonUnderDefaultPath()
         {
-            using (var memoryStream = new MemoryStream())
+            var assemblyLoader = new Mock<IAssemblyLoader>();
+            assemblyLoader
+                .Setup(x => x.LoadFrom(It.IsAny<string>()))
+                .Returns(typeof(AFunction).Assembly);
+
+            var environment = new Mock<IEnvironment>();
+            environment
+                .Setup(x => x.CurrentDirectory)
+                .Returns(@"D:\fake\root\directory");
+
+            var fileSystem = new Mock<IFileSystem>();
+            fileSystem.Setup(x =>
+                x.WriteToFile(
+                    It.Is<string>(path =>
+                        PathExtensions.IsEqual(path, @"AFunction/function.json")),
+                    It.IsAny<string>()));
+
+            var options = new Options()
             {
-                using (var textWriter = new StreamWriter(memoryStream))
-                {
-                    var assemblyLoader = new Mock<IAssemblyLoader>();
-                    assemblyLoader
-                        .Setup(x => x.LoadFrom(It.IsAny<string>()))
-                        .Returns(typeof(AFunction).Assembly);
+                AssemblyPath = string.Empty,
+                Function = "Servernet.Generator.UnitTests.AFunction.Run",
+            };
 
-                    var environment = new Mock<IEnvironment>();
-                    environment
-                        .Setup(x => x.CurrentDirectory)
-                        .Returns(@"D:\fake\root\directory");
+            var program = new Program(
+                assemblyLoader.Object,
+                environment.Object,
+                fileSystem.Object,
+                Mock.Of<ILogger>(),
+                options);
 
-                    var fileSystem = new Mock<IFileSystem>();
-                    fileSystem
-                        .Setup(x =>
-                            x.CreateFileWriter(It.Is<string>(path =>
-                                PathExtensions.IsEqual(path, @"AFunction/function.json"))))
-                        .Returns(textWriter);
+            program.Run();
 
-                    var options = new Options()
-                    {
-                        AssemblyPath = string.Empty,
-                        Function = "Servernet.Generator.UnitTests.AFunction.Run",
-                    };
-
-                    var program = new Program(
-                        assemblyLoader.Object,
-                        environment.Object,
-                        fileSystem.Object,
-                        Mock.Of<ILogger>(),
-                        options);
-
-                    program.Run();
-
-                    fileSystem.VerifyAll();
-                }
-            }
+            fileSystem.VerifyAll();
         }
 
         [Fact]
         public void Run_OutputPathProvided_GeneratedFunctionJsonUnderOutputPath()
         {
-            using (var memoryStream = new MemoryStream())
+            var assemblyLoader = new Mock<IAssemblyLoader>();
+            assemblyLoader
+                .Setup(x => x.LoadFrom(It.IsAny<string>()))
+                .Returns(typeof(AFunction).Assembly);
+
+            var environment = new Mock<IEnvironment>();
+            environment
+                .Setup(x => x.CurrentDirectory)
+                .Returns(@"D:\fake\root\directory");
+
+            var fileSystem = new Mock<IFileSystem>();
+            fileSystem.Setup(x =>
+                x.WriteToFile(
+                    It.Is<string>(path =>
+                        PathExtensions.IsEqual(path, @"E:\fake\output\directory\AFunction\function.json")),
+                    It.IsAny<string>()));
+
+            var options = new Options()
             {
-                using (var textWriter = new StreamWriter(memoryStream))
-                {
-                    var assemblyLoader = new Mock<IAssemblyLoader>();
-                    assemblyLoader
-                        .Setup(x => x.LoadFrom(It.IsAny<string>()))
-                        .Returns(typeof(AFunction).Assembly);
+                AssemblyPath = string.Empty,
+                Function = "Servernet.Generator.UnitTests.AFunction.Run",
+                OutputDirectory = @"E:\fake\output\directory",
+            };
 
-                    var environment = new Mock<IEnvironment>();
-                    environment
-                        .Setup(x => x.CurrentDirectory)
-                        .Returns(@"D:\fake\root\directory");
+            var program = new Program(
+                assemblyLoader.Object,
+                environment.Object,
+                fileSystem.Object,
+                Mock.Of<ILogger>(),
+                options);
 
-                    var fileSystem = new Mock<IFileSystem>();
-                    fileSystem
-                        .Setup(x =>
-                            x.CreateFileWriter(It.Is<string>(path =>
-                                PathExtensions.IsEqual(path, @"E:\fake\output\directory\AFunction\function.json"))))
-                        .Returns(textWriter);
+            program.Run();
 
-                    var options = new Options()
-                    {
-                        AssemblyPath = string.Empty,
-                        Function = "Servernet.Generator.UnitTests.AFunction.Run",
-                        OutputDirectory = @"E:\fake\output\directory",
-                    };
-
-                    var program = new Program(
-                        assemblyLoader.Object,
-                        environment.Object,
-                        fileSystem.Object,
-                        Mock.Of<ILogger>(),
-                        options);
-
-                    program.Run();
-
-                    fileSystem.VerifyAll();
-                }
-            }
+            fileSystem.VerifyAll();
         }
 
         [Fact]
         public void Run_AssemblyPathDoesNotIncludeDirectories_DependenciesCopiedFromAssemblyDirectory()
         {
-            using (var memoryStream = new MemoryStream())
-            {
-                using (var textWriter = new StreamWriter(memoryStream))
+            var assemblyLoader = new Mock<IAssemblyLoader>();
+            assemblyLoader
+                .Setup(x => x.LoadFrom(It.IsAny<string>()))
+                .Returns(typeof(AFunction).Assembly);
+
+            var environment = new Mock<IEnvironment>();
+            environment
+                .Setup(x => x.CurrentDirectory)
+                .Returns(@"D:\fake\root\directory");
+
+            var fileSystem = new Mock<IFileSystem>();
+            fileSystem
+                .Setup(x => x.GetFiles(It.Is<string>(path => path.Equals(@"D:\fake\root\directory"))))
+                .Returns(new FileInfo[]
                 {
-                    var assemblyLoader = new Mock<IAssemblyLoader>();
-                    assemblyLoader
-                        .Setup(x => x.LoadFrom(It.IsAny<string>()))
-                        .Returns(typeof(AFunction).Assembly);
+                    new FileInfo(@"D:\fake\root\directory\dependency1.dll"),
+                    new FileInfo(@"D:\fake\root\directory\dependency432.dll"),
+                });
 
-                    var environment = new Mock<IEnvironment>();
-                    environment
-                        .Setup(x => x.CurrentDirectory)
-                        .Returns(@"D:\fake\root\directory");
+            var options = new Options()
+            {
+                AssemblyPath = "AssemblyName.dll",
+                Function = "Servernet.Generator.UnitTests.AFunction.Run"
+            };
 
-                    var fileSystem = new Mock<IFileSystem>();
-                    fileSystem
-                        .Setup(x => x.CreateFileWriter(It.IsAny<string>()))
-                        .Returns(textWriter);
-                    fileSystem
-                        .Setup(x => x.GetFiles(It.Is<string>(path => path.Equals(@"D:\fake\root\directory"))))
-                        .Returns(new FileInfo[]
-                        {
-                            new FileInfo(@"D:\fake\root\directory\dependency1.dll"),
-                            new FileInfo(@"D:\fake\root\directory\dependency432.dll"),
-                        });
+            var program = new Program(
+                assemblyLoader.Object,
+                environment.Object,
+                fileSystem.Object,
+                Mock.Of<ILogger>(),
+                options);
 
-                    var options = new Options()
-                    {
-                        AssemblyPath = "AssemblyName.dll",
-                        Function = "Servernet.Generator.UnitTests.AFunction.Run"
-                    };
+            program.Run();
 
-                    var program = new Program(
-                        assemblyLoader.Object,
-                        environment.Object,
-                        fileSystem.Object,
-                        Mock.Of<ILogger>(),
-                        options);
-
-                    program.Run();
-
-                    fileSystem.Verify(x => x.CopyFile(
-                        It.Is<string>(path => path.Equals(@"D:\fake\root\directory\dependency1.dll")),
-                        It.Is<string>(path => path.Equals(@"AFunction\dependency1.dll")),
-                        It.Is<bool>(overwrite => overwrite)));
-                    fileSystem.Verify(x => x.CopyFile(
-                        It.Is<string>(path => path.Equals(@"D:\fake\root\directory\dependency432.dll")),
-                        It.Is<string>(path => path.Equals(@"AFunction\dependency432.dll")),
-                        It.Is<bool>(overwrite => overwrite)));
-                }
-            }
+            fileSystem.Verify(x => x.CopyFile(
+                It.Is<string>(path => path.Equals(@"D:\fake\root\directory\dependency1.dll")),
+                It.Is<string>(path => path.Equals(@"AFunction\dependency1.dll")),
+                It.Is<bool>(overwrite => overwrite)));
+            fileSystem.Verify(x => x.CopyFile(
+                It.Is<string>(path => path.Equals(@"D:\fake\root\directory\dependency432.dll")),
+                It.Is<string>(path => path.Equals(@"AFunction\dependency432.dll")),
+                It.Is<bool>(overwrite => overwrite)));
         }
 
         [Fact]
         public void Run_AssemblyPathIncludesDirectories_DependenciesCopiedFromAssemblyDirectory()
         {
-            using (var memoryStream = new MemoryStream())
-            {
-                using (var textWriter = new StreamWriter(memoryStream))
+            var assemblyLoader = new Mock<IAssemblyLoader>();
+            assemblyLoader
+                .Setup(x => x.LoadFrom(It.IsAny<string>()))
+                .Returns(typeof(AFunction).Assembly);
+
+            var environment = new Mock<IEnvironment>();
+            environment
+                .Setup(x => x.CurrentDirectory)
+                .Returns(@"D:\fake\root\directory");
+
+            var fileSystem = new Mock<IFileSystem>();
+            fileSystem
+                .Setup(x =>
+                    x.GetFiles(It.Is<string>(path =>
+                        PathExtensions.IsEqual(path, @"D:\fake\root\directory\path\to\assembly"))))
+                .Returns(new FileInfo[]
                 {
-                    var assemblyLoader = new Mock<IAssemblyLoader>();
-                    assemblyLoader
-                        .Setup(x => x.LoadFrom(It.IsAny<string>()))
-                        .Returns(typeof(AFunction).Assembly);
+                    new FileInfo(@"D:\fake\root\directory\path\to\assembly\dependency1.dll"),
+                    new FileInfo(@"D:\fake\root\directory\path\to\assembly\dependency432.dll"),
+                });
 
-                    var environment = new Mock<IEnvironment>();
-                    environment
-                        .Setup(x => x.CurrentDirectory)
-                        .Returns(@"D:\fake\root\directory");
+            var options = new Options()
+            {
+                AssemblyPath = @".\path\to\assembly\AssemblyName.dll",
+                Function = "Servernet.Generator.UnitTests.AFunction.Run"
+            };
 
-                    var fileSystem = new Mock<IFileSystem>();
-                    fileSystem
-                        .Setup(x => x.CreateFileWriter(It.IsAny<string>()))
-                        .Returns(textWriter);
-                    fileSystem
-                        .Setup(x =>
-                            x.GetFiles(It.Is<string>(path =>
-                                PathExtensions.IsEqual(path, @"D:\fake\root\directory\path\to\assembly"))))
-                        .Returns(new FileInfo[]
-                        {
-                            new FileInfo(@"D:\fake\root\directory\path\to\assembly\dependency1.dll"),
-                            new FileInfo(@"D:\fake\root\directory\path\to\assembly\dependency432.dll"),
-                        });
+            var program = new Program(
+                assemblyLoader.Object,
+                environment.Object,
+                fileSystem.Object,
+                Mock.Of<ILogger>(),
+                options);
 
-                    var options = new Options()
-                    {
-                        AssemblyPath = @".\path\to\assembly\AssemblyName.dll",
-                        Function = "Servernet.Generator.UnitTests.AFunction.Run"
-                    };
+            program.Run();
 
-                    var program = new Program(
-                        assemblyLoader.Object,
-                        environment.Object,
-                        fileSystem.Object,
-                        Mock.Of<ILogger>(),
-                        options);
-
-                    program.Run();
-
-                    fileSystem.Verify(x => x.CopyFile(
-                        It.Is<string>(path => path.Equals(@"D:\fake\root\directory\path\to\assembly\dependency1.dll")),
-                        It.Is<string>(path => path.Equals(@"AFunction\dependency1.dll")),
-                        It.Is<bool>(overwrite => overwrite)));
-                    fileSystem.Verify(x => x.CopyFile(
-                        It.Is<string>(path => path.Equals(@"D:\fake\root\directory\path\to\assembly\dependency432.dll")),
-                        It.Is<string>(path => path.Equals(@"AFunction\dependency432.dll")),
-                        It.Is<bool>(overwrite => overwrite)));
-                }
-            }
+            fileSystem.Verify(x => x.CopyFile(
+                It.Is<string>(path => path.Equals(@"D:\fake\root\directory\path\to\assembly\dependency1.dll")),
+                It.Is<string>(path => path.Equals(@"AFunction\dependency1.dll")),
+                It.Is<bool>(overwrite => overwrite)));
+            fileSystem.Verify(x => x.CopyFile(
+                It.Is<string>(path => path.Equals(@"D:\fake\root\directory\path\to\assembly\dependency432.dll")),
+                It.Is<string>(path => path.Equals(@"AFunction\dependency432.dll")),
+                It.Is<bool>(overwrite => overwrite)));
         }
 
         [Fact]
         public void Run_OutputPathProvided_DependenciesCopiedUnderOutputPath()
         {
-            using (var memoryStream = new MemoryStream())
-            {
-                using (var textWriter = new StreamWriter(memoryStream))
+            var assemblyLoader = new Mock<IAssemblyLoader>();
+            assemblyLoader
+                .Setup(x => x.LoadFrom(It.IsAny<string>()))
+                .Returns(typeof(AFunction).Assembly);
+
+            var environment = new Mock<IEnvironment>();
+            environment
+                .Setup(x => x.CurrentDirectory)
+                .Returns(@"D:\fake\root\directory");
+
+            var fileSystem = new Mock<IFileSystem>();
+            fileSystem
+                .Setup(x => x.GetFiles(It.Is<string>(path => path.Equals(@"D:\fake\root\directory\.\path\to\assembly"))))
+                .Returns(new FileInfo[]
                 {
-                    var assemblyLoader = new Mock<IAssemblyLoader>();
-                    assemblyLoader
-                        .Setup(x => x.LoadFrom(It.IsAny<string>()))
-                        .Returns(typeof(AFunction).Assembly);
+                    new FileInfo(@"D:\fake\root\directory\path\to\assembly\dependency1.dll"),
+                    new FileInfo(@"D:\fake\root\directory\path\to\assembly\dependency432.dll"),
+                });
 
-                    var environment = new Mock<IEnvironment>();
-                    environment
-                        .Setup(x => x.CurrentDirectory)
-                        .Returns(@"D:\fake\root\directory");
+            var options = new Options()
+            {
+                AssemblyPath = @".\path\to\assembly\AssemblyName.dll",
+                Function = "Servernet.Generator.UnitTests.AFunction.Run",
+                OutputDirectory = @"E:\fake\output\directory",
+            };
 
-                    var fileSystem = new Mock<IFileSystem>();
-                    fileSystem
-                        .Setup(x => x.CreateFileWriter(It.IsAny<string>()))
-                        .Returns(textWriter);
-                    fileSystem
-                        .Setup(x => x.GetFiles(It.Is<string>(path => path.Equals(@"D:\fake\root\directory\.\path\to\assembly"))))
-                        .Returns(new FileInfo[]
-                        {
-                            new FileInfo(@"D:\fake\root\directory\path\to\assembly\dependency1.dll"),
-                            new FileInfo(@"D:\fake\root\directory\path\to\assembly\dependency432.dll"),
-                        });
+            var program = new Program(
+                assemblyLoader.Object,
+                environment.Object,
+                fileSystem.Object,
+                Mock.Of<ILogger>(),
+                options);
 
-                    var options = new Options()
-                    {
-                        AssemblyPath = @".\path\to\assembly\AssemblyName.dll",
-                        Function = "Servernet.Generator.UnitTests.AFunction.Run",
-                        OutputDirectory = @"E:\fake\output\directory",
-                    };
+            program.Run();
 
-                    var program = new Program(
-                        assemblyLoader.Object,
-                        environment.Object,
-                        fileSystem.Object,
-                        Mock.Of<ILogger>(),
-                        options);
-
-                    program.Run();
-
-                    fileSystem.Verify(x => x.CopyFile(
-                        It.Is<string>(path => path.Equals(@"D:\fake\root\directory\path\to\assembly\dependency1.dll")),
-                        It.Is<string>(path => path.Equals(@"E:\fake\output\directory\AFunction\dependency1.dll")),
-                        It.Is<bool>(overwrite => overwrite)));
-                    fileSystem.Verify(x => x.CopyFile(
-                        It.Is<string>(path => path.Equals(@"D:\fake\root\directory\path\to\assembly\dependency432.dll")),
-                        It.Is<string>(path => path.Equals(@"E:\fake\output\directory\AFunction\dependency432.dll")),
-                        It.Is<bool>(overwrite => overwrite)));
-                }
-            }
+            fileSystem.Verify(x => x.CopyFile(
+                It.Is<string>(path => path.Equals(@"D:\fake\root\directory\path\to\assembly\dependency1.dll")),
+                It.Is<string>(path => path.Equals(@"E:\fake\output\directory\AFunction\dependency1.dll")),
+                It.Is<bool>(overwrite => overwrite)));
+            fileSystem.Verify(x => x.CopyFile(
+                It.Is<string>(path => path.Equals(@"D:\fake\root\directory\path\to\assembly\dependency432.dll")),
+                It.Is<string>(path => path.Equals(@"E:\fake\output\directory\AFunction\dependency432.dll")),
+                It.Is<bool>(overwrite => overwrite)));
         }
     }
 }

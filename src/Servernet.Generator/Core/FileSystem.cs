@@ -14,14 +14,14 @@ namespace Servernet.Generator.Core
             Directory.CreateDirectory(path);
         }
 
-        public TextWriter CreateFileWriter(string filePath)
-        {
-            return new StreamWriter(filePath);
-        }
-
         public FileInfo[] GetFiles(string directoryPath)
         {
             return new DirectoryInfo(directoryPath).GetFiles();
+        }
+
+        public void WriteToFile(string filePath, string text)
+        {
+            File.WriteAllText(filePath, text);
         }
     }
 }

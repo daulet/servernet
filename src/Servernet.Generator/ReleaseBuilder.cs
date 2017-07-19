@@ -47,16 +47,14 @@ namespace Servernet.Generator
 
             // @TODO also add project.json and include Servernet as nuget package
             // https://docs.microsoft.com/en-us/azure/azure-functions/functions-reference-csharp#package-management
-            using (var bindingFile = _fileSystem.CreateFileWriter($"{targetDirectoryPath}/function.json"))
+            
+            var serializerSettings = new JsonSerializerSettings()
             {
-                var serializerSettings = new JsonSerializerSettings()
-                {
-                    ContractResolver = new CamelCasePropertyNamesContractResolver(),
-                };
-                serializerSettings.Converters.Add(new StringEnumConverter(camelCaseText: true));
-                bindingFile.Write(
-                    JsonConvert.SerializeObject(function, Formatting.Indented, serializerSettings));
-            }
+                ContractResolver = new CamelCasePropertyNamesContractResolver(),
+            };
+            serializerSettings.Converters.Add(new StringEnumConverter(camelCaseText: true));
+            var functionDefinition = JsonConvert.SerializeObject(function, Formatting.Indented, serializerSettings);
+            _fileSystem.WriteToFile($"{targetDirectoryPath}/function.json", functionDefinition);
             
             var allReferencedAssemblies = _fileSystem.GetFiles(sourceDirectoryPath);
             foreach (var referencedAssembly in allReferencedAssemblies

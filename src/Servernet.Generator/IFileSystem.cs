@@ -8,8 +8,8 @@ namespace Servernet.Generator
 
         void CreateDirectory(string path);
 
-        TextWriter CreateFileWriter(string filePath);
-
         FileInfo[] GetFiles(string directoryPath);
+
+        void WriteToFile(string filePath, string text);
     }
 }
