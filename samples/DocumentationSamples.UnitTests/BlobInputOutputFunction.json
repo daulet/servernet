@@ -1,0 +1,28 @@
+﻿{
+    "disabled": false,
+    "scriptFile": "Servernet.Samples.DocumentationSamples.dll",
+    "entryPoint": "Servernet.Samples.DocumentationSamples.BlobInputOutputFunction.Run",
+    "bindings": [
+        {
+            "connection": "BlobInputOutputFunction_trigger_queue_myQueueItem",
+            "direction": "in",
+            "name": "myQueueItem",
+            "queueName": "myqueue-items",
+            "type": "queueTrigger"
+        },
+        {
+            "connection": "BlobInputOutputFunction_input_blob_myInputBlob",
+            "direction": "in",
+            "name": "myInputBlob",
+            "path": "samples-workitems/{queueTrigger}",
+            "type": "blob"
+        },
+        {
+            "connection": "BlobInputOutputFunction_output_blob_myOutputBlob",
+            "direction": "out",
+            "name": "myOutputBlob",
+            "path": "samples-workitems/{queueTrigger}-Copy)",
+            "type": "blob"
+        }
+    ]
+}

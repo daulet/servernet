@@ -1,4 +1,7 @@
-﻿using Moq;
+﻿using System.IO;
+using System.Reflection;
+using Moq;
+using Newtonsoft.Json.Linq;
 using Servernet.Generator;
 using Xunit;
 
@@ -36,11 +39,23 @@ namespace Servernet.Samples.DocumentationSamples.UnitTests
 
             program.Run();
 
+            JObject expectedJson = null;
+            var assembly = Assembly.GetExecutingAssembly();
+            var resourceName = "Servernet.Samples.DocumentationSamples.UnitTests.BlobInputOutputFunction.json";
+            using (var stream = assembly.GetManifestResourceStream(resourceName))
+            {
+                using (var reader = new StreamReader(stream))
+                {
+                    var expectedDefinition = reader.ReadToEnd();
+                    expectedJson = JObject.Parse(expectedDefinition);
+                }
+            }
+
             fileSystem.Verify(x =>
                 x.WriteToFile(
                     It.IsAny<string>(),
                     It.Is<string>(definition =>
-                        definition.Contains("BlobInputOutputFunction"))));
+                        JToken.DeepEquals(JObject.Parse(definition), expectedJson))));
         }
     }
 }
