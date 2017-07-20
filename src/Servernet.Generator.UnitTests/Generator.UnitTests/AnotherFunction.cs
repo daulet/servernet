@@ -2,9 +2,9 @@
 
 namespace Servernet.Generator.UnitTests
 {
-    public class AFunction
+    public class AnotherFunction
     {
-        [FunctionName("AFunction")]
+        [FunctionName("YetAnotherFunction")]
         public static void Run(
             [TimerTrigger("0 0 2 * * *")] TimerInfo timerInfo)
         {

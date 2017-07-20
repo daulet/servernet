@@ -87,6 +87,8 @@ namespace Servernet.Generator.UnitTests
                 .Setup(x => x.CurrentDirectory)
                 .Returns(@"D:\fake\root\directory");
 
+            var fileSystem = new Mock<IFileSystem>(MockBehavior.Strict);
+
             var options = new Options()
             {
                 AssemblyPath = string.Empty,
@@ -95,13 +97,56 @@ namespace Servernet.Generator.UnitTests
             var program = new Program(
                 assemblyLoader.Object,
                 environment.Object,
-                Mock.Of<IFileSystem>(),
+                fileSystem.Object,
                 Mock.Of<ILogger>(),
                 options);
 
             program.Run();
 
-            // @TODO not really asserting anything
+            fileSystem.VerifyAll();
+        }
+
+        [Fact]
+        public void Run_NoFunctionParameter_AllFunctionsPickedUp()
+        {
+            var assemblyLoader = new Mock<IAssemblyLoader>();
+            assemblyLoader
+                .Setup(x => x.LoadFrom(It.IsAny<string>()))
+                .Returns(typeof(ProgramTests).Assembly);
+
+            var environment = new Mock<IEnvironment>();
+            environment
+                .Setup(x => x.CurrentDirectory)
+                .Returns(@"D:\fake\root\directory");
+
+            var fileSystem = new Mock<IFileSystem>();
+
+            var options = new Options()
+            {
+                AssemblyPath = string.Empty,
+            };
+
+            var program = new Program(
+                assemblyLoader.Object,
+                environment.Object,
+                fileSystem.Object,
+                Mock.Of<ILogger>(),
+                options);
+
+            program.Run();
+
+            fileSystem.Verify(x => x.WriteToFile(
+                It.Is<string>(path =>
+                    PathExtensions.IsEqual(path, "AFunction/function.json")),
+                It.IsAny<string>()));
+            fileSystem.Verify(x => x.WriteToFile(
+                It.Is<string>(path =>
+                    PathExtensions.IsEqual(path, "OtherFunction/function.json")),
+                It.IsAny<string>()));
+            fileSystem.Verify(x => x.WriteToFile(
+                It.Is<string>(path =>
+                    PathExtensions.IsEqual(path, "YetAnotherFunction/function.json")),
+                It.IsAny<string>()));
         }
 
         [Fact]
@@ -176,6 +221,40 @@ namespace Servernet.Generator.UnitTests
             {
                 Assert.StartsWith("Failed to find method with name:", e.Message);
             }
+        }
+
+        [Fact]
+        public void Run_FunctionNameOverriden_ReleasedToCorrectPath()
+        {
+            var assemblyLoader = new Mock<IAssemblyLoader>();
+            assemblyLoader
+                .Setup(x => x.LoadFrom(It.IsAny<string>()))
+                .Returns(typeof(AnotherFunction).Assembly);
+
+            var environment = new Mock<IEnvironment>();
+            environment
+                .Setup(x => x.CurrentDirectory)
+                .Returns(@"D:\fake\root\directory");
+
+            var fileSystem = new Mock<IFileSystem>();
+
+            var options = new Options()
+            {
+                AssemblyPath = string.Empty,
+                Function = "Servernet.Generator.UnitTests.AnotherFunction.Run"
+            };
+
+            var program = new Program(
+                assemblyLoader.Object,
+                environment.Object,
+                fileSystem.Object,
+                Mock.Of<ILogger>(),
+                options);
+
+            program.Run();
+
+            fileSystem.Verify(x => x.CreateDirectory(
+                It.Is<string>(path => path.Equals("YetAnotherFunction"))));
         }
 
         [Fact]

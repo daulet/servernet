@@ -5,7 +5,6 @@ using Servernet.Samples.MultiTriggerSample.Model;
 
 namespace Servernet.Samples.MultiTriggerSample.Trigger
 {
-    [AzureFunction]
     public class TranscationProcessorHttpTrigger
     {
         public static HttpResponseMessage Run(

@@ -5,9 +5,9 @@ using Servernet.Samples.MultiTriggerSample.Model;
 
 namespace Servernet.Samples.MultiTriggerSample.Trigger
 {
-    [AzureFunction(Name = "TriggerProcessingTransactionTable")]
     public class TransactionPaginationHttpTrigger
     {
+        [FunctionName("TriggerProcessingTransactionTable")]
         public static HttpResponseMessage Run(
             [HttpTrigger(HttpMethod.Post, "TransactionPaginationHttpTrigger")] HttpRequestMessage request,
             [Queue("transaction-pagination-queue")] ICollector<TableSegment> paginationQueue)

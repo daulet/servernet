@@ -4,7 +4,6 @@ using Microsoft.Azure.WebJobs.Host;
 
 namespace Servernet.Samples.DocumentationSamples
 {
-    [AzureFunction]
     public class QueueTriggerFunction
     {
         public static void Run(

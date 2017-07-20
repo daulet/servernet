@@ -27,11 +27,10 @@ namespace Servernet.Generator
                 ScriptFile = $"{Path.GetFileName(functionType.Assembly.Location)}",
             };
 
-            var attribute = functionType.GetCustomAttribute<AzureFunctionAttribute>(inherit: false);
+            var attribute = functionMethod.GetCustomAttribute<FunctionNameAttribute>(inherit: false);
             if (attribute != null)
             {
-                _function.Disabled = attribute.Disabled;
-                _function.Name = attribute.Name?? functionType.Name;
+                _function.Name = attribute.Name;
             }
 
             _methodAttributeSwitch = new TypeSwitch<MethodInfo>()

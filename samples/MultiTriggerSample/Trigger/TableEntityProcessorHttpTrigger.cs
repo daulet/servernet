@@ -9,7 +9,6 @@ using Servernet.Samples.MultiTriggerSample.Function;
 
 namespace Servernet.Samples.MultiTriggerSample.Trigger
 {
-    [AzureFunction]
     public class TableEntityProcessorHttpTrigger
     {
         [HttpOutput]

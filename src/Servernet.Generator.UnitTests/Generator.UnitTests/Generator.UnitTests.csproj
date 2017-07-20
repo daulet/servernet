@@ -44,6 +44,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AFunction.cs" />
+    <Compile Include="AnotherFunction.cs" />
+    <Compile Include="OtherFunction.cs" />
     <Compile Include="PathExtensions.cs" />
     <Compile Include="ProgramTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -55,6 +57,10 @@
     <ProjectReference Include="..\..\Servernet.Generator\Generator.csproj">
       <Project>{67500622-0253-486e-b7b3-aa578350e8be}</Project>
       <Name>Generator</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Servernet\Servernet.csproj">
+      <Project>{2B318CD1-6381-4FD9-A140-2937BCB94777}</Project>
+      <Name>Servernet</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

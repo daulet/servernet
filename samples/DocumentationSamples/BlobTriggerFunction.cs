@@ -3,7 +3,6 @@ using Microsoft.Azure.WebJobs.Host;
 
 namespace Servernet.Samples.DocumentationSamples
 {
-    [AzureFunction]
     public class BlobTriggerFunction
     {
         public static void Run(

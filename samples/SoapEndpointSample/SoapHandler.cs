@@ -4,7 +4,6 @@ using Microsoft.Azure.WebJobs.Host;
 
 namespace Servernet.Samples.SoapEndpointSample
 {
-    [AzureFunction]
     public class SoapHandler
     {
         [HttpOutput]

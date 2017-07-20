@@ -3,7 +3,6 @@ using System.Net.Http;
 
 namespace Servernet.Samples.DocumentationSamples
 {
-    [AzureFunction]
     public class WebHookTriggerFunction
     {
         [HttpOutput]
