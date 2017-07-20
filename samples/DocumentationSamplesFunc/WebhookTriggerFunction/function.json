@@ -9,7 +9,7 @@
       "type": "http"
     },
     {
-      "authLevel": "Anonymous",
+      "authLevel": "Function",
       "direction": "in",
       "name": "request",
       "route": "products/{category:alpha}/{id:int?}",
