@@ -1,0 +1,14 @@
+﻿{
+    "disabled": false,
+    "scriptFile": "Servernet.Samples.DocumentationSamples.dll",
+    "entryPoint": "Servernet.Samples.DocumentationSamples.BlobTriggerFunction.Run",
+    "bindings": [
+        {
+            "connection": "BlobTriggerFunction_trigger_blob_myBlob",
+            "direction": "in",
+            "name": "myBlob",
+            "path": "samples-workitems",
+            "type": "blobTrigger"
+        }
+    ]
+}

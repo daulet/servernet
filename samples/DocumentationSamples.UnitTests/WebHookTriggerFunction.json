@@ -1,0 +1,20 @@
+﻿{
+    "disabled": false,
+    "scriptFile": "Servernet.Samples.DocumentationSamples.dll",
+    "entryPoint": "Servernet.Samples.DocumentationSamples.WebHookTriggerFunction.Run",
+    "bindings": [
+        {
+            "direction": "out",
+            "name": "$return",
+            "type": "http"
+        },
+        {
+            "authLevel": "Anonymous",
+            "direction": "in",
+            "name": "request",
+            "route": "products/{category:alpha}/{id:int?}",
+            "type": "httpTrigger",
+            "webHookType": "genericJson"
+        }
+    ]
+}

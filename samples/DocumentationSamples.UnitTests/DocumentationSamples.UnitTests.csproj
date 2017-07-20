@@ -42,12 +42,22 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BlobInputOutputFunctionTests.cs" />
+    <Compile Include="FunctionJsonTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="BlobInputOutputFunction.json" />
+    <EmbeddedResource Include="BlobTriggerFunction.json" />
+    <EmbeddedResource Include="HttpOutputFunction.json" />
+    <EmbeddedResource Include="HttpTriggerFunction.json" />
     <None Include="project.json" />
+    <EmbeddedResource Include="QueueOutputFunction.json" />
+    <EmbeddedResource Include="QueueTriggerFunction.json" />
+    <EmbeddedResource Include="ReadmeFunction.json" />
+    <EmbeddedResource Include="TableInputFunction.json" />
+    <EmbeddedResource Include="TableOutputFunction.json" />
+    <EmbeddedResource Include="TimerTriggerFunction.json" />
+    <EmbeddedResource Include="WebHookTriggerFunction.json" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\Servernet.Generator\Generator.csproj">

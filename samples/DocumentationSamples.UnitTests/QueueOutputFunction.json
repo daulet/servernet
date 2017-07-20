@@ -1,0 +1,21 @@
+﻿{
+    "disabled": false,
+    "scriptFile": "Servernet.Samples.DocumentationSamples.dll",
+    "entryPoint": "Servernet.Samples.DocumentationSamples.QueueOutputFunction.Run",
+    "bindings": [
+        {
+            "connection": "QueueOutputFunction_trigger_queue_input",
+            "direction": "in",
+            "name": "input",
+            "queueName": "myqueue-input",
+            "type": "queueTrigger"
+        },
+        {
+            "connection": "QueueOutputFunction_output_queue_myQueueItem",
+            "direction": "out",
+            "name": "myQueueItem",
+            "queueName": "myqueue-output",
+            "type": "queue"
+        }
+    ]
+}

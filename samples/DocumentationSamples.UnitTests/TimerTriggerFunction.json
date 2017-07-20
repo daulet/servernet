@@ -1,0 +1,13 @@
+﻿{
+    "disabled": false,
+    "scriptFile": "Servernet.Samples.DocumentationSamples.dll",
+    "entryPoint": "Servernet.Samples.DocumentationSamples.TimerTriggerFunction.Run",
+    "bindings": [
+        {
+            "direction": "in",
+            "name": "myTimer",
+            "schedule": "0 */5 * * * *",
+            "type": "timerTrigger"
+        }
+    ]
+}
