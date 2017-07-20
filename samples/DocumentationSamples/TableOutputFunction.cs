@@ -5,6 +5,7 @@ namespace Servernet.Samples.DocumentationSamples
 {
     public class TableOutputFunction
     {
+        [FunctionName("TableOutputFunction")]
         public static void Run(
             [QueueTrigger("myqueue-items")]string input,
             [Table("Person")] ICollector<Person> tableBinding,

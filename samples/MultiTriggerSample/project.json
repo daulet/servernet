@@ -1,14 +1,15 @@
 ﻿{
-  "dependencies": {
-    "Microsoft.Azure.WebJobs": "2.1.0-beta1",
-    "Microsoft.Azure.WebJobs.Extensions": "2.1.0-beta1",
-    "Newtonsoft.Json": "9.0.1",
-    "WindowsAzure.Storage": "7.2.1"
-  },
-  "frameworks": {
-    "net46": {}
-  },
-  "runtimes": {
-    "win": {}
-  }
+    "dependencies": {
+        "Microsoft.Azure.WebJobs": "2.1.0-beta1",
+        "Microsoft.Azure.WebJobs.Extensions": "2.1.0-beta1",
+        "Microsoft.Azure.WebJobs.Extensions.Http": "1.0.0-beta1",
+        "Newtonsoft.Json": "9.0.1",
+        "WindowsAzure.Storage": "7.2.1"
+    },
+    "frameworks": {
+        "net46": {}
+    },
+    "runtimes": {
+        "win": {}
+    }
 }

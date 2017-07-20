@@ -5,6 +5,7 @@ namespace Servernet.Samples.DocumentationSamples
 {
     public class QueueOutputFunction
     {
+        [FunctionName("QueueOutputFunction")]
         public static void Run(
             [QueueTrigger("myqueue-input")] string input,
             [Queue("myqueue-output")] out string myQueueItem,

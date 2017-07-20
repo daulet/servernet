@@ -6,6 +6,7 @@ namespace Servernet.Samples.DocumentationSamples
 {
     public class QueueTriggerFunction
     {
+        [FunctionName("QueueTriggerFunction")]
         public static void Run(
             [QueueTrigger("myqueue-items")]string myQueueItem,
             DateTimeOffset expirationTime,

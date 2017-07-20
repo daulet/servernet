@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Extensions.Http;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
@@ -10,14 +12,7 @@ namespace Servernet.Generator.Definition
         internal HttpTriggerBinding(string paramName, HttpTriggerAttribute attribute)
         {
             AuthLevel = attribute.AuthLevel;
-            Methods = new List<string>();
-            foreach (HttpMethod method in Enum.GetValues(typeof(HttpMethod)))
-            {
-                if ((attribute.Methods & method) != 0)
-                {
-                    Methods.Add(method.ToString().ToUpperInvariant());
-                }
-            }
+            Methods = new List<string>(attribute.Methods);
             Name = paramName;
             // @TODO Enforce: The route template cannot start with a '/' or '~' character and it cannot contain a '?' character.
             // @TODO Validate that dynamically assigned route parameters are present in route template
@@ -25,7 +20,7 @@ namespace Servernet.Generator.Definition
         }
 
         [JsonConverter(typeof(StringEnumConverter))]
-        public HttpAuthLevel AuthLevel { get; }
+        public AuthorizationLevel AuthLevel { get; }
 
         public BindingDirection Direction { get; } = BindingDirection.In;
 

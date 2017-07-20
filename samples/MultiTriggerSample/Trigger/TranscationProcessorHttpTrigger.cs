@@ -1,14 +1,15 @@
-﻿using System.Net;
-using System.Net.Http;
+﻿using Microsoft.Azure.WebJobs;
 using Servernet.Samples.MultiTriggerSample.Function;
 using Servernet.Samples.MultiTriggerSample.Model;
+using System.Net;
+using System.Net.Http;
 
 namespace Servernet.Samples.MultiTriggerSample.Trigger
 {
     public class TranscationProcessorHttpTrigger
     {
         public static HttpResponseMessage Run(
-            [HttpTrigger(HttpMethod.Post, "TranscationProcessorHttpTrigger")] Transaction transaction)
+            [HttpTrigger("POST")] Transaction transaction)
         {
             IFunction<Transaction, bool> transactionFunction = new TransactionProcessorFunction();
             var success = transactionFunction.Run(transaction);

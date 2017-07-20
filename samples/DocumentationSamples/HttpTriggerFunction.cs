@@ -2,14 +2,16 @@
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Host;
 
 namespace Servernet.Samples.DocumentationSamples
 {
     public class HttpTriggerFunction
     {
+        [FunctionName("HttpTriggerFunction")]
         public static async Task Run(
-            [HttpTrigger(HttpMethod.Get, "HttpTriggerFunction")] HttpRequestMessage req,
+            [HttpTrigger("GET", Route = "HttpTriggerFunction")] HttpRequestMessage req,
             TraceWriter log)
         {
             log.Info($"C# HTTP trigger function processed a request. RequestUri={req.RequestUri}");

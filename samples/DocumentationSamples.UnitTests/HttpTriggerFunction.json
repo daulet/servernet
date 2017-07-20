@@ -4,7 +4,7 @@
     "entryPoint": "Servernet.Samples.DocumentationSamples.HttpTriggerFunction.Run",
     "bindings": [
         {
-            "authLevel": "Anonymous",
+            "authLevel": "Function",
             "direction": "in",
             "methods": [
                 "GET"

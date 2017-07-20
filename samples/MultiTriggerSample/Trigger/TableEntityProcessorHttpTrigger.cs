@@ -1,11 +1,11 @@
-﻿using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
-using Microsoft.Azure.WebJobs;
+﻿using Microsoft.Azure.WebJobs;
 using Microsoft.WindowsAzure.Storage.Table;
 using Microsoft.WindowsAzure.Storage.Table.Queryable;
 using Servernet.Samples.MultiTriggerSample.Function;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace Servernet.Samples.MultiTriggerSample.Trigger
 {
@@ -13,7 +13,7 @@ namespace Servernet.Samples.MultiTriggerSample.Trigger
     {
         [HttpOutput]
         public static async Task<HttpResponseMessage> RunAsync(
-            [HttpTrigger(HttpMethod.Post, "TableEntityProcessorHttpTrigger/{partitionKey}/{rowKey}")] HttpRequestMessage request,
+            [HttpTrigger("POST", Route = "TableEntityProcessorHttpTrigger/{partitionKey}/{rowKey}")] HttpRequestMessage request,
             string partitionKey,
             string rowKey,
             [Table("transactiontable")] IQueryable<DynamicTableEntity> transactionsTable)

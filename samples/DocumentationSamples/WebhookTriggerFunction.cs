@@ -1,10 +1,12 @@
 ﻿using System.Net;
 using System.Net.Http;
+using Microsoft.Azure.WebJobs;
 
 namespace Servernet.Samples.DocumentationSamples
 {
     public class WebHookTriggerFunction
     {
+        [FunctionName("WebHookTriggerFunction")]
         [HttpOutput]
         public static HttpResponseMessage Run(
             [WebHookTrigger("products/{category:alpha}/{id:int?}", WebhookType.GenericJson)] HttpRequestMessage request,

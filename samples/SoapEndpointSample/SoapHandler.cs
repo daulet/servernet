@@ -1,5 +1,6 @@
 ﻿using System.Net.Http;
 using System.Threading.Tasks;
+using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Host;
 
 namespace Servernet.Samples.SoapEndpointSample
@@ -8,7 +9,7 @@ namespace Servernet.Samples.SoapEndpointSample
     {
         [HttpOutput]
         public static async Task<HttpResponseMessage> RunAsync(
-            [HttpTrigger(HttpMethod.Get | HttpMethod.Post, "ols/olsclient.svc/olsclient")] HttpRequestMessage request,
+            [HttpTrigger("GET", "POST", Route = "ols/olsclient.svc/olsclient")] HttpRequestMessage request,
             TraceWriter logger)
         {
             var content = await request.Content.ReadAsStringAsync();

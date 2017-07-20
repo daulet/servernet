@@ -9,7 +9,7 @@ namespace Servernet.Samples.MultiTriggerSample.Trigger
     {
         [FunctionName("TriggerProcessingTransactionTable")]
         public static HttpResponseMessage Run(
-            [HttpTrigger(HttpMethod.Post, "TransactionPaginationHttpTrigger")] HttpRequestMessage request,
+            [HttpTrigger("POST")] HttpRequestMessage request,
             [Queue("transaction-pagination-queue")] ICollector<TableSegment> paginationQueue)
         {
             // queue an empty segment to kick off pagination

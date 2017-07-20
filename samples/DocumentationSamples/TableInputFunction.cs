@@ -5,6 +5,7 @@ namespace Servernet.Samples.DocumentationSamples
 {
     public class TableInputFunction
     {
+        [FunctionName("TableInputFunction")]
         public static void Run(
             [QueueTrigger("myqueue-items")] string myQueueItem,
             [Table("Person", "Test", "{queueTrigger}")] Person personEntity,

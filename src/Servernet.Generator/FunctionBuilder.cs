@@ -1,10 +1,10 @@
-﻿using System;
+﻿using Microsoft.Azure.WebJobs;
+using Microsoft.WindowsAzure.Storage.Table;
+using Servernet.Generator.Definition;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
-using Microsoft.Azure.WebJobs;
-using Microsoft.WindowsAzure.Storage.Table;
-using Servernet.Generator.Definition;
 
 namespace Servernet.Generator
 {

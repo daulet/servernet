@@ -6,6 +6,7 @@ namespace Servernet.Samples.DocumentationSamples
 {
     public class TimerTriggerFunction
     {
+        [FunctionName("TimerTriggerFunction")]
         public static void Run(
             [TimerTrigger("0 */5 * * * *")] TimerInfo myTimer,
             TraceWriter log)

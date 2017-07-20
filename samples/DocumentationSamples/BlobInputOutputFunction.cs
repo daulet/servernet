@@ -5,6 +5,7 @@ namespace Servernet.Samples.DocumentationSamples
 {
     public class BlobInputOutputFunction
     {
+        [FunctionName("BlobInputOutputFunction")]
         public static void Run(
             [QueueTrigger("myqueue-items")] string myQueueItem,
             [Blob("samples-workitems/{queueTrigger}")] string myInputBlob,

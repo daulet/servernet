@@ -1,13 +1,14 @@
 ﻿{
-  "dependencies": {
-    "Microsoft.Azure.WebJobs": "2.1.0-beta1",
-    "Microsoft.Azure.WebJobs.Extensions": "2.1.0-beta1",
-    "Microsoft.AspNet.WebApi.Core": "5.2.3"
-  },
-  "frameworks": {
-    "net46": {}
-  },
-  "runtimes": {
-    "win": {}
-  }
+    "dependencies": {
+        "Microsoft.Azure.WebJobs": "2.1.0-beta1",
+        "Microsoft.Azure.WebJobs.Extensions": "2.1.0-beta1",
+        "Microsoft.Azure.WebJobs.Extensions.Http": "1.0.0-beta1",
+        "Microsoft.AspNet.WebApi.Core": "5.2.3"
+    },
+    "frameworks": {
+        "net46": {}
+    },
+    "runtimes": {
+        "win": {}
+    }
 }

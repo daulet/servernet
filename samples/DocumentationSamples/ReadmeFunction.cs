@@ -8,9 +8,10 @@ namespace Servernet.Samples.DocumentationSamples
 {
     public class ReadmeFunction
     {
+        [FunctionName("ReadmeFunction")]
         [HttpOutput]
         public static async Task<HttpResponseMessage> RunAsync(
-            [HttpTrigger(HttpMethod.Post, "users/{username:alpha}")] HttpRequestMessage request,
+            [HttpTrigger("POST", Route = "users/{username:alpha}")] HttpRequestMessage request,
             string username,
             [Table("User", partitionKey: "{username}", rowKey: "payment")] PaymentInstrument paymentInstrument,
             [Queue("user-queue")] IAsyncCollector<PaymentInstrument> paymentQueue,

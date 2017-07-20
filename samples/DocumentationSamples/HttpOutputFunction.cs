@@ -3,15 +3,17 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Host;
 
 namespace Servernet.Samples.DocumentationSamples
 {
     public class HttpOutputFunction
     {
+        [FunctionName("HttpOutputFunction")]
         [HttpOutput]
         public static async Task<HttpResponseMessage> Run(
-               [HttpTrigger(HttpMethod.Get, "HttpOutputFunction/{subPath:alpha}")] HttpRequestMessage req,
+               [HttpTrigger("GET", Route = "HttpOutputFunction/{subPath:alpha}")] HttpRequestMessage req,
                string subPath,
                TraceWriter log)
         {
