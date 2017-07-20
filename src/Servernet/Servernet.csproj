@@ -35,15 +35,12 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="HttpAuthLevel.cs" />
     <Compile Include="HttpOutputAttribute.cs" />
     <Compile Include="IFunction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Certificate.cs" />
     <Compile Include="SecretAttribute.cs" />
     <Compile Include="SecureString.cs" />
-    <Compile Include="WebHookTriggerAttribute.cs" />
-    <Compile Include="WebhookType.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="project.json" />

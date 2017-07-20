@@ -46,7 +46,17 @@ namespace Servernet.Generator
                     _function.Bindings.Add(binding);
                 })
                 .Case((ParameterInfo parameter, BlobTriggerAttribute x) => { _function.Bindings.Add(new BlobTriggerBinding(functionType, parameter.Name, x)); })
-                .Case((ParameterInfo parameter, HttpTriggerAttribute x) => { _function.Bindings.Add(new HttpTriggerBinding(parameter.Name, x)); })
+                .Case((ParameterInfo parameter, HttpTriggerAttribute x) =>
+                {
+                    if (string.IsNullOrEmpty(x.WebHookType))
+                    {
+                        _function.Bindings.Add(new HttpTriggerBinding(parameter.Name, x));
+                    }
+                    else
+                    {
+                        _function.Bindings.Add(new WebHookTriggerBinding(parameter, x));
+                    }
+                })
                 .Case((ParameterInfo parameter, QueueAttribute x) => { _function.Bindings.Add(new QueueOutputBinding(functionType, parameter.Name, x)); })
                 .Case((ParameterInfo parameter, QueueTriggerAttribute x) => { _function.Bindings.Add(new QueueTriggerBinding(functionType, parameter.Name, x)); })
                 .Case((ParameterInfo parameter, SecretAttribute x) => { _function.Bindings.Add(new BlobInputBinding(functionType, parameter.Name, x)); })
@@ -74,7 +84,7 @@ namespace Servernet.Generator
                     _function.Bindings.Add(binding);
                 })
                 .Case((ParameterInfo parameter, TimerTriggerAttribute x) => { _function.Bindings.Add(new TimerTriggerBinding(parameter.Name, x)); })
-                .Case((ParameterInfo parameter, WebHookTriggerAttribute x) => { _function.Bindings.Add(new WebHookTriggerBinding(parameter, x)); });
+                ;
         }
 
         public void AddBinding(MethodInfo method, object attribute)
