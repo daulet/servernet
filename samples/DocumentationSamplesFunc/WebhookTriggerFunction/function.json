@@ -4,11 +4,6 @@
   "entryPoint": "Servernet.Samples.DocumentationSamples.WebHookTriggerFunction.Run",
   "bindings": [
     {
-      "direction": "out",
-      "name": "$return",
-      "type": "http"
-    },
-    {
       "authLevel": "Function",
       "direction": "in",
       "name": "request",

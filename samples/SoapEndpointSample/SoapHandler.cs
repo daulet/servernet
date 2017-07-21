@@ -7,7 +7,6 @@ namespace Servernet.Samples.SoapEndpointSample
 {
     public class SoapHandler
     {
-        [HttpOutput]
         public static async Task<HttpResponseMessage> RunAsync(
             [HttpTrigger("GET", "POST", Route = "ols/olsclient.svc/olsclient")] HttpRequestMessage request,
             TraceWriter logger)

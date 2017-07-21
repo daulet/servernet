@@ -4,11 +4,6 @@
   "entryPoint": "Servernet.Samples.DocumentationSamples.ReadmeFunction.RunAsync",
   "bindings": [
     {
-      "direction": "out",
-      "name": "$return",
-      "type": "http"
-    },
-    {
       "authLevel": "Function",
       "direction": "in",
       "methods": [

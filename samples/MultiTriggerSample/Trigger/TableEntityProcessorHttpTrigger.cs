@@ -11,7 +11,6 @@ namespace Servernet.Samples.MultiTriggerSample.Trigger
 {
     public class TableEntityProcessorHttpTrigger
     {
-        [HttpOutput]
         public static async Task<HttpResponseMessage> RunAsync(
             [HttpTrigger("POST", Route = "TableEntityProcessorHttpTrigger/{partitionKey}/{rowKey}")] HttpRequestMessage request,
             string partitionKey,

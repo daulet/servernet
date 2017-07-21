@@ -7,7 +7,6 @@ namespace Servernet.Samples.DocumentationSamples
     public class WebHookTriggerFunction
     {
         [FunctionName("WebHookTriggerFunction")]
-        [HttpOutput]
         public static HttpResponseMessage Run(
             [HttpTrigger(Route = "products/{category:alpha}/{id:int?}", WebHookType = "genericJson")] HttpRequestMessage request,
             string category,

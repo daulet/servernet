@@ -9,7 +9,6 @@ namespace Servernet.Samples.DocumentationSamples
     public class ReadmeFunction
     {
         [FunctionName("ReadmeFunction")]
-        [HttpOutput]
         public static async Task<HttpResponseMessage> RunAsync(
             [HttpTrigger("POST", Route = "users/{username:alpha}")] HttpRequestMessage request,
             string username,

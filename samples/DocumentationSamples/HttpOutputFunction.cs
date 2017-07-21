@@ -11,7 +11,6 @@ namespace Servernet.Samples.DocumentationSamples
     public class HttpOutputFunction
     {
         [FunctionName("HttpOutputFunction")]
-        [HttpOutput]
         public static async Task<HttpResponseMessage> Run(
                [HttpTrigger("GET", Route = "HttpOutputFunction/{subPath:alpha}")] HttpRequestMessage req,
                string subPath,
