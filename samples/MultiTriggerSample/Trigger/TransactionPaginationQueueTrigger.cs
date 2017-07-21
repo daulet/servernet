@@ -8,6 +8,7 @@ namespace Servernet.Samples.MultiTriggerSample.Trigger
 {
     public class TransactionPaginationQueueTrigger
     {
+        [FunctionName("TransactionPaginationQueueTrigger")]
         public static void Run(
             [QueueTrigger("transaction-pagination-queue")] TableSegment paginationQueueMessage,
             [Queue("transaction-pagination-queue")] ICollector<TableSegment> paginationQueue,

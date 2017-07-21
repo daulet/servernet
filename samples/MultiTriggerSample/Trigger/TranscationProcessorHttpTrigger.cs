@@ -8,6 +8,7 @@ namespace Servernet.Samples.MultiTriggerSample.Trigger
 {
     public class TranscationProcessorHttpTrigger
     {
+        [FunctionName("TranscationProcessorHttpTrigger")]
         public static HttpResponseMessage Run(
             [HttpTrigger("POST")] Transaction transaction)
         {

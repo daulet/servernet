@@ -4,13 +4,13 @@
   "entryPoint": "Servernet.Samples.MultiTriggerSample.Trigger.TransactionPaginationHttpTrigger.Run",
   "bindings": [
     {
-      "authLevel": "Anonymous",
+      "authLevel": "Function",
       "direction": "in",
       "methods": [
         "POST"
       ],
       "name": "request",
-      "route": "TransactionPaginationHttpTrigger",
+      "route": "TriggerProcessingTransactionTable",
       "type": "httpTrigger"
     },
     {

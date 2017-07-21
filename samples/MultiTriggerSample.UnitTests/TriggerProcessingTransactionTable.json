@@ -1,0 +1,24 @@
+﻿{
+    "disabled": false,
+    "scriptFile": "Servernet.Samples.MultiTriggerSample.dll",
+    "entryPoint": "Servernet.Samples.MultiTriggerSample.Trigger.TransactionPaginationHttpTrigger.Run",
+    "bindings": [
+        {
+            "authLevel": "Function",
+            "direction": "in",
+            "methods": [
+                "POST"
+            ],
+            "name": "request",
+            "route": "TriggerProcessingTransactionTable",
+            "type": "httpTrigger"
+        },
+        {
+            "connection": "TransactionPaginationHttpTrigger_output_queue_paginationQueue",
+            "direction": "out",
+            "name": "paginationQueue",
+            "queueName": "transaction-pagination-queue",
+            "type": "queue"
+        }
+    ]
+}

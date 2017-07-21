@@ -8,10 +8,10 @@ namespace Servernet.Generator.Definition
 {
     public class WebHookTriggerBinding : IBinding
     {
-        internal WebHookTriggerBinding(ParameterInfo parameter, HttpTriggerAttribute attribute)
+        internal WebHookTriggerBinding(string paramName, HttpTriggerAttribute attribute)
         {
             AuthLevel = attribute.AuthLevel;
-            Name = parameter.Name;
+            Name = paramName;
             Route = attribute.Route;
             WebHookType = attribute.WebHookType;
         }

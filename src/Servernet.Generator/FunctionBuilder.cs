@@ -48,13 +48,14 @@ namespace Servernet.Generator
                 .Case((ParameterInfo parameter, BlobTriggerAttribute x) => { _function.Bindings.Add(new BlobTriggerBinding(functionType, parameter.Name, x)); })
                 .Case((ParameterInfo parameter, HttpTriggerAttribute x) =>
                 {
+                    x.Route = x.Route?? _function.Name;
                     if (string.IsNullOrEmpty(x.WebHookType))
                     {
                         _function.Bindings.Add(new HttpTriggerBinding(parameter.Name, x));
                     }
                     else
                     {
-                        _function.Bindings.Add(new WebHookTriggerBinding(parameter, x));
+                        _function.Bindings.Add(new WebHookTriggerBinding(parameter.Name, x));
                     }
                 })
                 .Case((ParameterInfo parameter, QueueAttribute x) => { _function.Bindings.Add(new QueueOutputBinding(functionType, parameter.Name, x)); })
