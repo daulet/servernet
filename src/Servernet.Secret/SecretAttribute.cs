@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Servernet
+namespace Servernet.Secret
 {
     [AttributeUsage(AttributeTargets.Parameter)]
     public class SecretAttribute : Attribute

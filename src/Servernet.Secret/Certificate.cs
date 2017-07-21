@@ -1,9 +1,7 @@
 ﻿using System;
-using System.IO;
 using System.Security.Cryptography.X509Certificates;
-using Newtonsoft.Json;
 
-namespace Servernet
+namespace Servernet.Secret
 {
     /// <summary>
     /// Used to store X509Certificate2 certificates in blob storage

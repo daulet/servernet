@@ -1,6 +1,7 @@
 ﻿using System.Configuration;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.WindowsAzure.Storage;
+using Servernet.Secret;
 
 namespace Servernet.Samples.CertificateUploader
 {

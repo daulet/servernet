@@ -52,11 +52,5 @@
   <ItemGroup>
     <None Include="project.json" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\src\Servernet\Servernet.csproj">
-      <Project>{2b318cd1-6381-4fd9-a140-2937bcb94777}</Project>
-      <Name>Servernet</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

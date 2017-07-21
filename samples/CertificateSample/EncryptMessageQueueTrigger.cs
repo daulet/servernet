@@ -1,8 +1,9 @@
-﻿using System;
+﻿using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Host;
+using Servernet.Secret;
+using System;
 using System.Security.Cryptography;
 using System.Text;
-using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Host;
 
 namespace Servernet.Samples.CertificateSample
 {
