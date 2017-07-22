@@ -23,15 +23,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocumentationSamples", "sam
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocumentationSamplesFunc", "samples\DocumentationSamplesFunc\DocumentationSamplesFunc.csproj", "{A2DE5F58-44A4-4F5C-BB31-6DE3109BC0AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Generator", "src\Servernet.Generator\Generator.csproj", "{67500622-0253-486E-B7B3-AA578350E8BE}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Generator.UnitTests", "src\Servernet.Generator.UnitTests\Generator.UnitTests\Generator.UnitTests.csproj", "{48334211-E78F-49F8-BF78-079576942415}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Generator", "src\Servernet.Generator\Generator.csproj", "{67500622-0253-486E-B7B3-AA578350E8BE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocumentationSamples.UnitTests", "samples\DocumentationSamples.UnitTests\DocumentationSamples.UnitTests.csproj", "{5EFF2D84-D474-4739-A0A8-5B48062A0443}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiTriggerSample.UnitTests", "samples\MultiTriggerSample.UnitTests\MultiTriggerSample.UnitTests.csproj", "{ADE3D2C5-B2A0-4A7E-86D6-8002FD17B01D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Servernet.Secret", "src\Servernet.Secret\Servernet.Secret.csproj", "{2B318CD1-6381-4FD9-A140-2937BCB94777}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Servernet.Secret", "src\Servernet.Secret\Servernet.Secret.csproj", "{2B318CD1-6381-4FD9-A140-2937BCB94777}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Generator.UnitTests", "src\Servernet.Generator.UnitTests\Generator.UnitTests.csproj", "{6499B346-0296-4B1F-9547-9F9153FC3B66}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -79,10 +79,6 @@ Global
 		{67500622-0253-486E-B7B3-AA578350E8BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{67500622-0253-486E-B7B3-AA578350E8BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{67500622-0253-486E-B7B3-AA578350E8BE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{48334211-E78F-49F8-BF78-079576942415}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{48334211-E78F-49F8-BF78-079576942415}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{48334211-E78F-49F8-BF78-079576942415}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{48334211-E78F-49F8-BF78-079576942415}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5EFF2D84-D474-4739-A0A8-5B48062A0443}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5EFF2D84-D474-4739-A0A8-5B48062A0443}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5EFF2D84-D474-4739-A0A8-5B48062A0443}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -95,6 +91,10 @@ Global
 		{2B318CD1-6381-4FD9-A140-2937BCB94777}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B318CD1-6381-4FD9-A140-2937BCB94777}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2B318CD1-6381-4FD9-A140-2937BCB94777}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6499B346-0296-4B1F-9547-9F9153FC3B66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6499B346-0296-4B1F-9547-9F9153FC3B66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6499B346-0296-4B1F-9547-9F9153FC3B66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6499B346-0296-4B1F-9547-9F9153FC3B66}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

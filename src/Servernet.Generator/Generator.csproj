@@ -1,89 +1,19 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{67500622-0253-486E-B7B3-AA578350E8BE}</ProjectGuid>
     <OutputType>Exe</OutputType>
+    <TargetFramework>net46</TargetFramework>
+    <AssemblyName>Servernet.Generator</AssemblyName>
     <RootNamespace>Servernet.Generator</RootNamespace>
-    <AssemblyName>Generator</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <TargetFrameworkProfile />
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
+    <PackageReference Include="CommandLineParser" Version="1.9.71" />
+    <PackageReference Include="Microsoft.Azure.WebJobs" Version="2.1.0-beta1" />
+    <PackageReference Include="Microsoft.Azure.WebJobs.Extensions" Version="2.1.0-beta1" />
+    <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.Http" Version="1.0.0-beta1" />
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.1" />
+    <PackageReference Include="System.Collections.Immutable" Version="1.3.0" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Core\ColorfulConsole.cs" />
-    <Compile Include="Core\AssemblyLoader.cs" />
-    <Compile Include="Core\Environment.cs" />
-    <Compile Include="Core\FileSystem.cs" />
-    <Compile Include="Definition\BindingDirection.cs" />
-    <Compile Include="Definition\BindingType.cs" />
-    <Compile Include="Definition\BlobInputBinding.cs" />
-    <Compile Include="Definition\BlobOutputBinding.cs" />
-    <Compile Include="Definition\BlobTriggerBinding.cs" />
-    <Compile Include="Definition\HttpOutputBinding.cs" />
-    <Compile Include="Definition\HttpTriggerBinding.cs" />
-    <Compile Include="Definition\IBinding.cs" />
-    <Compile Include="Definition\Function.cs" />
-    <Compile Include="Definition\QueueOutputBinding.cs" />
-    <Compile Include="Definition\QueueTriggerBinding.cs" />
-    <Compile Include="Definition\TableInputBinding.cs" />
-    <Compile Include="Definition\TableOutputBinding.cs" />
-    <Compile Include="Definition\TimerTriggerBinding.cs" />
-    <Compile Include="Definition\WebHookTriggerBinding.cs" />
-    <Compile Include="FunctionBuilder.cs" />
-    <Compile Include="AttributeParser.cs" />
-    <Compile Include="FunctionLocator.cs" />
-    <Compile Include="FunctionValidationException.cs" />
-    <Compile Include="FunctionValidator.cs" />
-    <Compile Include="IAssemblyLoader.cs" />
-    <Compile Include="IEnvironment.cs" />
-    <Compile Include="IFileSystem.cs" />
-    <Compile Include="Main.cs" />
-    <Compile Include="MethodLocator.cs" />
-    <Compile Include="ILogger.cs" />
-    <Compile Include="Options.cs" />
-    <Compile Include="Package.cs" />
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReleaseBuilder.cs" />
-    <Compile Include="Temp\HttpOutputAttribute.cs" />
-    <Compile Include="TypeSwitch.cs" />
+    <ProjectReference Include="..\Servernet.Secret\Servernet.Secret.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-    <None Include="project.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Servernet.Secret\Servernet.Secret.csproj">
-      <Project>{2b318cd1-6381-4fd9-a140-2937bcb94777}</Project>
-      <Name>Servernet.Secret</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
