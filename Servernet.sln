@@ -33,6 +33,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Servernet.Secret", "src\Ser
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Generator.UnitTests", "src\Servernet.Generator.UnitTests\Generator.UnitTests.csproj", "{6499B346-0296-4B1F-9547-9F9153FC3B66}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Servernet.Extensions.Secret", "src\Servernet.Extensions.Secret\Servernet.Extensions.Secret.csproj", "{D5AFA909-6958-4E77-BB91-F9D7AACDA3CA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -95,6 +97,10 @@ Global
 		{6499B346-0296-4B1F-9547-9F9153FC3B66}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6499B346-0296-4B1F-9547-9F9153FC3B66}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6499B346-0296-4B1F-9547-9F9153FC3B66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5AFA909-6958-4E77-BB91-F9D7AACDA3CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5AFA909-6958-4E77-BB91-F9D7AACDA3CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5AFA909-6958-4E77-BB91-F9D7AACDA3CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5AFA909-6958-4E77-BB91-F9D7AACDA3CA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
