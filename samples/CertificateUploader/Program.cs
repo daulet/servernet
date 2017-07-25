@@ -1,10 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Configuration;
-using System.Net.Http;
+﻿using System.Net.Http;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
-using Microsoft.WindowsAzure.Storage;
-using Servernet.Secret;
 
 namespace Servernet.Samples.CertificateUploader
 {
