@@ -1,4 +1,5 @@
-﻿using System.Net.Http;
+﻿using System;
+using System.Net.Http;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 
@@ -8,8 +9,10 @@ namespace Servernet.Samples.CertificateUploader
     {
         private static void Main(string[] args)
         {
-            var certificate = new X509Certificate2("message_encrypting.pfx", " ");
-            UploadAsync("certificates", "message_encrypting.pfx", certificate).Wait();
+            var certificate = new X509Certificate2("certificate.pfx", " ");
+            UploadAsync("certificates", "certificate.pfx", certificate).Wait();
+
+            Console.ReadKey();
         }
 
         private static async Task UploadAsync(string container, string id, X509Certificate2 certificate)
