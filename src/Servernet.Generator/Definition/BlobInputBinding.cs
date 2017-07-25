@@ -1,5 +1,4 @@
 ﻿using Microsoft.Azure.WebJobs;
-using Servernet.Secret;
 using System;
 
 namespace Servernet.Generator.Definition
