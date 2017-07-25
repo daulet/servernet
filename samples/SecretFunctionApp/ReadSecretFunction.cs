@@ -1,10 +1,8 @@
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Host;
 using Servernet.Extensions.Secret;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Threading.Tasks;
 
 namespace Servernet.Samples.SecretFunctionApp
 {
@@ -12,8 +10,10 @@ namespace Servernet.Samples.SecretFunctionApp
     {
         [FunctionName("ReadSecretFunction")]
         public static HttpResponseMessage Run(
-            [HttpTrigger] HttpRequestMessage req,
-            [Secret] string secret,
+            [HttpTrigger("GET", Route = "{containerName}/{secretId}")] HttpRequestMessage req,
+            string containerName,
+            string secretId,
+            [Secret(Container = "{containerName}", Id = "{secretId}")] string secret,
             TraceWriter log)
         {
             log.Info("Received ReadSecretFunction");
