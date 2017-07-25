@@ -61,7 +61,6 @@ namespace Servernet.Generator
                 })
                 .Case((ParameterInfo parameter, QueueAttribute x) => { _function.Bindings.Add(new QueueOutputBinding(functionType, parameter.Name, x)); })
                 .Case((ParameterInfo parameter, QueueTriggerAttribute x) => { _function.Bindings.Add(new QueueTriggerBinding(functionType, parameter.Name, x)); })
-                .Case((ParameterInfo parameter, SecretAttribute x) => { _function.Bindings.Add(new BlobInputBinding(functionType, parameter.Name, x)); })
                 .Case((ParameterInfo parameter, TableAttribute x) =>
                 {
                     // based on https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-storage-table

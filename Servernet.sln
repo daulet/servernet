@@ -7,10 +7,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{90EC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiTriggerSample", "samples\MultiTriggerSample\MultiTriggerSample.csproj", "{827F542C-4CB9-4C20-A730-ACF2DE6534EC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CertificateSample", "samples\CertificateSample\CertificateSample.csproj", "{78FFE2FF-5B82-4625-9F1D-EEDDE0193AC1}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CertificateSampleFunc", "samples\CertificateSampleFunc\CertificateSampleFunc.csproj", "{B6A7AEBC-6FA3-450C-9AC3-E137EB2777F4}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CertificateUploader", "samples\CertificateUploader\CertificateUploader.csproj", "{24DDAB1F-FCBB-44A8-87A3-607E3357355B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiTriggerSampleFunc", "samples\MultiTriggerSampleFunc\MultiTriggerSampleFunc.csproj", "{CB477302-CED5-414A-8E51-911469278011}"
@@ -29,8 +25,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocumentationSamples.UnitTe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiTriggerSample.UnitTests", "samples\MultiTriggerSample.UnitTests\MultiTriggerSample.UnitTests.csproj", "{ADE3D2C5-B2A0-4A7E-86D6-8002FD17B01D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Servernet.Secret", "src\Servernet.Secret\Servernet.Secret.csproj", "{2B318CD1-6381-4FD9-A140-2937BCB94777}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Generator.UnitTests", "src\Servernet.Generator.UnitTests\Generator.UnitTests.csproj", "{6499B346-0296-4B1F-9547-9F9153FC3B66}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Servernet.Extensions.Secret", "src\Servernet.Extensions.Secret\Servernet.Extensions.Secret.csproj", "{D5AFA909-6958-4E77-BB91-F9D7AACDA3CA}"
@@ -47,14 +41,6 @@ Global
 		{827F542C-4CB9-4C20-A730-ACF2DE6534EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{827F542C-4CB9-4C20-A730-ACF2DE6534EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{827F542C-4CB9-4C20-A730-ACF2DE6534EC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{78FFE2FF-5B82-4625-9F1D-EEDDE0193AC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{78FFE2FF-5B82-4625-9F1D-EEDDE0193AC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{78FFE2FF-5B82-4625-9F1D-EEDDE0193AC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{78FFE2FF-5B82-4625-9F1D-EEDDE0193AC1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B6A7AEBC-6FA3-450C-9AC3-E137EB2777F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B6A7AEBC-6FA3-450C-9AC3-E137EB2777F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B6A7AEBC-6FA3-450C-9AC3-E137EB2777F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B6A7AEBC-6FA3-450C-9AC3-E137EB2777F4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{24DDAB1F-FCBB-44A8-87A3-607E3357355B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{24DDAB1F-FCBB-44A8-87A3-607E3357355B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{24DDAB1F-FCBB-44A8-87A3-607E3357355B}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -91,10 +77,6 @@ Global
 		{ADE3D2C5-B2A0-4A7E-86D6-8002FD17B01D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ADE3D2C5-B2A0-4A7E-86D6-8002FD17B01D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ADE3D2C5-B2A0-4A7E-86D6-8002FD17B01D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2B318CD1-6381-4FD9-A140-2937BCB94777}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2B318CD1-6381-4FD9-A140-2937BCB94777}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2B318CD1-6381-4FD9-A140-2937BCB94777}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2B318CD1-6381-4FD9-A140-2937BCB94777}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6499B346-0296-4B1F-9547-9F9153FC3B66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6499B346-0296-4B1F-9547-9F9153FC3B66}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6499B346-0296-4B1F-9547-9F9153FC3B66}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -113,8 +95,6 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{827F542C-4CB9-4C20-A730-ACF2DE6534EC} = {90EC7C49-1AA8-4FC1-80B9-5EDE797B6E38}
-		{78FFE2FF-5B82-4625-9F1D-EEDDE0193AC1} = {90EC7C49-1AA8-4FC1-80B9-5EDE797B6E38}
-		{B6A7AEBC-6FA3-450C-9AC3-E137EB2777F4} = {90EC7C49-1AA8-4FC1-80B9-5EDE797B6E38}
 		{24DDAB1F-FCBB-44A8-87A3-607E3357355B} = {90EC7C49-1AA8-4FC1-80B9-5EDE797B6E38}
 		{CB477302-CED5-414A-8E51-911469278011} = {90EC7C49-1AA8-4FC1-80B9-5EDE797B6E38}
 		{2C195CB3-AF7F-4D57-9190-1DB5BE871C76} = {90EC7C49-1AA8-4FC1-80B9-5EDE797B6E38}

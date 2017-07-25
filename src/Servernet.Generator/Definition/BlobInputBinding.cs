@@ -13,13 +13,6 @@ namespace Servernet.Generator.Definition
             Path = attribute.BlobPath;
         }
 
-        internal BlobInputBinding(Type functionType, string paramName, SecretAttribute attribute)
-        {
-            Connection = $"{functionType.Name}_input_blob_{paramName}";
-            Name = paramName;
-            Path = attribute.Path;
-        }
-
         public string Connection { get; }
 
         public BindingDirection Direction { get; } = BindingDirection.In;
