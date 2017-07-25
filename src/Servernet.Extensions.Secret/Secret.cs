@@ -1,8 +1,10 @@
-﻿namespace Servernet.Extensions.Secret
+﻿using System.Security.Cryptography.X509Certificates;
+
+namespace Servernet.Extensions.Secret
 {
     public class Secret
     {
-        public string EncodedSecret { get; set; }
+        public X509Certificate2 Certificate { get; set; }
 
         public string Id { get; set; }
     }

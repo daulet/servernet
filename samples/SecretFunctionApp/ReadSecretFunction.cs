@@ -3,6 +3,7 @@ using Microsoft.Azure.WebJobs.Host;
 using Servernet.Extensions.Secret;
 using System.Net;
 using System.Net.Http;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Servernet.Samples.SecretFunctionApp
 {
@@ -13,12 +14,12 @@ namespace Servernet.Samples.SecretFunctionApp
             [HttpTrigger("GET", Route = "{containerName}/{secretId}")] HttpRequestMessage req,
             string containerName,
             string secretId,
-            [Secret(Container = "{containerName}", Id = "{secretId}")] string secret,
+            [Secret(Container = "{containerName}", Id = "{secretId}")] X509Certificate2 certificate,
             TraceWriter log)
         {
             log.Info("Received ReadSecretFunction");
             
-            return req.CreateResponse(HttpStatusCode.OK, $"Secret is {secret}");
+            return req.CreateResponse(HttpStatusCode.OK, $"Secret's thumbprint is {certificate.Thumbprint}");
         }
     }
 }

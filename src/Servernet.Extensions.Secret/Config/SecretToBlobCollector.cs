@@ -22,7 +22,7 @@ namespace Servernet.Extensions.Secret.Config
             var secretContainer = storageClient.GetContainerReference("servernet-extensions-secret");
             await secretContainer.CreateIfNotExistsAsync(cancellationToken);
 
-            var secret = Encoding.UTF8.GetBytes(item.EncodedSecret);
+            var secret = item.Certificate.RawData;
             // @TODO decide block or page blobs
             var secretBlob = secretContainer.GetBlockBlobReference($"{_attribute.Container}/{item.Id}");
             await secretBlob.UploadFromByteArrayAsync(secret, 0, secret.Length, cancellationToken);

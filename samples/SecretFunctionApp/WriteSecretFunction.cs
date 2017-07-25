@@ -1,8 +1,10 @@
-﻿using Microsoft.Azure.WebJobs;
+﻿using System;
+using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Host;
 using Servernet.Extensions.Secret;
 using System.Net;
 using System.Net.Http;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 
 namespace Servernet.Samples.SecretFunctionApp
@@ -12,18 +14,23 @@ namespace Servernet.Samples.SecretFunctionApp
         [FunctionName("WriteSecretFunction")]
         public static HttpResponseMessage Run(
             HttpRequestMessage req,
-            [HttpTrigger("POST", Route = "{containerName}/{secretId}")] string secretToUpload,
+            [HttpTrigger("POST", Route = "{containerName}/{secretId}")] byte[] rawData,
             string containerName,
             string secretId,
             [SecretContainer(Container = "{containerName}")] ICollector<Secret> container,
             TraceWriter log)
         {
-            container.Add(new Secret()
+            log.Info("Received WriteSecretFunction");
+
+            var certificate = new X509Certificate2(rawData);
+            var secret = new Secret()
             {
-                EncodedSecret = secretToUpload,
+                Certificate = certificate,
                 Id = secretId,
-            });
-            return req.CreateErrorResponse(HttpStatusCode.OK, $"Secret is {secretToUpload}");
+            };
+            container.Add(secret);
+
+            return req.CreateErrorResponse(HttpStatusCode.OK, $"Received certificate with thumbprint: {secret.Certificate.Thumbprint}");
         }
     }
 }

@@ -9,7 +9,7 @@ namespace Servernet.Extensions.Secret.Config
             context.AddConverter<string, string>(x => x);
 
             var secretAttributeRules = context.AddBindingRule<SecretAttribute>();
-            secretAttributeRules.BindToInput<string>(new BlobToCertificateConverter());
+            secretAttributeRules.BindToInput(new BlobToCertificateConverter());
 
             var secretContainerAttributeRules = context.AddBindingRule<SecretContainerAttribute>();
             secretContainerAttributeRules.BindToCollector(attribute => new SecretToBlobCollector(attribute));
