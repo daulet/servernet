@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.14
+VisualStudioVersion = 15.0.26711.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{90EC7C49-1AA8-4FC1-80B9-5EDE797B6E38}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiTriggerSample", "samples\MultiTriggerSample\MultiTriggerSample.csproj", "{827F542C-4CB9-4C20-A730-ACF2DE6534EC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CertificateSample", "samples\CertificateSample\CertificateSample.csproj", "{78FFE2FF-5B82-4625-9F1D-EEDDE0193AC1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CertificateSample", "samples\CertificateSample\CertificateSample.csproj", "{78FFE2FF-5B82-4625-9F1D-EEDDE0193AC1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CertificateSampleFunc", "samples\CertificateSampleFunc\CertificateSampleFunc.csproj", "{B6A7AEBC-6FA3-450C-9AC3-E137EB2777F4}"
 EndProject
@@ -33,7 +33,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Servernet.Secret", "src\Ser
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Generator.UnitTests", "src\Servernet.Generator.UnitTests\Generator.UnitTests.csproj", "{6499B346-0296-4B1F-9547-9F9153FC3B66}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Servernet.Extensions.Secret", "src\Servernet.Extensions.Secret\Servernet.Extensions.Secret.csproj", "{D5AFA909-6958-4E77-BB91-F9D7AACDA3CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Servernet.Extensions.Secret", "src\Servernet.Extensions.Secret\Servernet.Extensions.Secret.csproj", "{D5AFA909-6958-4E77-BB91-F9D7AACDA3CA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SecretFunctionApp", "samples\SecretFunctionApp\SecretFunctionApp.csproj", "{AE737EB9-45DB-47FB-90D2-A4B2C25FB0AE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -101,6 +103,10 @@ Global
 		{D5AFA909-6958-4E77-BB91-F9D7AACDA3CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D5AFA909-6958-4E77-BB91-F9D7AACDA3CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D5AFA909-6958-4E77-BB91-F9D7AACDA3CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE737EB9-45DB-47FB-90D2-A4B2C25FB0AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE737EB9-45DB-47FB-90D2-A4B2C25FB0AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE737EB9-45DB-47FB-90D2-A4B2C25FB0AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE737EB9-45DB-47FB-90D2-A4B2C25FB0AE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -117,5 +123,9 @@ Global
 		{A2DE5F58-44A4-4F5C-BB31-6DE3109BC0AD} = {90EC7C49-1AA8-4FC1-80B9-5EDE797B6E38}
 		{5EFF2D84-D474-4739-A0A8-5B48062A0443} = {90EC7C49-1AA8-4FC1-80B9-5EDE797B6E38}
 		{ADE3D2C5-B2A0-4A7E-86D6-8002FD17B01D} = {90EC7C49-1AA8-4FC1-80B9-5EDE797B6E38}
+		{AE737EB9-45DB-47FB-90D2-A4B2C25FB0AE} = {90EC7C49-1AA8-4FC1-80B9-5EDE797B6E38}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E5A390B0-5994-441C-97DA-E97551B206E3}
 	EndGlobalSection
 EndGlobal
