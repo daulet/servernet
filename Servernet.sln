@@ -31,11 +31,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Servernet.Extensions.Secret
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SecretFunctionApp", "samples\SecretFunctionApp\SecretFunctionApp.csproj", "{AE737EB9-45DB-47FB-90D2-A4B2C25FB0AE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Servernet.Azure.KeyVault", "src\Servernet.Azure.KeyVault\Servernet.Azure.KeyVault.csproj", "{7B61C652-A5ED-4853-AE83-DCF9DAD2F06A}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RedisFunctionApp", "samples\RedisFunctionApp\RedisFunctionApp.csproj", "{FA67F2A9-93F6-49BF-BBEF-104A8C2F10E8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Servernet.Extensions.StackExchange.Redis", "src\Servernet.Extensions.StackExchange.Redis\Servernet.Extensions.StackExchange.Redis.csproj", "{D60EB0AC-5FA4-4E72-A8FC-37A04D3179E5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Servernet.Extensions.Azure.KeyVault", "src\Servernet.Extensions.Azure.KeyVault\Servernet.Extensions.Azure.KeyVault.csproj", "{2E4ED2FE-0B14-47D7-99CB-03AA232422D0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -95,10 +95,6 @@ Global
 		{AE737EB9-45DB-47FB-90D2-A4B2C25FB0AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE737EB9-45DB-47FB-90D2-A4B2C25FB0AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE737EB9-45DB-47FB-90D2-A4B2C25FB0AE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7B61C652-A5ED-4853-AE83-DCF9DAD2F06A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7B61C652-A5ED-4853-AE83-DCF9DAD2F06A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7B61C652-A5ED-4853-AE83-DCF9DAD2F06A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7B61C652-A5ED-4853-AE83-DCF9DAD2F06A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FA67F2A9-93F6-49BF-BBEF-104A8C2F10E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FA67F2A9-93F6-49BF-BBEF-104A8C2F10E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA67F2A9-93F6-49BF-BBEF-104A8C2F10E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -107,6 +103,10 @@ Global
 		{D60EB0AC-5FA4-4E72-A8FC-37A04D3179E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D60EB0AC-5FA4-4E72-A8FC-37A04D3179E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D60EB0AC-5FA4-4E72-A8FC-37A04D3179E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E4ED2FE-0B14-47D7-99CB-03AA232422D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E4ED2FE-0B14-47D7-99CB-03AA232422D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E4ED2FE-0B14-47D7-99CB-03AA232422D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E4ED2FE-0B14-47D7-99CB-03AA232422D0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
