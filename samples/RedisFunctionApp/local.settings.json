@@ -1,0 +1,9 @@
+﻿{
+    "IsEncrypted": false,
+    "Values": {
+        "AzureWebJobsStorage": "",
+        "AzureWebJobsDashboard": "",
+        "AzureWebJobs_ExtensionsPath": ".",
+        "RedisConfigurationOptions": "localhost"
+    }
+}

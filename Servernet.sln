@@ -7,7 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{90EC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiTriggerSample", "samples\MultiTriggerSample\MultiTriggerSample.csproj", "{827F542C-4CB9-4C20-A730-ACF2DE6534EC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CertificateUploader", "samples\CertificateUploader\CertificateUploader.csproj", "{24DDAB1F-FCBB-44A8-87A3-607E3357355B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CertificateUploader", "samples\CertificateUploader\CertificateUploader.csproj", "{24DDAB1F-FCBB-44A8-87A3-607E3357355B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiTriggerSampleFunc", "samples\MultiTriggerSampleFunc\MultiTriggerSampleFunc.csproj", "{CB477302-CED5-414A-8E51-911469278011}"
 EndProject
@@ -31,7 +31,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Servernet.Extensions.Secret
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SecretFunctionApp", "samples\SecretFunctionApp\SecretFunctionApp.csproj", "{AE737EB9-45DB-47FB-90D2-A4B2C25FB0AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Servernet.Azure.KeyVault", "src\Servernet.Azure.KeyVault\Servernet.Azure.KeyVault.csproj", "{7B61C652-A5ED-4853-AE83-DCF9DAD2F06A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Servernet.Azure.KeyVault", "src\Servernet.Azure.KeyVault\Servernet.Azure.KeyVault.csproj", "{7B61C652-A5ED-4853-AE83-DCF9DAD2F06A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RedisFunctionApp", "samples\RedisFunctionApp\RedisFunctionApp.csproj", "{FA67F2A9-93F6-49BF-BBEF-104A8C2F10E8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Servernet.Extensions.StackExchange.Redis", "src\Servernet.Extensions.StackExchange.Redis\Servernet.Extensions.StackExchange.Redis.csproj", "{D60EB0AC-5FA4-4E72-A8FC-37A04D3179E5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -95,6 +99,14 @@ Global
 		{7B61C652-A5ED-4853-AE83-DCF9DAD2F06A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B61C652-A5ED-4853-AE83-DCF9DAD2F06A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B61C652-A5ED-4853-AE83-DCF9DAD2F06A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA67F2A9-93F6-49BF-BBEF-104A8C2F10E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA67F2A9-93F6-49BF-BBEF-104A8C2F10E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA67F2A9-93F6-49BF-BBEF-104A8C2F10E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA67F2A9-93F6-49BF-BBEF-104A8C2F10E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D60EB0AC-5FA4-4E72-A8FC-37A04D3179E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D60EB0AC-5FA4-4E72-A8FC-37A04D3179E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D60EB0AC-5FA4-4E72-A8FC-37A04D3179E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D60EB0AC-5FA4-4E72-A8FC-37A04D3179E5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -110,6 +122,7 @@ Global
 		{5EFF2D84-D474-4739-A0A8-5B48062A0443} = {90EC7C49-1AA8-4FC1-80B9-5EDE797B6E38}
 		{ADE3D2C5-B2A0-4A7E-86D6-8002FD17B01D} = {90EC7C49-1AA8-4FC1-80B9-5EDE797B6E38}
 		{AE737EB9-45DB-47FB-90D2-A4B2C25FB0AE} = {90EC7C49-1AA8-4FC1-80B9-5EDE797B6E38}
+		{FA67F2A9-93F6-49BF-BBEF-104A8C2F10E8} = {90EC7C49-1AA8-4FC1-80B9-5EDE797B6E38}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E5A390B0-5994-441C-97DA-E97551B206E3}

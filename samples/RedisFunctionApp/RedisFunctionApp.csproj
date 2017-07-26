@@ -1,14 +1,14 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net46</TargetFramework>
-    <AssemblyName>Servernet.Samples.SecretFunctionApp</AssemblyName>
-    <RootNamespace>Servernet.Samples.SecretFunctionApp</RootNamespace>
+    <AssemblyName>Servernet.Samples.RedisFunctionApp</AssemblyName>
+    <RootNamespace>Servernet.Samples.RedisFunctionApp</RootNamespace>
     <PostBuildEvent>
       mkdir Extensions
-      copy Microsoft.WindowsAzure.Storage.dll Extensions\Microsoft.WindowsAzure.Storage.dll
-      copy Servernet.Extensions.Secret.dll Extensions\Servernet.Extensions.Secret.dll
-      copy Servernet.Extensions.Secret.pdb Extensions\Servernet.Extensions.Secret.pdb
+      copy Servernet.Extensions.StackExchange.Redis.dll Extensions\Servernet.Extensions.StackExchange.Redis.dll
+      copy Servernet.Extensions.StackExchange.Redis.pdb Extensions\Servernet.Extensions.StackExchange.Redis.pdb
+      copy StackExchange.Redis.dll Extensions\StackExchange.Redis.dll
     </PostBuildEvent>
   </PropertyGroup>
 
@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Servernet.Extensions.Secret\Servernet.Extensions.Secret.csproj" />
+    <ProjectReference Include="..\..\src\Servernet.Extensions.StackExchange.Redis\Servernet.Extensions.StackExchange.Redis.csproj" />
   </ItemGroup>
 
   <ItemGroup>
