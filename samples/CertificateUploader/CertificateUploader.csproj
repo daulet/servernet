@@ -6,6 +6,6 @@
     <RootNamespace>Servernet.Samples.CertificateUploader</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="System.Net.Http" Version="4.3.2" />
+    <PackageReference Include="System.Net.Http" Version="4.3.4" />
   </ItemGroup>
 </Project>
